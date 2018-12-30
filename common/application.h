@@ -108,7 +108,7 @@ bool application<PROCESS>::init_main(int argc, char** argv, void(sig_fun)(int)) 
         }
     }
     if (strlen(g_configfilename) == 0)
-        strcpy(g_configfilename, "../conf/cfg.xml");
+        strcpy(g_configfilename, "./conf/cfg.xml");
     //AC_INFO("configfilename = %s\n", g_configfilename);
     if (isdaemon) {
         int pid;

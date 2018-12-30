@@ -130,3 +130,8 @@ template <class T>
 void proto_message_dispatcher<T>::add_timer(int timer_id, size_t interval) {
     this->reactor_->timers_add(timer_id, interval, this);
 }
+
+template <class T>
+void proto_message_dispatcher<T>::cancell_timer(int timer_id) {
+    this->reactor_->timers_cancel(timer_id, this);
+}

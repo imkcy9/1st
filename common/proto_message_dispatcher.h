@@ -39,6 +39,7 @@ public:
 
     void add_socket(zmq::socket_t* socket);
     void add_timer(int timer_id, size_t interval);
+    void cancell_timer(int timer_id);
 protected:
 
     template<class M>

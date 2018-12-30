@@ -9,21 +9,24 @@ aux_source_directory(./common SRC_PUBLIC)
 aux_source_directory(./common/timer SRC_TIMER)
 aux_source_directory(./common/tinyxml2 SRC_TINYXML2)
 
-add_definitions(-std=c++11 -DUSE_SPDLOG -DZMQ_BUILD_DRAFT_API)
+add_definitions(-std=c++11 -fpermissive -DUSE_SPDLOG -DZMQ_BUILD_DRAFT_API)
 SET(EXECUTABLE_OUTPUT_PATH ./bin)
 #target_include_directories()
 include_directories(./proto
         ./gateway
         ./common
         ./common/timer
-        ./include)
+        ./include
+        ./XAPI2/include)
 
 link_directories(/usr/local/lib)
-link_directories(./lib/mac)
+link_directories(./lib/centos)
+link_directories(./XAPI2/lib)
+link_directories(./XAPI2/bin)
 
 
 add_executable(pipe ${SRC_PIPE} ${SRC_PROTO} ${SRC_PUBLIC} ${SRC_TIMER} ${SRC_TINYXML2})
-target_link_libraries(pipe pthread protobuf zmq tinyxml2)
+target_link_libraries(pipe pthread protobuf zmq tinyxml2 -lXAPI_CPP)
 
 add_executable(test test/main.cpp ${SRC_PROTO})
 target_link_libraries(test zmq protobuf)
