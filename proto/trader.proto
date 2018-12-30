@@ -1,0 +1,545 @@
+syntax = "proto3";
+
+import "enum.proto";
+
+package LT;
+
+message ReqQueryField {
+    string instrument_name = 1;
+    string symbol = 2 ;
+    string instrument_id =  3;
+    string exchange_id = 4;
+    string client_id = 5;
+    string account_id = 6;
+    string currency_id = 7;
+    int32 date_start = 8;
+    int32 date_end = 9;
+    int32 time_start = 10;
+    int32 time_end = 11;
+
+    string char64_id = 12;
+    int32   int32_id = 13;
+    string char64_position_index = 14;
+    int32 int32_position_index = 15;
+
+    string portfolio_id1 = 16;
+    string portfolio_id2 = 17;
+    string portfolio_id3 = 18;
+
+    BusinessType business = 19;
+}
+
+message PositionField {
+    string instrument_name = 1;
+    string symbol = 2 ;
+    string instrument_id =  3;
+    string exchange_id = 4;
+    string client_id = 5;
+    string account_id = 6;
+
+    PositionSide side = 7;
+    HedgeFlagType hedge_flag = 8;
+    int32 date = 9;
+    double position_cost = 10;
+    double position = 11;
+    double today_position = 12;
+    double history_position = 13;
+    double history_frozen = 14;
+
+    double today_bs_position = 15;
+    double today_bs_frozen = 16;
+
+    double today_pr_position = 17;
+    double today_pr_frozen = 18;
+
+    ///同一账号下的唯一ID，本地拼接成的，方便其它程序存到dict中
+    string id = 19;
+
+    string portfolio_id1 = 20;
+    string portfolio_id2 = 21;
+    string portfolio_id3 = 22;
+
+    BusinessType business = 23;
+}
+
+message QuoteField {
+    string instrument_name = 1;
+    string symbol = 2 ;
+    string instrument_id =  3;
+    string exchange_id = 4;
+    string client_id = 5;
+    string account_id = 6;
+
+    double ask_qty = 7;
+    double ask_price = 8;
+    OpenCloseType ask_open_close = 9;
+    HedgeFlagType ask_hedge_flag = 10;
+
+    double bid_qty = 11;
+    double bid_price = 12;
+    OpenCloseType bid_open_close = 13;
+    HedgeFlagType bid_hedge_flag = 14;
+
+    OrderStatus status = 15;
+    ExecType exec_type = 16;
+
+
+    string quote_req_id = 17;
+
+    string local_id = 18;
+    string id = 19;
+    string ask_id = 20;
+    string bid_id = 21;
+    string ask_order_id = 22;
+    string bid_order_id = 23;
+
+    int32 xerror_id = 24;
+    int32 row_error_id = 25;
+    string text = 26;
+}
+
+///委托，委托回报都是同一结构体
+message OrderField
+{
+	string instrument_name = 1;
+    string symbol = 2 ;
+    string instrument_id =  3;
+    string exchange_id = 4;
+    string client_id = 5;
+    string account_id = 6;
+
+
+	///订单方向，用来来区分买卖与申赎
+	OrderSide		size = 7;
+	///数量
+	double			qty = 8;
+	///价格
+	double		price = 9;
+	///开平
+	OpenCloseType	open_close = 10;
+	///投机套保
+	HedgeFlagType	hedge_flag = 11;
+	///日期
+	int32		date = 12;
+	///时间
+	int64		time = 13;
+
+
+	///系统ID，唯一，在CTP一类可指定OrderRef的API中，这是拼接成的字符串，在Tdx一类后生成ID的API中，这是柜台直接传来的唯一值
+	string			id = 14;
+
+	//////////////////////////////////////////////////////////////////////////
+
+	///交易所或柜台生成的ID，可供比较报单先后。不同交易所或柜台可能出现相同OrderID
+	string			order_id = 15;
+	///本地ID,只在委托时定位使用，收到回报请使用ID，在CTP一类API中ID==LocalID
+	string			local_id = 16;
+
+	///订单类型
+	OrderType		type = 17;
+	///止损价
+	double 		stop_px = 18;
+	///有效时间类型
+	TimeInForce		time_in_force = 19;
+	///订单状态
+	OrderStatus		status = 20;
+	///执行类型
+	ExecType		exec_type = 21;
+	///剩余数量
+	double			leaves_qty = 22;
+	///成交数量
+	double			cum_qty = 23;
+	///成交均价
+	double		avg_px = 24;
+
+
+	///XAPI中错误代码，转成统一的值后，应用程序可以直接用它进行判断
+	int32		xerror_id = 25;
+	///原始错误代码
+	int32		raw_error_id = 26;
+	///信息
+	string		text = 27;
+
+	///预留数字
+	int32		reserve_int32 = 28;
+	///预留字符串
+	string		reserve_char64 = 29;
+
+	string portfolio_id1 = 30;
+    string portfolio_id2 = 31;
+    string portfolio_id3 = 32;
+
+    BusinessType business = 33;
+}
+
+///成交回报
+message TradeField
+{
+	string instrument_name = 1;
+    string symbol = 2 ;
+    string instrument_id =  3;
+    string exchange_id = 4;
+    string client_id = 5;
+    string account_id = 6;
+
+
+	///订单方向
+	OrderSide		side = 7;
+	///数量
+	double			qty = 8;
+	///价格
+	double		    price = 9;
+	///开平
+	OpenCloseType	open_close = 10;
+	///投机套保
+	HedgeFlagType	hedge_flag = 11;
+	///日期
+	int32		    date = 12;
+	///时间
+	int64		    time = 13;
+
+
+	///所对应的Order的ID
+	string		    id = 14;
+
+	//////////////////////////////////////////////////////////////////////////
+
+	///交易所产生的成交ID，可用于判断自成交
+	string		    tradeid = 15;
+	///手续费
+	double		    commission = 16;
+
+	///预留数字
+	int32		    reserveint32 = 17;
+	///预留字符串
+	string		    reservechar64 = 18;
+
+	/// 基金
+	string	        portfolioid1 = 19;
+	/// 资产单元
+    string	        portfolioid2 = 20;
+	/// 投资组合
+	string	        portfolioid3 = 21;
+
+	BusinessType	business = 22;
+};
+
+///服务器信息
+message ServerInfoField
+{
+	///是否UDP
+	bool			    is_using_udp = 1;
+	///是否多播
+	bool			    is_multicast = 2;
+	///订阅ID
+	int32			    topicid = 3;
+	///端口号
+	int32   			port = 4;
+
+	ResumeType			marketdata_topic_resume_type = 5;
+	ResumeType			private_topic_resume_type = 6;
+	ResumeType			public_topic_resume_type = 7;
+	ResumeType			user_topic_resume_type = 8;
+
+	///经纪商ID
+	string		        broker_id = 9;
+	///产品信息
+	string      		user_product_info = 10;
+	///授权码
+	string      		authcode = 11;
+	///地址信息
+	string  			address = 12;
+	///配置文件路径
+	string  			config_path = 13;
+	///扩展信息
+	string  			extinfo = 14;
+}
+
+// 用户信息
+message UserInfoField
+{
+	///用户代码
+	string	user_id = 1;
+	///密码
+	string	password = 2;
+	///扩展信息，Tdx中用来做通讯密码
+	string		extinfo_string = 3;
+	///扩展信息，32位的数字
+	int32		extinfo_int32 = 4;
+};
+
+// 错误信息
+message ErrorField
+{
+	///XAPI中错误代码，转成统一的值后，应用程序可以直接用它进行判断
+	int32		xerror_id = 1;
+	///原始错误代码
+	int32		raw_errorid = 2;
+	// 错误信息
+	string		text = 3;
+	// 消息来源
+	string		source = 4;
+}
+
+///日志信息
+message LogField
+{
+	///日志级别
+	LogLevel	level = 1;
+	///消息内容
+	string	    message = 2;
+}
+
+/// 登录回报
+/// 通过size1>0来判断是否有内容
+/// 不管成功还是失败都可以输出，这个结构体中大部分内容是给人看的
+message RspUserLoginField
+{
+	///交易日
+	int64		    trading_day = 1;
+	///时间
+	int64		    login_time = 2;
+	///会话ID
+	string	        session_id = 4;
+	///用户账号
+	string      	user_id = 5;
+	///股东账号
+	string	        accountid = 6;
+	///投资者名称
+	string      	investor_name = 7;
+	///XAPI中错误代码，转成统一的值后，应用程序可以直接用它进行判断
+	int32		    xerror_id = 8;
+	///原始错误代码
+	int32   		raw_errorid = 9;
+	///信息
+	string		    text = 10;
+
+	string  		version = 11;
+
+	string		    lang = 12;
+};
+
+///深度行情N档
+message DepthMarketDataNField
+{
+	///占用总字节大小
+	int32   			size = 1;
+	///交易日，用于给数据接收器划分到同一文件使用，基本没啥别的用处
+	int64   			trading_day = 2;
+	///日历日，实际日期
+	int64   			action_day = 3;
+	///时间
+	int64   			update_time = 4;
+	///毫秒
+	int64   			update_millisec = 5;
+
+	///唯一符号，这里的用途主要给map做映射，找到通知哪个合约来行情了使用
+	string  			symbol = 6;
+	///合约代码
+	string          	instrument_id = 7;
+
+	string      		exchange_id = 8;
+	///交易所代码，枚举类型，主要是用于过滤使用，效率比字符串比较要高
+	ExchangeType		exchange = 9;
+
+	///最新价
+	double  			last_price = 10;
+	///数量
+	double		        volume = 11;
+	///成交金额
+	double			    turnover = 12;
+	///持仓量
+	double		        openinterest = 13;
+	///当日均价
+	double			    average_price = 14;
+
+
+	///今开盘
+	double			    open_price = 15;
+	///最高价
+	double  			highest_price = 16;
+	///最低价
+	double		    	lowest_price = 17;
+	///今收盘
+	double	    		close_price = 18;
+	///本次结算价
+	double  			settlement_price = 19;
+
+	///涨停板价
+	double  			upperlimit_price = 20;
+	///跌停板价
+	double			    lowerlimit_price = 21;
+	///昨收盘
+	double			    preclose_price = 22;
+	///上次结算价
+	double			    presettlement_price = 23;
+	///昨持仓量
+	double  		    preopeninterest = 24;
+	///交易阶段类型
+	TradingPhaseType	trading_phase = 25;
+
+	///买档个数
+	int32    			bidcount = 26;
+};
+
+
+///深度行情中的某一档
+message DepthField
+{
+	///价格
+	double		price = 1;
+	///量
+	double		size = 2;
+	///笔数
+	double		count = 3;
+};
+
+///合约
+///TODO:是否要再补充一些？
+///对于ETF,ETF列表，开放式基金、分级基金这一类的是只在当前结构体中加，还是有什么别的方案处理？
+message InstrumentField
+{
+	///合约名称
+	string          	instrument_name = 1;
+	///唯一符号
+	string  			symbol = 2;
+	///合约代码
+	string          	instrument_id = 3;
+	///交易所代码
+	string		        exchange_id = 4;
+	///客户号，多账号支持使用
+	string      		client_id = 5;
+	///账号，证券中用于股东代码
+	string      		account_id = 6;
+	///合约在交易所的代码，个股期权交易代码会变化
+	string          	exchange_instid = 7;
+
+	///合约类型
+	InstrumentType		type = 8;
+	///合约数量乘数
+	int32           	volume_multiple = 9;
+	///最小变动价位
+	double  			price_tick = 10;
+	///到期日
+	int32   			expire_date = 11;
+	///执行价
+	double  			strike_price = 12;
+	///期权类型
+	PutCall				options_type = 13;
+
+	///产品代码
+	string          	product_id = 14;
+
+	///基础商品代码
+	string          	underlying_instrid = 15;
+	///合约生命周期状态
+	InstLifePhaseType	instlife_phase = 16;
+};
+
+///账号资金
+message AccountField
+{
+	///客户号，多账号支持使用
+	string      		client_id = 1;
+	///账号，证券中用于股东代码
+	string      		account_id = 2;
+	///币种
+	string      		currency_id = 3;
+	///上次结算准备金
+	double  			pre_balance = 4;
+	///当前保证金总额
+	double  			curr_margin = 5;
+	///平仓盈亏
+	double  			close_profit = 6;
+	///持仓盈亏
+	double  			position_profit = 7;
+	///期货结算准备金
+	double  			balance = 8;
+	///可用资金
+	double  			available = 9;
+
+	///入金金额
+	double  			deposit = 10;
+	///出金金额
+	double  			withdraw = 11;
+	///可取资金
+	double  			withdrawquota = 12;
+
+	///冻结的过户费
+	double  			frozen_transfer_fee = 13;
+	///冻结的印花税
+	double  			frozen_stamp_tax = 14;
+	///冻结的手续费
+	double  			frozen_commission = 15;
+	///冻结的资金
+	double  			frozen_cash = 16;
+
+	///过户费
+	double  			transfer_fee = 17;
+	///印花税
+	double  			stamp_tax = 18;
+	///手续费
+	double  			commission = 19;
+	///资金差额
+	double  			cashin = 20;
+};
+
+
+///发给做市商的询价请求
+message QuoteRequestField
+{
+	///唯一符号
+	string  			symbol = 1;
+	///合约代码
+	string          	instrument_id = 2;
+	///交易所代码
+	string      		exchange_id = 3;
+	///交易日
+	int32   			trading_day = 4;
+	///询价时间
+	int64   			quote_time = 5;
+	///询价编号
+	string  			quote_id = 6;
+};
+
+///结算信息
+message SettlementInfoField
+{
+	///大小
+	int32	size = 1;
+	///交易日
+	int64	trading_day = 2;
+	///消息正文，以下是消息正文
+};
+
+///投资者
+message InvestorField
+{
+	///用户代码
+	string      			investor_id = 1;
+
+	string      			broker_id = 2;
+
+	///证件类型
+	IdCardType  			identified_card_type = 3;
+	///证件号码
+	string              	identified_cardno = 4;
+	///投资者名称
+	string      			investor_name = 5;
+};
+
+
+/// 合约状态信息，CTP中其实是交易所信息
+message InstrumentStatusField
+{
+	///唯一符号
+	string  			symbol = 1;
+	///合约代码
+	string          	instrument_id = 2;
+	///交易所代码
+	string      		exchange_id = 3;
+	///合约交易状态
+	TradingPhaseType	instrument_status = 4;
+	///进入本状态时间
+	int64   			enter_time = 5;
+};
