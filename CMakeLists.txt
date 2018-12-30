@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 2.6)
-project(gateway)
+project(1st)
 
 set(CMAKE_CXX_STANDARD 11)
 aux_source_directory(./ SRC_ROOT)
 aux_source_directory(./proto SRC_PROTO)
-aux_source_directory(./gateway SRC_GATEWAY)
+aux_source_directory(./pipe SRC_PIPE)
 aux_source_directory(./common SRC_PUBLIC)
 aux_source_directory(./common/timer SRC_TIMER)
+aux_source_directory(./common/tinyxml2 SRC_TINYXML2)
 
-add_definitions(-std=c++11 -DUSE_SPDLOG)
-
+add_definitions(-std=c++11 -DUSE_SPDLOG -DZMQ_BUILD_DRAFT_API)
+SET(EXECUTABLE_OUTPUT_PATH ./bin)
 #target_include_directories()
 include_directories(./proto
         ./gateway
@@ -18,11 +19,11 @@ include_directories(./proto
         ./include)
 
 link_directories(/usr/local/lib)
-link_directories(./include/mac)
+link_directories(./lib/mac)
 
 
-add_executable(gateway ${SRC_GATEWAY} ${SRC_PROTO} ${SRC_PUBLIC} ${SRC_TIMER} gateway/gateway.cpp gateway/gateway.h gateway/message_handler.cpp gateway/message_handler.h)
-target_link_libraries(gateway protobuf zmq tinyxml2)
+add_executable(pipe ${SRC_PIPE} ${SRC_PROTO} ${SRC_PUBLIC} ${SRC_TIMER} ${SRC_TINYXML2})
+target_link_libraries(pipe pthread protobuf zmq tinyxml2)
 
 add_executable(test test/main.cpp ${SRC_PROTO})
 target_link_libraries(test zmq protobuf)
