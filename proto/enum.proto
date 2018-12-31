@@ -57,93 +57,99 @@ enum LogLevel
 /// 期权类型
 enum PutCall
 {
-	PUT = 0;
-	CALL = 1;
+        PUTCALL_Undefined = 0;
+	PUT = 1;
+	CALL = 2;
 };
 
 enum OrderStatus
 {
-	NOTSENT = 0;
-	PENDING_NEW = 1;
-	NEW = 2;
-	REJECTED = 3;
-	PARTIALLY_FILLED = 4;
-	FILLED = 5;
-	PENDING_CANCELL = 6;
-	CANCELLED = 7;
-	EXPIRED = 8;
-	PENDING_REPLACE = 9;
-	REPLACED = 10;
+        ORDER_STATUS_UNKNOWN = 0;
+	NOTSENT = 1;
+	PENDING_NEW = 2;
+	NEW = 3;
+	REJECTED = 4;
+	PARTIALLY_FILLED = 5;
+	FILLED = 6;
+	PENDING_CANCELL = 7;
+	CANCELLED = 8;
+	EXPIRED = 9;
+	PENDING_REPLACE = 10;
+	REPLACED = 11;
 };
 
 /// 执行类型，与OpenQuant2014中的值一样
 /// 一般与OrderStatus对应，但ExecCancelReject与ExecReplaceReject时与OrderStatus不对应
 enum ExecType
 {
-    EXECTYPE_NEW = 0;
-    EXECTYPE_STOPPED = 1;
-    EXECTYPE_REJECED = 2;
-    EXECTYPE_EXPIRED = 3;
-    EXECTYPE_TRADE = 4;
-    EXECTYPE_PENDING_CANCEL = 5;
-    EXECTYPE_CANCELLED = 6;
-    EXECTYPE_CANCELL_REJECT = 7;
-    EXECTYPE_PENDING_REPLACE = 8;
-    EXECTYPE_REPLACE = 9;
-    EXECTYPE_REPLACE_REJECT = 10;
-    EXECTYPE_TRADE_CORREC = 11;
-    EXECTYPE_TRADE_CANCEL = 12;
-    EXECTYPE_ORDER_STATUS = 13;
-    EXECTYPE_PENDING_NEW = 14;
-    EXECTYPE_CLEARING_HOLD = 15;
+    EXECTYPE_UNKNOWN = 0;
+    EXECTYPE_NEW = 1;
+    EXECTYPE_STOPPED = 2;
+    EXECTYPE_REJECED = 3;
+    EXECTYPE_EXPIRED = 4;
+    EXECTYPE_TRADE = 5;
+    EXECTYPE_PENDING_CANCEL = 6;
+    EXECTYPE_CANCELLED = 7;
+    EXECTYPE_CANCELL_REJECT = 8;
+    EXECTYPE_PENDING_REPLACE = 9;
+    EXECTYPE_REPLACE = 10;
+    EXECTYPE_REPLACE_REJECT = 11;
+    EXECTYPE_TRADE_CORREC = 12;
+    EXECTYPE_TRADE_CANCEL = 13;
+    EXECTYPE_ORDER_STATUS = 14;
+    EXECTYPE_PENDING_NEW = 15;
+    EXECTYPE_CLEARING_HOLD = 16;
 };
 
 /// 方向
 /// 新股申购、回购，质押都暂时不写入，等业务掌握熟了后再加
 enum OrderSide
 {
-	BUY = 0;
-	SELL = 1;
-	LOF_CREATION = 2;		///申购,LOF申购
-	LOF_REDEMPTION = 3;	///赎回,LOF赎回
-	ETF_CREATION = 4;		///ETF申购
-	ETF_REDEMPTION = 5;	///ETF赎回
-	MERGE = 6;			///合并
-	SPLIT = 7;			///拆分
-	CB_CONVERT = 8;		///可转债转股，参考于https://en.wikipedia.org/wiki/Convertible_bond
-	CB_REDEMPTION = 9;		///可转债回售，参考于https://en.wikipedia.org/wiki/Convertible_bond
-	ORDER_SIDE_UNKNOWN = 10;			///出现这个输出时，需要技术人员去查找原因修正代码
+        ORDER_SIDE_UNKNOWN = 0;			///
+	BUY = 1;
+	SELL = 2;
+	LOF_CREATION = 3;		///申购,LOF申购
+	LOF_REDEMPTION = 4;	///赎回,LOF赎回
+	ETF_CREATION = 5;		///ETF申购
+	ETF_REDEMPTION = 6;	///ETF赎回
+	MERGE = 7;			///合并
+	SPLIT = 8;			///拆分
+	CB_CONVERT = 9;		///可转债转股，参考于https://en.wikipedia.org/wiki/Convertible_bond
+	CB_REDEMPTION = 10;		///可转债回售，参考于https://en.wikipedia.org/wiki/Convertible_bond
+        AUTO = 11;
 };
 
 /// 报单类型，与OpenQuant2014中的值一样
 /// 各交易所的报单指令相当多，实际交易时只取市价和限价两种
 enum OrderType
 {
-	MARKET = 0;
-	STOP = 1;
-	LIMIT = 2;
-	STOP_LIMIT = 3;
-	MARKET_ON_CLOSE = 4;
-	PEGGED = 5;
-	TRAILING_STOP = 6;
-	TRAILING_STOP_LIMIT = 7;
+        ORDER_TYPE_UNKNOWN = 0;
+	MARKET = 1;
+	STOP = 2;
+	LIMIT = 3;
+	STOP_LIMIT = 4;
+	MARKET_ON_CLOSE = 5;
+	PEGGED = 6;
+	TRAILING_STOP = 7;
+	TRAILING_STOP_LIMIT = 8;
 };
 
 /// TimeInForce，与OpenQuant2014中的值一样
 /// 实际只识别IOC和FOK，其它都当成普通类型
 enum TimeInForce
 {
-	ATC = 0;
-	DAY = 1;
-	GTC = 2;
-	IOC = 3;
-	OPG = 4;
-	OC = 5;
-	FOK = 6;
-	GTX = 7;
-	GTD = 8;
-	GFS = 9;
-	AUC = 10;
+        TIME_IN_FORCE_UNKNOWN = 0;
+	ATC = 1;
+	DAY = 2;
+	GTC = 3;
+	IOC = 4;
+	OPG = 5;
+	OC = 6;
+	FOK = 7;
+	GTX = 8;
+	GTD = 9;
+	GFS = 10;
+	AUC = 11;
 };
 
 enum BusinessType {
@@ -154,8 +160,9 @@ enum BusinessType {
 }
 
 enum PositionSide {
-    LONG = 0;
-    SHORT = 1;
+    POSITION_SIDE_UNKNOWN = 0;
+    LONG = 1;
+    SHORT = 2;
 }
 
 ///投机套保标志
@@ -185,17 +192,18 @@ enum OpenCloseType
 /// 合约类型，与OpenQuant2014中的值一样
 enum InstrumentType
 {
-	INSTRUMENT_TYPE_STOCK = 0;
-	INSTRUMENT_TYPE_FUTURE = 1;
-	INSTRUMENT_TYPE_OPTION = 2;
-	INSTRUMENT_TYPE_FUTURE_OPTION = 3;
-	INSTRUMENT_TYPE_BOND = 4;
-	INSTRUMENT_TYPE_FX = 5;
-	INSTRUMENT_TYPE_INDEX = 6;
-	INSTRUMENT_TYPE_ETF = 7;
-	INSTRUMENT_TYPE_MULTI_LEG = 8;
-	INSTRUMENT_TYPE_SYNTHETIC = 9;
-	INSTRUMENT_TYPE_LOF = 10;		///多加LOF
+        INSTRUMENT_TYPE_UNKNOWN = 0;
+	INSTRUMENT_TYPE_STOCK = 1;
+	INSTRUMENT_TYPE_FUTURE = 2;
+	INSTRUMENT_TYPE_OPTION = 3;
+	INSTRUMENT_TYPE_FUTURE_OPTION = 4;
+	INSTRUMENT_TYPE_BOND = 5;
+	INSTRUMENT_TYPE_FX = 6;
+	INSTRUMENT_TYPE_INDEX = 7;
+	INSTRUMENT_TYPE_ETF = 8;
+	INSTRUMENT_TYPE_MULTI_LEG = 9;
+	INSTRUMENT_TYPE_SYNTHETIC = 10;
+	INSTRUMENT_TYPE_LOF = 11;		///多加LOF
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -221,7 +229,7 @@ enum IdCardType
 /// 港交所有HK(国内网站)/HKEx(官网)
 enum ExchangeType
 {
-	EXCHANGETYPE_Undefined = 0;	/// 未定义
+	EXCHANGETYPE_UNDEFINED = 0;	/// 未定义
 	SHFE = 1;			/// 上期所
 	DCE = 2;			/// 大商所
 	CZCE = 3;			/// 郑商所
@@ -238,27 +246,29 @@ enum ExchangeType
 ///合约生命周期状态类型
 enum InstLifePhaseType
 {
-	InstLifePhaseType_NotStart = 0;		///未上市
-	InstLifePhaseType_Started = 1;		///上市
-	InstLifePhaseType_Pause = 2;		///停牌
-	InstLifePhaseType_Expired = 3;	///到期
+        InstLifePhaseType_Unknown = 0;
+	InstLifePhaseType_NotStart = 1;		///未上市
+	InstLifePhaseType_Started = 2;		///上市
+	InstLifePhaseType_Pause = 3;		///停牌
+	InstLifePhaseType_Expired = 4;	///到期
 
-	InstLifePhaseType_Issue = 4;		///发行,参考于XSpeed
-	InstLifePhaseType_FirstList = 5;	///首日上市,参考于XSpeed
-	InstLifePhaseType_UnList = 6;		///退市,参考于XSpeed
+	InstLifePhaseType_Issue = 5;		///发行,参考于XSpeed
+	InstLifePhaseType_FirstList = 6;	///首日上市,参考于XSpeed
+	InstLifePhaseType_UnList = 7;		///退市,参考于XSpeed
 };
 
 ///交易阶段类型
 enum TradingPhaseType
 {
-	TradingPhaseType_BeforeTrading = 0;		///开盘前
-	TradingPhaseType_NoTrading = 1;		///非交易
-	TradingPhaseType_Continuous = 2;		///连续交易
-	TradingPhaseType_AuctionOrdering = 3;	///集合竞价报单
-	TradingPhaseType_AuctionBalance = 4;	///集合竞价价格平衡
-	TradingPhaseType_AuctionMatch = 5;		///集合竞价撮合
-	TradingPhaseType_Closed = 6;			///收盘
-	TradingPhaseType_Suspension = 7;		///停牌时段,参考于LTS
-	TradingPhaseType_Fuse = 8;				///熔断时段,参考于LTS
+        TradingPhaseType_Unknown = 0;
+	TradingPhaseType_BeforeTrading = 1;		///开盘前
+	TradingPhaseType_NoTrading = 2;		///非交易
+	TradingPhaseType_Continuous = 3;		///连续交易
+	TradingPhaseType_AuctionOrdering = 4;	///集合竞价报单
+	TradingPhaseType_AuctionBalance = 5;	///集合竞价价格平衡
+	TradingPhaseType_AuctionMatch = 6;		///集合竞价撮合
+	TradingPhaseType_Closed = 7;			///收盘
+	TradingPhaseType_Suspension = 8;		///停牌时段,参考于LTS
+	TradingPhaseType_Fuse = 9;				///熔断时段,参考于LTS
 };
 

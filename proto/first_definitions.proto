@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "base_definitions.proto";
+
+package FIRST;
+
+//CreateOrderOperation
+message CreateOrderRequest {
+    uint64 request_id = 1;
+    uint64 in_timestamp = 2;
+    OrderField order = 3;
+    uint64 out_timestamp = 4;
+}
+
+message CreateOrderResponse {
+    uint64 request_id = 1;
+    uint64 in_timestamp = 2;
+    OrderField order = 3;
+    uint64 out_timestamp = 4;
+    enum Status {
+        SUCCESS = 0;
+        REJECTED = 1;
+    }
+    Status status = 5;
+    string reason = 6;
+}
+
+//OrderFeed
+message OrderFeed {
+    uint64 request_id = 1;
+    uint64 in_timestamp = 2;
+    OrderField order = 3;
+    uint64 out_timestamp = 4;
+}
+
+//TradeFeed
+message TradeFeed {
+    uint64 request_id = 1;
+    uint64 in_timestamp = 2;
+    TradeField  trade = 3;
+    uint64 out_timestamp = 4;
+}

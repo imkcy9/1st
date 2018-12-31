@@ -19,8 +19,7 @@
 #include "zmq.hpp"
 
 xapi_impl::xapi_impl(zmq::socket_t* push)
-:push_(push)
-{
+: push_(push) {
 }
 
 xapi_impl::~xapi_impl() {
@@ -96,19 +95,23 @@ void xapi_impl::OnRspQryInstrument(CXApi* pApi, InstrumentField* pInstrument, in
     instrumentField.set_client_id(pInstrument->ClientID);
     instrumentField.set_account_id(pInstrument->AccountID);
     instrumentField.set_exchange_instid(pInstrument->ExchangeInstID);
-    instrumentField.set_type((int)pInstrument->Type);
+    instrumentField.set_type((FIRST::InstrumentType)pInstrument->Type);
     instrumentField.set_volume_multiple(pInstrument->VolumeMultiple);
     instrumentField.set_price_tick(pInstrument->PriceTick);
     instrumentField.set_expire_date(pInstrument->ExpireDate);
     instrumentField.set_strike_price(pInstrument->StrikePrice);
-    instrumentField.set_options_type((int)pInstrument->OptionsType);
+    instrumentField.set_options_type((FIRST::PutCall)pInstrument->OptionsType);
     instrumentField.set_product_id(pInstrument->ProductID);
     instrumentField.set_underlying_instrid(pInstrument->UnderlyingInstrID);
-    instrumentField.set_instlife_phase((int)pInstrument->InstLifePhase);
+    instrumentField.set_instlife_phase((FIRST::InstLifePhaseType)pInstrument->InstLifePhase);
     zmq::message_t msg(instrumentField.ByteSizeLong());
     instrumentField.SerializePartialToArray(msg.data(), msg.size());
-    push_->send(instrumentField.GetTypeName().c_str(), instrumentField.GetTypeName().size(), ZMQ_SNDMORE);
-    push_->send(msg);
+    try {
+        push_->send(instrumentField.GetTypeName().c_str(), instrumentField.GetTypeName().size(), ZMQ_SNDMORE);
+        push_->send(msg);
+    } catch (zmq::error_t& e) {
+        LOG_ERROR("{}", e.what());
+    }
 }
 
 void xapi_impl::OnRspQryInvestor(CXApi* pApi, InvestorField* pInvestor, int size1, bool bIsLast) {
@@ -165,6 +168,48 @@ void xapi_impl::OnRtnInstrumentStatus(CXApi* pApi, InstrumentStatusField* pInstr
 }
 
 void xapi_impl::OnRtnOrder(CXApi* pApi, OrderField* pOrder) {
+    FIRST::OrderField orderField;
+    //orderField.set_instrument_name()
+    orderField.set_symbol(pOrder->Symbol);
+    orderField.set_instrument_id(pOrder->InstrumentID);
+    orderField.set_exchange_id(pOrder->ExchangeID, sizeof(pOrder->ExchangeID));
+    orderField.set_client_id(pOrder->ClientID);
+    orderField.set_account_id(pOrder->AccountID);
+    orderField.set_size((FIRST::OrderSide)pOrder->Side);
+    orderField.set_qty(pOrder->Qty);
+    orderField.set_price(pOrder->Price);
+    orderField.set_open_close((FIRST::OpenCloseType)pOrder->OpenClose);
+    orderField.set_hedge_flag((FIRST::HedgeFlagType)pOrder->HedgeFlag);
+    orderField.set_date(pOrder->Date);
+    orderField.set_time(pOrder->Time);
+    orderField.set_id(pOrder->ID);
+    orderField.set_order_id(pOrder->OrderID);
+    orderField.set_local_id(pOrder->LocalID);
+    orderField.set_type((FIRST::OrderType)pOrder->Type);
+    orderField.set_stop_px(pOrder->StopPx);
+    orderField.set_time_in_force((FIRST::TimeInForce)pOrder->TimeInForce);
+    orderField.set_status((FIRST::OrderStatus)pOrder->Status);
+    orderField.set_exec_type((FIRST::ExecType)pOrder->ExecType);
+    orderField.set_leaves_qty(pOrder->LeavesQty);
+    orderField.set_cum_qty(pOrder->CumQty);
+    orderField.set_avg_px(pOrder->AvgPx);
+    orderField.set_xerror_id(pOrder->XErrorID);
+    orderField.set_raw_error_id(pOrder->RawErrorID);
+    //orderField.set_text(pOrder->Text);
+    orderField.set_reserve_int32(pOrder->ReserveInt32);
+    orderField.set_reserve_char64(pOrder->ReserveChar64);
+    orderField.set_portfolio_id1(pOrder->PortfolioID1);
+    orderField.set_portfolio_id2(pOrder->PortfolioID2);
+    orderField.set_portfolio_id3(pOrder->PortfolioID3);
+    orderField.set_business((FIRST::BusinessType)pOrder->Business);
+    try {
+        zmq::message_t msg(orderField.ByteSizeLong());
+        orderField.SerializePartialToArray(msg.data(), msg.size());
+        push_->send(orderField.GetTypeName().c_str(), orderField.GetTypeName().size(), ZMQ_SNDMORE);
+        push_->send(msg);
+    } catch (zmq::error_t& e) {
+        LOG_ERROR("{}", e.what());
+    }
     printf("%d,%s\r\n", pOrder->RawErrorID, pOrder->Text);
 }
 
