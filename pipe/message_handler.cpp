@@ -2,7 +2,7 @@
 // Created by chengye.ke on 2018-12-23.
 //
 
-#include <trader.pb.h>
+#include "base_definitions.pb.h"
 #include "message_handler.h"
 #include "google/protobuf/util/json_util.h"
 
@@ -15,7 +15,7 @@ message_handler::message_handler(zmq::context_t* ctx, zmq_poller_reactor* reacto
 , spi_(NULL)
 , trader_(NULL)
 , md_(NULL){
-    add_pull_msg_mapping<LT::InstrumentField>("LT.InstrumentField",&message_handler::on_resp_instrument);
+    add_pull_msg_mapping<FIRST::InstrumentField>(FIRST::InstrumentField::default_instance().GetTypeName(),&message_handler::on_resp_instrument);
 }
 
 message_handler::~message_handler() {
@@ -35,7 +35,7 @@ void message_handler::zmq_timer_event(int id_) {
 }
 
 bool message_handler::init() {
-    add_router_msg_mapping<LT::LogField>("1001", &message_handler::on_req_login);
+    add_router_msg_mapping<FIRST::LogField>("1001", &message_handler::on_req_login);
     //router_.setsockopt(ZMQ_IDENTITY, "SUB", 3);
     push_.bind("inproc://xapi");
     spi_ = new xapi_impl(&push_);

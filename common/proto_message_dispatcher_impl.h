@@ -119,20 +119,20 @@ void proto_message_dispatcher<T>::on_recv_other_message(zmq::socket_t* socket) {
 
 template <class T>
 template <class M>
-void proto_message_dispatcher<T>::add_dealer_msg_mapping(const char* message_tyep, dealer_msg_func func) {
+void proto_message_dispatcher<T>::add_dealer_msg_mapping(const std::string message_tyep, dealer_msg_func func) {
 
 }
 
 template <class T>
 template <class M>
-void proto_message_dispatcher<T>::add_router_msg_mapping(const char* message_tyep, router_msg_func func) {
+void proto_message_dispatcher<T>::add_router_msg_mapping(const std::string message_tyep, router_msg_func func) {
     std::string type = message_tyep;
     router_funcs_[type] = std::make_pair(new M(), func);
 }
 
 template <class T>
 template <class M>
-void proto_message_dispatcher<T>::add_pull_msg_mapping(const char* message_tyep, pull_msg_func func) {
+void proto_message_dispatcher<T>::add_pull_msg_mapping(const std::string message_tyep, pull_msg_func func) {
     std::string type = message_tyep;
     pull_funcs_[type] = std::make_pair(new M(), func);
 }

@@ -44,11 +44,11 @@ public:
 protected:
 
     template<class M>
-    void add_dealer_msg_mapping(const char* message_tyep, dealer_msg_func func);
+    void add_dealer_msg_mapping(const std::string message_tyep, dealer_msg_func func);
     template<class M>
-    void add_router_msg_mapping(const char* message_tyep, router_msg_func func);
+    void add_router_msg_mapping(const std::string message_tyep, router_msg_func func);
     template<class M>
-    void add_pull_msg_mapping(const char* message_tyep, pull_msg_func func);
+    void add_pull_msg_mapping(const std::string message_tyep, pull_msg_func func);
 private:
     zmq_poller_reactor* reactor_;
     std::unordered_map<std::string, std::pair<google::protobuf::Message*, router_msg_func>> router_funcs_;

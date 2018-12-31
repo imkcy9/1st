@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "log.h"
-#include "trader.pb.h"
+#include "base_definitions.pb.h"
 #include "zmq.hpp"
 
 xapi_impl::xapi_impl(zmq::socket_t* push)
@@ -88,7 +88,7 @@ void xapi_impl::OnRspQryHistoricalTicks(CXApi* pApi, TickField* pTicks, int size
 
 void xapi_impl::OnRspQryInstrument(CXApi* pApi, InstrumentField* pInstrument, int size1, bool bIsLast) {
     int i = 0;
-    LT::InstrumentField instrumentField;
+    FIRST::InstrumentField instrumentField;
     //instrumentField.set_instrument_name(pInstrument->InstrumentName);
     instrumentField.set_symbol(pInstrument->Symbol);
     instrumentField.set_instrument_id(pInstrument->InstrumentID);
