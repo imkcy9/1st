@@ -15,9 +15,11 @@ public:
     void zmq_timer_event(int id_) override;
     bool init();
 
+    //------------------request from client----------------------------
     void on_req_login(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
     void on_create_order_request(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body);
     
+    //------------------response from xapi----------------------------
     void on_resp_instrument(google::protobuf::Message& body);
     void on_resp_order_field(google::protobuf::Message& body);
 private:
@@ -30,10 +32,9 @@ private:
     CXApi* md_;
     
     google::protobuf::Arena arena_;
-    std::unordered_map<int, std::string> router_mapping_;
+    std::unordered_map<std::string, std::string> router_mapping_;
     
     //Cause' a message queue thread, no need to user atomic operation.
-    int bct_order_id_;
 };
 
 #endif //GATEWAY_MESSAGE_HANDLER_H

@@ -86,7 +86,6 @@ void xapi_impl::OnRspQryHistoricalTicks(CXApi* pApi, TickField* pTicks, int size
 }
 
 void xapi_impl::OnRspQryInstrument(CXApi* pApi, InstrumentField* pInstrument, int size1, bool bIsLast) {
-    int i = 0;
     FIRST::InstrumentField instrumentField;
     //instrumentField.set_instrument_name(pInstrument->InstrumentName);
     instrumentField.set_symbol(pInstrument->Symbol);
@@ -104,6 +103,7 @@ void xapi_impl::OnRspQryInstrument(CXApi* pApi, InstrumentField* pInstrument, in
     instrumentField.set_product_id(pInstrument->ProductID);
     instrumentField.set_underlying_instrid(pInstrument->UnderlyingInstrID);
     instrumentField.set_instlife_phase((FIRST::InstLifePhaseType)pInstrument->InstLifePhase);
+    instrumentField.set_is_last(bIsLast);
     zmq::message_t msg(instrumentField.ByteSizeLong());
     instrumentField.SerializePartialToArray(msg.data(), msg.size());
     try {
@@ -172,7 +172,7 @@ void xapi_impl::OnRtnOrder(CXApi* pApi, OrderField* pOrder) {
     //orderField.set_instrument_name()
     orderField.set_symbol(pOrder->Symbol);
     orderField.set_instrument_id(pOrder->InstrumentID);
-    orderField.set_exchange_id(pOrder->ExchangeID, sizeof(pOrder->ExchangeID));
+    orderField.set_exchange_id(pOrder->ExchangeID);
     orderField.set_client_id(pOrder->ClientID);
     orderField.set_account_id(pOrder->AccountID);
     orderField.set_size((FIRST::OrderSide)pOrder->Side);
@@ -196,7 +196,7 @@ void xapi_impl::OnRtnOrder(CXApi* pApi, OrderField* pOrder) {
     orderField.set_xerror_id(pOrder->XErrorID);
     orderField.set_raw_error_id(pOrder->RawErrorID);
     //orderField.set_text(pOrder->Text);
-    orderField.set_reserve_int32(pOrder->ReserveInt32);
+    orderField.set_client_order_id(pOrder->ClientOrderID);
     orderField.set_reserve_char64(pOrder->ReserveChar64);
     orderField.set_portfolio_id1(pOrder->PortfolioID1);
     orderField.set_portfolio_id2(pOrder->PortfolioID2);

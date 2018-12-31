@@ -17,7 +17,7 @@
 #include "google/protobuf/util/json_util.h"
 
 order_sender::order_sender()
-: dealer_(ctx_, ZMQ_DEALER)
+: dealer_(ctx_, ZMQ_ROUTER)
 {
 }
 
@@ -25,13 +25,19 @@ order_sender::~order_sender() {
 }
 
 bool order_sender::init() {
-    dealer_.connect("tcp://localhost:10003");
+    int mandatory = 1;
+    dealer_.setsockopt(ZMQ_ROUTER_MANDATORY,&mandatory,sizeof(mandatory));
+    dealer_.setsockopt(ZMQ_CONNECT_RID,"PIPE",4);
+    //dealer_.connect("tcp://localhost:10003");
+    dealer_.connect("ipc:///home/kcy/1st/bin/ipc");
     this->add_socket(&dealer_, this);
     timers_add(1, 5000, this);
     return true;
 }
 
 void order_sender::zmq_in_event(zmq::socket_t* socket) {
+    zmq::message_t rid;
+    dealer_.recv(&rid);
     zmq::message_t type;
     dealer_.recv(&type);
     zmq::message_t msg;
@@ -65,11 +71,21 @@ void order_sender::zmq_timer_event(int id_) {
     orderRequest.set_request_id(1);
     orderRequest.mutable_order()->set_instrument_id("SR901");
     orderRequest.mutable_order()->set_open_close(FIRST::OpenCloseType::OPEN);
-    orderRequest.mutable_order()->set_reserve_int32(1);
+    orderRequest.mutable_order()->set_hedge_flag(FIRST::HedgeFlagType::SPECULATION);
+    orderRequest.mutable_order()->set_price(4000);
+    orderRequest.mutable_order()->set_qty(1);
+    orderRequest.mutable_order()->set_type(FIRST::OrderType::LIMIT);
+    orderRequest.mutable_order()->set_size(FIRST::OrderSide::BUY);
+    orderRequest.mutable_order()->set_client_order_id(1);
     
     zmq::message_t req(orderRequest.ByteSizeLong());
     orderRequest.SerializePartialToArray(req.data(), req.size());
+    try {
+    dealer_.send("PIPE",4,ZMQ_SNDMORE);
     dealer_.send(orderRequest.GetTypeName().c_str(), orderRequest.GetTypeName().size(), ZMQ_SNDMORE);
     dealer_.send(req);
+    } catch (zmq::error_t& e) {
+        LOG_ERROR("{}", e.what());
+    }
     timers_cancel(id_, this);
 }
