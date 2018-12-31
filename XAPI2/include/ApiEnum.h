@@ -56,6 +56,7 @@ enum LogLevel :char
 /// 期权类型
 enum PutCall :char
 {
+        PutCall_Undefined,
 	PutCall_Put,
 	PutCall_Call,
 };
@@ -63,6 +64,7 @@ enum PutCall :char
 /// 委托状态，与OpenQuant2014中的值一样
 enum OrderStatus :char
 {
+        OrderStatus_Unknown,
 	OrderStatus_NotSent,
 	OrderStatus_PendingNew,
 	OrderStatus_New,
@@ -80,6 +82,7 @@ enum OrderStatus :char
 /// 新股申购、回购，质押都暂时不写入，等业务掌握熟了后再加
 enum OrderSide :char
 {
+        OrderSide_Unknown,			///出现这个输出时，需要技术人员去查找原因修正代码
 	OrderSide_Buy,
 	OrderSide_Sell,
 	OrderSide_LOFCreation,		///申购,LOF申购
@@ -90,13 +93,14 @@ enum OrderSide :char
 	OrderSide_Split,			///拆分
 	OrderSide_CBConvert,		///可转债转股，参考于https://en.wikipedia.org/wiki/Convertible_bond
 	OrderSide_CBRedemption,		///可转债回售，参考于https://en.wikipedia.org/wiki/Convertible_bond
-	OrderSide_Unknown,			///出现这个输出时，需要技术人员去查找原因修正代码
+        OrderSide_Auto                  ///
 };
 
 /// 报单类型，与OpenQuant2014中的值一样
 /// 各交易所的报单指令相当多，实际交易时只取市价和限价两种
 enum OrderType :char
 {
+        OrderType_Unknown,
 	OrderType_Market,
 	OrderType_Stop,
 	OrderType_Limit,
@@ -111,6 +115,7 @@ enum OrderType :char
 /// 实际只识别IOC和FOK，其它都当成普通类型
 enum TimeInForce :char
 {
+        TimeInForce_UNKNOWN,
 	TimeInForce_ATC,
 	TimeInForce_Day,
 	TimeInForce_GTC,
@@ -127,6 +132,7 @@ enum TimeInForce :char
 /// 持仓方向，与OpenQuant2014中的值一样
 enum PositionSide :char
 {
+        PositionSide_Unknown,
 	PositionSide_Long,
 	PositionSide_Short,
 };
@@ -135,6 +141,7 @@ enum PositionSide :char
 /// 一般与OrderStatus对应，但ExecCancelReject与ExecReplaceReject时与OrderStatus不对应
 enum ExecType : char
 {
+        ExecType_Unknown,
 	ExecType_New,
 	ExecType_Stopped,
 	ExecType_Rejected,
@@ -180,7 +187,8 @@ enum HedgeFlagType :char
 /// 合约类型，与OpenQuant2014中的值一样
 enum InstrumentType :char
 {
-	InstrumentType_Stock = 0,
+        InstrumentType_Unknown = 0,
+	InstrumentType_Stock,
 	InstrumentType_Future,
 	InstrumentType_Option,
 	InstrumentType_FutureOption,
@@ -233,6 +241,7 @@ enum ExchangeType :char
 ///合约生命周期状态类型
 enum InstLifePhaseType :char
 {
+        InstLifePhaseType_Unknown,
 	InstLifePhaseType_NotStart,		///未上市
 	InstLifePhaseType_Started,		///上市
 	InstLifePhaseType_Pause,		///停牌
@@ -246,6 +255,7 @@ enum InstLifePhaseType :char
 ///交易阶段类型
 enum TradingPhaseType :char
 {
+        TradingPhaseType_Unknown,
 	TradingPhaseType_BeforeTrading,		///开盘前
 	TradingPhaseType_NoTrading,			///非交易
 	TradingPhaseType_Continuous,		///连续交易
