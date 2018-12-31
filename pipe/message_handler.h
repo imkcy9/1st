@@ -16,9 +16,10 @@ public:
     bool init();
 
     void on_req_login(zmq::message_t& rid, google::protobuf::Message& body);
-
+    void on_resp_instrument(google::protobuf::Message& body);
 private:
     zmq::socket_t router_;
+    zmq::socket_t push_;
     zmq::socket_t pull_;
     zmq_poller_reactor* reactor_;
     xapi_impl* spi_;

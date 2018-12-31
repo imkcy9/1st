@@ -16,8 +16,11 @@
 #include <time.h>
 #include "log.h"
 #include "trader.pb.h"
+#include "zmq.hpp"
 
-xapi_impl::xapi_impl() {
+xapi_impl::xapi_impl(zmq::socket_t* push)
+:push_(push)
+{
 }
 
 xapi_impl::~xapi_impl() {
@@ -41,9 +44,9 @@ void xapi_impl::OnConnectionStatus(CXApi* pApi, ConnectionStatus status, RspUser
                 int a = x / 12;
                 int b = x % 12;
                 sprintf(buf, "IF%d%02d", (1900 + timeinfo->tm_year + a) % 100, b + 1);
-                pApi->Subscribe(buf, "");
+                //pApi->Subscribe(buf, "");
                 sprintf(buf, "TF%d%02d", (1900 + timeinfo->tm_year + a) % 100, b + 1);
-                pApi->Subscribe(buf, "");
+                //pApi->Subscribe(buf, "");
             }
         }
     }
@@ -86,10 +89,26 @@ void xapi_impl::OnRspQryHistoricalTicks(CXApi* pApi, TickField* pTicks, int size
 void xapi_impl::OnRspQryInstrument(CXApi* pApi, InstrumentField* pInstrument, int size1, bool bIsLast) {
     int i = 0;
     LT::InstrumentField instrumentField;
-    instrumentField.set_instrument_name(pInstrument->InstrumentName);
+    //instrumentField.set_instrument_name(pInstrument->InstrumentName);
     instrumentField.set_symbol(pInstrument->Symbol);
     instrumentField.set_instrument_id(pInstrument->InstrumentID);
     instrumentField.set_exchange_id(pInstrument->ExchangeID);
+    instrumentField.set_client_id(pInstrument->ClientID);
+    instrumentField.set_account_id(pInstrument->AccountID);
+    instrumentField.set_exchange_instid(pInstrument->ExchangeInstID);
+    instrumentField.set_type((int)pInstrument->Type);
+    instrumentField.set_volume_multiple(pInstrument->VolumeMultiple);
+    instrumentField.set_price_tick(pInstrument->PriceTick);
+    instrumentField.set_expire_date(pInstrument->ExpireDate);
+    instrumentField.set_strike_price(pInstrument->StrikePrice);
+    instrumentField.set_options_type((int)pInstrument->OptionsType);
+    instrumentField.set_product_id(pInstrument->ProductID);
+    instrumentField.set_underlying_instrid(pInstrument->UnderlyingInstrID);
+    instrumentField.set_instlife_phase((int)pInstrument->InstLifePhase);
+    zmq::message_t msg(instrumentField.ByteSizeLong());
+    instrumentField.SerializePartialToArray(msg.data(), msg.size());
+    push_->send(instrumentField.GetTypeName().c_str(), instrumentField.GetTypeName().size(), ZMQ_SNDMORE);
+    push_->send(msg);
 }
 
 void xapi_impl::OnRspQryInvestor(CXApi* pApi, InvestorField* pInvestor, int size1, bool bIsLast) {

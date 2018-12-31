@@ -19,22 +19,19 @@
 
 template <class T>
 proto_message_dispatcher<T>::proto_message_dispatcher(zmq_poller_reactor* reactor)
-:reactor_(reactor)
-{
+: reactor_(reactor) {
     //add_message_mapping(1005, &proto_message_dispatcher::on_recv_tick);
     //add_message_mapping(1004, &proto_message_dispatcher::on_recv_hb);
 }
 
 template <class T>
-proto_message_dispatcher<T>::~proto_message_dispatcher()
-{
+proto_message_dispatcher<T>::~proto_message_dispatcher() {
 
 }
 
 template <class T>
 void
-proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket)
-{
+proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket) {
 
     zmq::message_t rid;
     socket->recv(&rid);
@@ -43,7 +40,7 @@ proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket)
 
     zmq::message_t msg_type;
     socket->recv(&msg_type);
-    std::string type((char*)msg_type.data());
+    std::string type((char*) msg_type.data());
 
     zmq::message_t msg;
     socket->recv(&msg);
@@ -51,13 +48,13 @@ proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket)
 
     auto it = router_funcs_.find(type);
     LOG_INFO("{}", (char*) rid.data());
-    if(it != router_funcs_.end()) {
+    if (it != router_funcs_.end()) {
         std::pair<google::protobuf::Message*, router_msg_func>& p = it->second;
         p.first->ParseFromArray(msg.data(), msg.size());
-        (static_cast <T *> (this)->*p.second)(rid, *p.first);
+        (static_cast<T *> (this)->*p.second)(rid, *p.first);
     }
 
-    while(msg.more()) {
+    while (msg.more()) {
         socket->recv(&msg);
     }
 
@@ -76,35 +73,47 @@ proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket)
 
 template <class T>
 void
-proto_message_dispatcher<T>::on_recv_dealer_message(zmq::socket_t* socket)
-{
+proto_message_dispatcher<T>::on_recv_dealer_message(zmq::socket_t* socket) {
 
 }
 
 template <class T>
 void
-proto_message_dispatcher<T>::on_recv_xpub_message(zmq::socket_t* socket)
-{
+proto_message_dispatcher<T>::on_recv_xpub_message(zmq::socket_t* socket) {
 
 }
 
 template <class T>
 void
-proto_message_dispatcher<T>::on_recv_sub_message(zmq::socket_t* socket)
-{
+proto_message_dispatcher<T>::on_recv_sub_message(zmq::socket_t* socket) {
 
 }
 
 template <class T>
 void
-proto_message_dispatcher<T>::on_recv_pull_message(zmq::socket_t* socket)
-{
+proto_message_dispatcher<T>::on_recv_pull_message(zmq::socket_t* socket) {
+    zmq::message_t msg_type;
+    socket->recv(&msg_type);
+    std::string type((char*) msg_type.data());
 
+    zmq::message_t msg;
+    socket->recv(&msg);
+
+    auto it = pull_funcs_.find(type);
+    if (it != pull_funcs_.end()) {
+        std::pair<google::protobuf::Message*, pull_msg_func>& p = it->second;
+        p.first->ParseFromArray(msg.data(), msg.size());
+        (static_cast<T *> (this)->*p.second)(*p.first);
+    }
+
+    while (msg.more()) {
+        socket->recv(&msg);
+    }
+    ZMQ_ASSERT(!msg.more());
 }
 
 template<class T>
-void proto_message_dispatcher<T>::on_recv_other_message(zmq::socket_t* socket)
-{
+void proto_message_dispatcher<T>::on_recv_other_message(zmq::socket_t* socket) {
 
 }
 
@@ -119,6 +128,13 @@ template <class M>
 void proto_message_dispatcher<T>::add_router_msg_mapping(const char* message_tyep, router_msg_func func) {
     std::string type = message_tyep;
     router_funcs_[type] = std::make_pair(new M(), func);
+}
+
+template <class T>
+template <class M>
+void proto_message_dispatcher<T>::add_pull_msg_mapping(const char* message_tyep, pull_msg_func func) {
+    std::string type = message_tyep;
+    pull_funcs_[type] = std::make_pair(new M(), func);
 }
 
 template <class T>

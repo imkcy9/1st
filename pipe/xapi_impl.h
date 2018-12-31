@@ -14,9 +14,10 @@
 #ifndef XAPI_IMPL_H
 #define XAPI_IMPL_H
 #include "XApiCpp.h"
+#include "zmq.hpp"
 class xapi_impl : public CXSpi {
 public:
-    xapi_impl();
+    xapi_impl(zmq::socket_t* push);
     virtual ~xapi_impl();
     
 
@@ -62,6 +63,7 @@ public:
     virtual void OnRtnTrade(CXApi* pApi, TradeField* pTrade);
 private:
 
+    zmq::socket_t* push_;
 };
 
 #endif /* XAPI_IMPL_H */

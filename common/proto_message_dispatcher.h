@@ -22,6 +22,7 @@ class proto_message_dispatcher: public zmq_msg_dispatcher {
 public:
     typedef void (T::*dealer_msg_func)(void* data, size_t size);
     typedef void (T::*router_msg_func)(zmq::message_t& router_id, google::protobuf::Message& body);
+    typedef void (T::*pull_msg_func)(google::protobuf::Message& body);
 
     proto_message_dispatcher(zmq_poller_reactor* reactor);
     virtual ~proto_message_dispatcher();
@@ -46,9 +47,12 @@ protected:
     void add_dealer_msg_mapping(const char* message_tyep, dealer_msg_func func);
     template<class M>
     void add_router_msg_mapping(const char* message_tyep, router_msg_func func);
+    template<class M>
+    void add_pull_msg_mapping(const char* message_tyep, pull_msg_func func);
 private:
     zmq_poller_reactor* reactor_;
     std::unordered_map<std::string, std::pair<google::protobuf::Message*, router_msg_func>> router_funcs_;
+    std::unordered_map<std::string, std::pair<google::protobuf::Message*, pull_msg_func>> pull_funcs_;
 };
 
 #include "proto_message_dispatcher_impl.h"
