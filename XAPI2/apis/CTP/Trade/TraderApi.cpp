@@ -1705,6 +1705,7 @@ void CTraderApi::OnTrade(CThostFtdcTradeField *pTrade, int nRequestID, bool bIsL
 			{
 				// 更新订单的状态
                             pField->ClientOrderID = it2->second->ClientOrderID;
+                            strcpy(pField->ReserveChar64, it2->second->ReserveChar64);
 				// 是否要通知接口
 			}
 
