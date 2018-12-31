@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "enum.proto";
 
-package LT;
+package FIRST;
 
 message ReqQueryField {
     string instrument_name = 1;

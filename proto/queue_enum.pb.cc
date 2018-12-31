@@ -7,6 +7,7 @@
 
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/stubs/port.h>
+#include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
@@ -18,11 +19,9 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
-
+namespace FIRST {
+}  // namespace FIRST
 namespace protobuf_queue_5fenum_2eproto {
-void InitDefaults() {
-}
-
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
@@ -30,14 +29,15 @@ static const ::google::protobuf::Message* const* file_default_instances = NULL;
 
 void protobuf_AssignDescriptors() {
   AddDescriptors();
+  ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
-      "queue_enum.proto", schemas, file_default_instances, TableStruct::offsets,
+      "queue_enum.proto", schemas, file_default_instances, TableStruct::offsets, factory,
       NULL, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
@@ -48,60 +48,60 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\020queue_enum.proto*\247\004\n\013RequestType\022\033\n\027RE"
-      "QUESTTYPE_GETAPITYPES\020\000\022\035\n\031REQUESTTYPE_G"
-      "ETAPIVERSION\020\001\022\032\n\026REQUESTTYPE_GETAPINAME"
-      "\020\002\022\026\n\022REQUESTTYPE_CREATE\020\003\022\027\n\023REQUESTTYP"
-      "E_RELEASE\020\004\022\030\n\024REQUESTTYPE_REGISTER\020\005\022\026\n"
-      "\022REQUESTTYPE_CONFIG\020\006\022\027\n\023REQUESTTYPE_CON"
-      "NECT\020\007\022\032\n\026REQUESTTYPE_DISCONNECT\020\010\022\025\n\021RE"
-      "QUESTTYPE_CLEAR\020\t\022\027\n\023REQUESTTYPE_PROCESS"
-      "\020\n\022\031\n\025REQUESTTYPE_SUBSCRIBE\020\013\022\033\n\027REQUEST"
-      "TYPE_UNSUBSCRIBE\020\014\022\036\n\032REQUESTTYPE_SUBSCR"
-      "IBEQUOTE\020\r\022 \n\034REQUESTTYPE_UNSUBSCRIBEQUO"
-      "TE\020\016\022\036\n\032REQUESTTYPE_REQORDERINSERT\020\017\022\036\n\032"
-      "REQUESTTYPE_REQQUOTEINSERT\020\020\022\036\n\032REQUESTT"
-      "YPE_REQORDERACTION\020\021\022\036\n\032REQUESTTYPE_REQQ"
-      "UOTEACTION\020\022*\251\003\n\tQueryType\022\036\n\032QUERYTYPE_"
-      "REQQRYINSTRUMENT\020\000\022\"\n\036QUERYTYPE_REQQRYTR"
-      "ADINGACCOUNT\020\001\022$\n QUERYTYPE_REQQRYINVEST"
-      "ORPOSITION\020\002\022\031\n\025QUERYTYPE_REQQRYORDER\020\003\022"
-      "\031\n\025QUERYTYPE_REQQRYTRADE\020\004\022\031\n\025QUERYTYPE_"
-      "REQQRYQUOTE\020\005\022,\n(QUERYTYPE_REQQRYINSTRUM"
-      "ENTCOMMISSIONRATE\020\006\022(\n$QUERYTYPE_REQQRYI"
-      "NSTRUMENTMARGINRATE\020\007\022\"\n\036QUERYTYPE_REQQR"
-      "YSETTLEMENTINFO\020\t\022\034\n\030QUERYTYPE_REQQRYINV"
-      "ESTOR\020\n\022#\n\037QUERYTYPE_REQQRYHISTORICALTIC"
-      "KS\020\013\022\"\n\036QUERYTYPE_REQQRYHISTORICALBARS\020\014"
-      "*\316\005\n\014ResponseType\022#\n\037RESPONSETYPE_ONCONN"
-      "ECTIONSTATUS\020\000\022\033\n\027RESPONSETYPE_ONRTNERRO"
-      "R\020\001\022\026\n\022RESPONSETYPE_ONLOG\020\002\022%\n!RESPONSET"
-      "YPE_ONRTNDEPTHMARKETDATA\020\003\022#\n\037RESPONSETY"
-      "PE_ONRSPQRYINSTRUMENT\020\004\022\'\n#RESPONSETYPE_"
-      "ONRSPQRYTRADINGACCOUNT\020\005\022)\n%RESPONSETYPE"
-      "_ONRSPQRYINVESTORPOSITION\020\006\022\'\n#RESPONSET"
-      "YPE_ONRSPQRYSETTLEMENTINFO\020\007\022\036\n\032RESPONSE"
-      "TYPE_ONRSPQRYORDER\020\010\022\036\n\032RESPONSETYPE_ONR"
-      "SPQRYTRADE\020\t\022\036\n\032RESPONSETYPE_ONRSPQRYQUO"
-      "TE\020\n\022\033\n\027RESPONSETYPE_ONRTNORDER\020\013\022\033\n\027RES"
-      "PONSETYPE_ONRTNTRADE\020\014\022\033\n\027RESPONSETYPE_O"
-      "NRTNQUOTE\020\r\022\"\n\036RESPONSETYPE_ONRTNQUOTERE"
-      "QUEST\020\016\022(\n$RESPONSETYPE_ONRSPQRYHISTORIC"
-      "ALTICKS\020\017\022\'\n#RESPONSETYPE_ONRSPQRYHISTOR"
-      "ICALBARS\020\020\022!\n\035RESPONSETYPE_ONRSPQRYINVES"
-      "TOR\020\021\022&\n\"RESPONSETYPE_ONRTNINSTRUMENTSTA"
-      "TUS\020\022\022\"\n\036RESPONSETYPE_ONFILTERSUBSCRIBE\020"
-      "\023b\006proto3"
+      "\n\020queue_enum.proto\022\005FIRST*\247\004\n\013RequestTyp"
+      "e\022\033\n\027REQUESTTYPE_GETAPITYPES\020\000\022\035\n\031REQUES"
+      "TTYPE_GETAPIVERSION\020\001\022\032\n\026REQUESTTYPE_GET"
+      "APINAME\020\002\022\026\n\022REQUESTTYPE_CREATE\020\003\022\027\n\023REQ"
+      "UESTTYPE_RELEASE\020\004\022\030\n\024REQUESTTYPE_REGIST"
+      "ER\020\005\022\026\n\022REQUESTTYPE_CONFIG\020\006\022\027\n\023REQUESTT"
+      "YPE_CONNECT\020\007\022\032\n\026REQUESTTYPE_DISCONNECT\020"
+      "\010\022\025\n\021REQUESTTYPE_CLEAR\020\t\022\027\n\023REQUESTTYPE_"
+      "PROCESS\020\n\022\031\n\025REQUESTTYPE_SUBSCRIBE\020\013\022\033\n\027"
+      "REQUESTTYPE_UNSUBSCRIBE\020\014\022\036\n\032REQUESTTYPE"
+      "_SUBSCRIBEQUOTE\020\r\022 \n\034REQUESTTYPE_UNSUBSC"
+      "RIBEQUOTE\020\016\022\036\n\032REQUESTTYPE_REQORDERINSER"
+      "T\020\017\022\036\n\032REQUESTTYPE_REQQUOTEINSERT\020\020\022\036\n\032R"
+      "EQUESTTYPE_REQORDERACTION\020\021\022\036\n\032REQUESTTY"
+      "PE_REQQUOTEACTION\020\022*\251\003\n\tQueryType\022\036\n\032QUE"
+      "RYTYPE_REQQRYINSTRUMENT\020\000\022\"\n\036QUERYTYPE_R"
+      "EQQRYTRADINGACCOUNT\020\001\022$\n QUERYTYPE_REQQR"
+      "YINVESTORPOSITION\020\002\022\031\n\025QUERYTYPE_REQQRYO"
+      "RDER\020\003\022\031\n\025QUERYTYPE_REQQRYTRADE\020\004\022\031\n\025QUE"
+      "RYTYPE_REQQRYQUOTE\020\005\022,\n(QUERYTYPE_REQQRY"
+      "INSTRUMENTCOMMISSIONRATE\020\006\022(\n$QUERYTYPE_"
+      "REQQRYINSTRUMENTMARGINRATE\020\007\022\"\n\036QUERYTYP"
+      "E_REQQRYSETTLEMENTINFO\020\t\022\034\n\030QUERYTYPE_RE"
+      "QQRYINVESTOR\020\n\022#\n\037QUERYTYPE_REQQRYHISTOR"
+      "ICALTICKS\020\013\022\"\n\036QUERYTYPE_REQQRYHISTORICA"
+      "LBARS\020\014*\316\005\n\014ResponseType\022#\n\037RESPONSETYPE"
+      "_ONCONNECTIONSTATUS\020\000\022\033\n\027RESPONSETYPE_ON"
+      "RTNERROR\020\001\022\026\n\022RESPONSETYPE_ONLOG\020\002\022%\n!RE"
+      "SPONSETYPE_ONRTNDEPTHMARKETDATA\020\003\022#\n\037RES"
+      "PONSETYPE_ONRSPQRYINSTRUMENT\020\004\022\'\n#RESPON"
+      "SETYPE_ONRSPQRYTRADINGACCOUNT\020\005\022)\n%RESPO"
+      "NSETYPE_ONRSPQRYINVESTORPOSITION\020\006\022\'\n#RE"
+      "SPONSETYPE_ONRSPQRYSETTLEMENTINFO\020\007\022\036\n\032R"
+      "ESPONSETYPE_ONRSPQRYORDER\020\010\022\036\n\032RESPONSET"
+      "YPE_ONRSPQRYTRADE\020\t\022\036\n\032RESPONSETYPE_ONRS"
+      "PQRYQUOTE\020\n\022\033\n\027RESPONSETYPE_ONRTNORDER\020\013"
+      "\022\033\n\027RESPONSETYPE_ONRTNTRADE\020\014\022\033\n\027RESPONS"
+      "ETYPE_ONRTNQUOTE\020\r\022\"\n\036RESPONSETYPE_ONRTN"
+      "QUOTEREQUEST\020\016\022(\n$RESPONSETYPE_ONRSPQRYH"
+      "ISTORICALTICKS\020\017\022\'\n#RESPONSETYPE_ONRSPQR"
+      "YHISTORICALBARS\020\020\022!\n\035RESPONSETYPE_ONRSPQ"
+      "RYINVESTOR\020\021\022&\n\"RESPONSETYPE_ONRTNINSTRU"
+      "MENTSTATUS\020\022\022\"\n\036RESPONSETYPE_ONFILTERSUB"
+      "SCRIBE\020\023b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1729);
+      descriptor, 1736);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "queue_enum.proto", &protobuf_RegisterTypes);
 }
 
 void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
 }
 // Force AddDescriptors() to be called at dynamic initialization time.
 struct StaticDescriptorInitializer {
@@ -110,6 +110,7 @@ struct StaticDescriptorInitializer {
   }
 } static_descriptor_initializer;
 }  // namespace protobuf_queue_5fenum_2eproto
+namespace FIRST {
 const ::google::protobuf::EnumDescriptor* RequestType_descriptor() {
   protobuf_queue_5fenum_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_queue_5fenum_2eproto::file_level_enum_descriptors[0];
@@ -199,9 +200,6 @@ bool ResponseType_IsValid(int value) {
 
 
 // @@protoc_insertion_point(namespace_scope)
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+}  // namespace FIRST
 
 // @@protoc_insertion_point(global_scope)

@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package FIRST;
+
 /// 基本请求
 enum RequestType
 {

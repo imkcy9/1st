@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package LT;
+package FIRST;
 
 /// 连接状态,此枚举主要供程序进行识别使用
 enum ConnectionStatus

@@ -7,6 +7,7 @@
 
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/stubs/port.h>
+#include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
@@ -18,13 +19,9 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
-
-namespace LT {
-}  // namespace LT
+namespace FIRST {
+}  // namespace FIRST
 namespace protobuf_enum_2eproto {
-void InitDefaults() {
-}
-
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[19];
 const ::google::protobuf::uint32 TableStruct::offsets[1] = {};
 static const ::google::protobuf::internal::MigrationSchema* schemas = NULL;
@@ -32,14 +29,15 @@ static const ::google::protobuf::Message* const* file_default_instances = NULL;
 
 void protobuf_AssignDescriptors() {
   AddDescriptors();
+  ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
-      "enum.proto", schemas, file_default_instances, TableStruct::offsets,
+      "enum.proto", schemas, file_default_instances, TableStruct::offsets, factory,
       NULL, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
@@ -50,94 +48,94 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\nenum.proto\022\002LT*\365\001\n\020ConnectionStatus\022\021\n"
-      "\rUNINITIALISED\020\000\022\017\n\013INITIALIZED\020\001\022\020\n\014DIS"
-      "CONNECTED\020\002\022\016\n\nCONNECTING\020\003\022\r\n\tCONNECTED"
-      "\020\004\022\017\n\013AUTHORIZING\020\005\022\r\n\tAUTHORIED\020\006\022\014\n\010LO"
-      "GINING\020\007\022\013\n\007LOGINED\020\010\022\016\n\nCONFIRMING\020\t\022\r\n"
-      "\tCONFIRMED\020\n\022\t\n\005DOING\020\013\022\010\n\004DONE\020\014\022\035\n\031CON"
-      "NECTION_STATUS_UNKNOWN\020\r*~\n\007ApiType\022\010\n\004N"
-      "ONE\020\000\022\t\n\005TRADE\020\001\022\017\n\013MARKET_DATA\020\002\022\n\n\006LEV"
-      "EL2\020\004\022\021\n\rQUOTE_REQUEST\020\010\022\023\n\017HISTORICAL_D"
-      "ATA\020\020\022\016\n\nINSTRUMENT\020 \022\t\n\005QUERY\020@*K\n\nResu"
-      "meType\022\031\n\025RESUME_TYPE_UNDEFINED\020\000\022\013\n\007RES"
-      "TART\020\001\022\n\n\006RESUME\020\002\022\t\n\005QUICK\020\003*J\n\010LogLeve"
-      "l\022\t\n\005TRACE\020\000\022\t\n\005DEBUG\020\001\022\010\n\004INFO\020\002\022\010\n\004WAR"
-      "N\020\003\022\t\n\005ERROR\020\004\022\t\n\005FATAL\020\005*\034\n\007PutCall\022\007\n\003"
-      "PUT\020\000\022\010\n\004CALL\020\001*\270\001\n\013OrderStatus\022\013\n\007NOTSE"
-      "NT\020\000\022\017\n\013PENDING_NEW\020\001\022\007\n\003NEW\020\002\022\014\n\010REJECT"
-      "ED\020\003\022\024\n\020PARTIALLY_FILLED\020\004\022\n\n\006FILLED\020\005\022\023"
-      "\n\017PENDING_CANCELL\020\006\022\r\n\tCANCELLED\020\007\022\013\n\007EX"
-      "PIRED\020\010\022\023\n\017PENDING_REPLACE\020\t\022\014\n\010REPLACED"
-      "\020\n*\234\003\n\010ExecType\022\020\n\014EXECTYPE_NEW\020\000\022\024\n\020EXE"
-      "CTYPE_STOPPED\020\001\022\024\n\020EXECTYPE_REJECED\020\002\022\024\n"
-      "\020EXECTYPE_EXPIRED\020\003\022\022\n\016EXECTYPE_TRADE\020\004\022"
-      "\033\n\027EXECTYPE_PENDING_CANCEL\020\005\022\026\n\022EXECTYPE"
-      "_CANCELLED\020\006\022\033\n\027EXECTYPE_CANCELL_REJECT\020"
-      "\007\022\034\n\030EXECTYPE_PENDING_REPLACE\020\010\022\024\n\020EXECT"
-      "YPE_REPLACE\020\t\022\033\n\027EXECTYPE_REPLACE_REJECT"
-      "\020\n\022\031\n\025EXECTYPE_TRADE_CORREC\020\013\022\031\n\025EXECTYP"
-      "E_TRADE_CANCEL\020\014\022\031\n\025EXECTYPE_ORDER_STATU"
-      "S\020\r\022\030\n\024EXECTYPE_PENDING_NEW\020\016\022\032\n\026EXECTYP"
-      "E_CLEARING_HOLD\020\017*\273\001\n\tOrderSide\022\007\n\003BUY\020\000"
-      "\022\010\n\004SELL\020\001\022\020\n\014LOF_CREATION\020\002\022\022\n\016LOF_REDE"
-      "MPTION\020\003\022\020\n\014ETF_CREATION\020\004\022\022\n\016ETF_REDEMP"
-      "TION\020\005\022\t\n\005MERGE\020\006\022\t\n\005SPLIT\020\007\022\016\n\nCB_CONVE"
-      "RT\020\010\022\021\n\rCB_REDEMPTION\020\t\022\026\n\022ORDER_SIDE_UN"
-      "KNOWN\020\n*\211\001\n\tOrderType\022\n\n\006MARKET\020\000\022\010\n\004STO"
-      "P\020\001\022\t\n\005LIMIT\020\002\022\016\n\nSTOP_LIMIT\020\003\022\023\n\017MARKET"
-      "_ON_CLOSE\020\004\022\n\n\006PEGGED\020\005\022\021\n\rTRAILING_STOP"
-      "\020\006\022\027\n\023TRAILING_STOP_LIMIT\020\007*o\n\013TimeInFor"
-      "ce\022\007\n\003ATC\020\000\022\007\n\003DAY\020\001\022\007\n\003GTC\020\002\022\007\n\003IOC\020\003\022\007"
-      "\n\003OPG\020\004\022\006\n\002OC\020\005\022\007\n\003FOK\020\006\022\007\n\003GTX\020\007\022\007\n\003GTD"
-      "\020\010\022\007\n\003GFS\020\t\022\007\n\003AUC\020\n*N\n\014BusinessType\022\033\n\027"
-      "BUSINESS_TYPE_UNDEFINED\020\000\022\n\n\006FUTURE\020\001\022\t\n"
-      "\005STOCK\020\002\022\n\n\006OPTION\020\003*#\n\014PositionSide\022\010\n\004"
-      "LONG\020\000\022\t\n\005SHORT\020\001*X\n\rHedgeFlagType\022\017\n\013SP"
-      "ECULATION\020\000\022\r\n\tARBITRAGE\020\001\022\t\n\005HEDGE\020\002\022\013\n"
-      "\007COVERED\020\003\022\017\n\013MARKETMAKER\020\004*T\n\rOpenClose"
-      "Type\022\035\n\031OPEN_CLOSE_TYPE_UNDEFINED\020\000\022\010\n\004O"
-      "PEN\020\001\022\t\n\005CLOSE\020\002\022\017\n\013CLOSE_TODAY\020\003*\303\002\n\016In"
-      "strumentType\022\031\n\025INSTRUMENT_TYPE_STOCK\020\000\022"
-      "\032\n\026INSTRUMENT_TYPE_FUTURE\020\001\022\032\n\026INSTRUMEN"
-      "T_TYPE_OPTION\020\002\022!\n\035INSTRUMENT_TYPE_FUTUR"
-      "E_OPTION\020\003\022\030\n\024INSTRUMENT_TYPE_BOND\020\004\022\026\n\022"
-      "INSTRUMENT_TYPE_FX\020\005\022\031\n\025INSTRUMENT_TYPE_"
-      "INDEX\020\006\022\027\n\023INSTRUMENT_TYPE_ETF\020\007\022\035\n\031INST"
-      "RUMENT_TYPE_MULTI_LEG\020\010\022\035\n\031INSTRUMENT_TY"
-      "PE_SYNTHETIC\020\t\022\027\n\023INSTRUMENT_TYPE_LOF\020\n*"
-      "\216\001\n\nIdCardType\022\007\n\003EID\020\000\022\013\n\007ID_CARD\020\001\022\014\n\010"
-      "PASSPORT\020\002\022\016\n\nLICENSE_NO\020\003\022\n\n\006TAX_NO\020\004\022\023"
-      "\n\017DRIVING_LICENSE\020\005\022\r\n\tSOCIAL_ID\020\006\022\014\n\010LO"
-      "CAL_ID\020\007\022\016\n\nOTHER_CARD\020\010*\213\001\n\014ExchangeTyp"
-      "e\022\032\n\026EXCHANGETYPE_Undefined\020\000\022\010\n\004SHFE\020\001\022"
-      "\007\n\003DCE\020\002\022\010\n\004CZCE\020\003\022\t\n\005CFFEX\020\004\022\007\n\003INE\020\005\022\007"
-      "\n\003SSE\020\006\022\010\n\004SZSE\020\007\022\007\n\003SGE\020\010\022\010\n\004NEEQ\020\t\022\010\n\004"
-      "HKEx\020\n*\352\001\n\021InstLifePhaseType\022\036\n\032InstLife"
-      "PhaseType_NotStart\020\000\022\035\n\031InstLifePhaseTyp"
-      "e_Started\020\001\022\033\n\027InstLifePhaseType_Pause\020\002"
-      "\022\035\n\031InstLifePhaseType_Expired\020\003\022\033\n\027InstL"
-      "ifePhaseType_Issue\020\004\022\037\n\033InstLifePhaseTyp"
-      "e_FirstList\020\005\022\034\n\030InstLifePhaseType_UnLis"
-      "t\020\006*\276\002\n\020TradingPhaseType\022\"\n\036TradingPhase"
-      "Type_BeforeTrading\020\000\022\036\n\032TradingPhaseType"
-      "_NoTrading\020\001\022\037\n\033TradingPhaseType_Continu"
-      "ous\020\002\022$\n TradingPhaseType_AuctionOrderin"
-      "g\020\003\022#\n\037TradingPhaseType_AuctionBalance\020\004"
-      "\022!\n\035TradingPhaseType_AuctionMatch\020\005\022\033\n\027T"
-      "radingPhaseType_Closed\020\006\022\037\n\033TradingPhase"
-      "Type_Suspension\020\007\022\031\n\025TradingPhaseType_Fu"
-      "se\020\010b\006proto3"
+      "\n\nenum.proto\022\005FIRST*\365\001\n\020ConnectionStatus"
+      "\022\021\n\rUNINITIALISED\020\000\022\017\n\013INITIALIZED\020\001\022\020\n\014"
+      "DISCONNECTED\020\002\022\016\n\nCONNECTING\020\003\022\r\n\tCONNEC"
+      "TED\020\004\022\017\n\013AUTHORIZING\020\005\022\r\n\tAUTHORIED\020\006\022\014\n"
+      "\010LOGINING\020\007\022\013\n\007LOGINED\020\010\022\016\n\nCONFIRMING\020\t"
+      "\022\r\n\tCONFIRMED\020\n\022\t\n\005DOING\020\013\022\010\n\004DONE\020\014\022\035\n\031"
+      "CONNECTION_STATUS_UNKNOWN\020\r*~\n\007ApiType\022\010"
+      "\n\004NONE\020\000\022\t\n\005TRADE\020\001\022\017\n\013MARKET_DATA\020\002\022\n\n\006"
+      "LEVEL2\020\004\022\021\n\rQUOTE_REQUEST\020\010\022\023\n\017HISTORICA"
+      "L_DATA\020\020\022\016\n\nINSTRUMENT\020 \022\t\n\005QUERY\020@*K\n\nR"
+      "esumeType\022\031\n\025RESUME_TYPE_UNDEFINED\020\000\022\013\n\007"
+      "RESTART\020\001\022\n\n\006RESUME\020\002\022\t\n\005QUICK\020\003*J\n\010LogL"
+      "evel\022\t\n\005TRACE\020\000\022\t\n\005DEBUG\020\001\022\010\n\004INFO\020\002\022\010\n\004"
+      "WARN\020\003\022\t\n\005ERROR\020\004\022\t\n\005FATAL\020\005*\034\n\007PutCall\022"
+      "\007\n\003PUT\020\000\022\010\n\004CALL\020\001*\270\001\n\013OrderStatus\022\013\n\007NO"
+      "TSENT\020\000\022\017\n\013PENDING_NEW\020\001\022\007\n\003NEW\020\002\022\014\n\010REJ"
+      "ECTED\020\003\022\024\n\020PARTIALLY_FILLED\020\004\022\n\n\006FILLED\020"
+      "\005\022\023\n\017PENDING_CANCELL\020\006\022\r\n\tCANCELLED\020\007\022\013\n"
+      "\007EXPIRED\020\010\022\023\n\017PENDING_REPLACE\020\t\022\014\n\010REPLA"
+      "CED\020\n*\234\003\n\010ExecType\022\020\n\014EXECTYPE_NEW\020\000\022\024\n\020"
+      "EXECTYPE_STOPPED\020\001\022\024\n\020EXECTYPE_REJECED\020\002"
+      "\022\024\n\020EXECTYPE_EXPIRED\020\003\022\022\n\016EXECTYPE_TRADE"
+      "\020\004\022\033\n\027EXECTYPE_PENDING_CANCEL\020\005\022\026\n\022EXECT"
+      "YPE_CANCELLED\020\006\022\033\n\027EXECTYPE_CANCELL_REJE"
+      "CT\020\007\022\034\n\030EXECTYPE_PENDING_REPLACE\020\010\022\024\n\020EX"
+      "ECTYPE_REPLACE\020\t\022\033\n\027EXECTYPE_REPLACE_REJ"
+      "ECT\020\n\022\031\n\025EXECTYPE_TRADE_CORREC\020\013\022\031\n\025EXEC"
+      "TYPE_TRADE_CANCEL\020\014\022\031\n\025EXECTYPE_ORDER_ST"
+      "ATUS\020\r\022\030\n\024EXECTYPE_PENDING_NEW\020\016\022\032\n\026EXEC"
+      "TYPE_CLEARING_HOLD\020\017*\273\001\n\tOrderSide\022\007\n\003BU"
+      "Y\020\000\022\010\n\004SELL\020\001\022\020\n\014LOF_CREATION\020\002\022\022\n\016LOF_R"
+      "EDEMPTION\020\003\022\020\n\014ETF_CREATION\020\004\022\022\n\016ETF_RED"
+      "EMPTION\020\005\022\t\n\005MERGE\020\006\022\t\n\005SPLIT\020\007\022\016\n\nCB_CO"
+      "NVERT\020\010\022\021\n\rCB_REDEMPTION\020\t\022\026\n\022ORDER_SIDE"
+      "_UNKNOWN\020\n*\211\001\n\tOrderType\022\n\n\006MARKET\020\000\022\010\n\004"
+      "STOP\020\001\022\t\n\005LIMIT\020\002\022\016\n\nSTOP_LIMIT\020\003\022\023\n\017MAR"
+      "KET_ON_CLOSE\020\004\022\n\n\006PEGGED\020\005\022\021\n\rTRAILING_S"
+      "TOP\020\006\022\027\n\023TRAILING_STOP_LIMIT\020\007*o\n\013TimeIn"
+      "Force\022\007\n\003ATC\020\000\022\007\n\003DAY\020\001\022\007\n\003GTC\020\002\022\007\n\003IOC\020"
+      "\003\022\007\n\003OPG\020\004\022\006\n\002OC\020\005\022\007\n\003FOK\020\006\022\007\n\003GTX\020\007\022\007\n\003"
+      "GTD\020\010\022\007\n\003GFS\020\t\022\007\n\003AUC\020\n*N\n\014BusinessType\022"
+      "\033\n\027BUSINESS_TYPE_UNDEFINED\020\000\022\n\n\006FUTURE\020\001"
+      "\022\t\n\005STOCK\020\002\022\n\n\006OPTION\020\003*#\n\014PositionSide\022"
+      "\010\n\004LONG\020\000\022\t\n\005SHORT\020\001*X\n\rHedgeFlagType\022\017\n"
+      "\013SPECULATION\020\000\022\r\n\tARBITRAGE\020\001\022\t\n\005HEDGE\020\002"
+      "\022\013\n\007COVERED\020\003\022\017\n\013MARKETMAKER\020\004*T\n\rOpenCl"
+      "oseType\022\035\n\031OPEN_CLOSE_TYPE_UNDEFINED\020\000\022\010"
+      "\n\004OPEN\020\001\022\t\n\005CLOSE\020\002\022\017\n\013CLOSE_TODAY\020\003*\303\002\n"
+      "\016InstrumentType\022\031\n\025INSTRUMENT_TYPE_STOCK"
+      "\020\000\022\032\n\026INSTRUMENT_TYPE_FUTURE\020\001\022\032\n\026INSTRU"
+      "MENT_TYPE_OPTION\020\002\022!\n\035INSTRUMENT_TYPE_FU"
+      "TURE_OPTION\020\003\022\030\n\024INSTRUMENT_TYPE_BOND\020\004\022"
+      "\026\n\022INSTRUMENT_TYPE_FX\020\005\022\031\n\025INSTRUMENT_TY"
+      "PE_INDEX\020\006\022\027\n\023INSTRUMENT_TYPE_ETF\020\007\022\035\n\031I"
+      "NSTRUMENT_TYPE_MULTI_LEG\020\010\022\035\n\031INSTRUMENT"
+      "_TYPE_SYNTHETIC\020\t\022\027\n\023INSTRUMENT_TYPE_LOF"
+      "\020\n*\216\001\n\nIdCardType\022\007\n\003EID\020\000\022\013\n\007ID_CARD\020\001\022"
+      "\014\n\010PASSPORT\020\002\022\016\n\nLICENSE_NO\020\003\022\n\n\006TAX_NO\020"
+      "\004\022\023\n\017DRIVING_LICENSE\020\005\022\r\n\tSOCIAL_ID\020\006\022\014\n"
+      "\010LOCAL_ID\020\007\022\016\n\nOTHER_CARD\020\010*\213\001\n\014Exchange"
+      "Type\022\032\n\026EXCHANGETYPE_Undefined\020\000\022\010\n\004SHFE"
+      "\020\001\022\007\n\003DCE\020\002\022\010\n\004CZCE\020\003\022\t\n\005CFFEX\020\004\022\007\n\003INE\020"
+      "\005\022\007\n\003SSE\020\006\022\010\n\004SZSE\020\007\022\007\n\003SGE\020\010\022\010\n\004NEEQ\020\t\022"
+      "\010\n\004HKEx\020\n*\352\001\n\021InstLifePhaseType\022\036\n\032InstL"
+      "ifePhaseType_NotStart\020\000\022\035\n\031InstLifePhase"
+      "Type_Started\020\001\022\033\n\027InstLifePhaseType_Paus"
+      "e\020\002\022\035\n\031InstLifePhaseType_Expired\020\003\022\033\n\027In"
+      "stLifePhaseType_Issue\020\004\022\037\n\033InstLifePhase"
+      "Type_FirstList\020\005\022\034\n\030InstLifePhaseType_Un"
+      "List\020\006*\276\002\n\020TradingPhaseType\022\"\n\036TradingPh"
+      "aseType_BeforeTrading\020\000\022\036\n\032TradingPhaseT"
+      "ype_NoTrading\020\001\022\037\n\033TradingPhaseType_Cont"
+      "inuous\020\002\022$\n TradingPhaseType_AuctionOrde"
+      "ring\020\003\022#\n\037TradingPhaseType_AuctionBalanc"
+      "e\020\004\022!\n\035TradingPhaseType_AuctionMatch\020\005\022\033"
+      "\n\027TradingPhaseType_Closed\020\006\022\037\n\033TradingPh"
+      "aseType_Suspension\020\007\022\031\n\025TradingPhaseType"
+      "_Fuse\020\010b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3092);
+      descriptor, 3095);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "enum.proto", &protobuf_RegisterTypes);
 }
 
 void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
 }
 // Force AddDescriptors() to be called at dynamic initialization time.
 struct StaticDescriptorInitializer {
@@ -146,7 +144,7 @@ struct StaticDescriptorInitializer {
   }
 } static_descriptor_initializer;
 }  // namespace protobuf_enum_2eproto
-namespace LT {
+namespace FIRST {
 const ::google::protobuf::EnumDescriptor* ConnectionStatus_descriptor() {
   protobuf_enum_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_enum_2eproto::file_level_enum_descriptors[0];
@@ -530,10 +528,6 @@ bool TradingPhaseType_IsValid(int value) {
 
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace LT
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+}  // namespace FIRST
 
 // @@protoc_insertion_point(global_scope)
