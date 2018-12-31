@@ -247,7 +247,7 @@ struct OrderField
 	Char256Type		Text;
 
 	///预留数字
-	Int32Type		ReserveInt32;
+	Int32Type		ClientOrderID;
 	///预留字符串
 	Char64Type		ReserveChar64;
 
