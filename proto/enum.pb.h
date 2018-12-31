@@ -157,13 +157,14 @@ inline bool LogLevel_Parse(
     LogLevel_descriptor(), name, value);
 }
 enum PutCall {
-  PUT = 0,
-  CALL = 1,
+  PUTCALL_Undefined = 0,
+  PUT = 1,
+  CALL = 2,
   PutCall_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   PutCall_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool PutCall_IsValid(int value);
-const PutCall PutCall_MIN = PUT;
+const PutCall PutCall_MIN = PUTCALL_Undefined;
 const PutCall PutCall_MAX = CALL;
 const int PutCall_ARRAYSIZE = PutCall_MAX + 1;
 
@@ -178,22 +179,23 @@ inline bool PutCall_Parse(
     PutCall_descriptor(), name, value);
 }
 enum OrderStatus {
-  NOTSENT = 0,
-  PENDING_NEW = 1,
-  NEW = 2,
-  REJECTED = 3,
-  PARTIALLY_FILLED = 4,
-  FILLED = 5,
-  PENDING_CANCELL = 6,
-  CANCELLED = 7,
-  EXPIRED = 8,
-  PENDING_REPLACE = 9,
-  REPLACED = 10,
+  ORDER_STATUS_UNKNOWN = 0,
+  NOTSENT = 1,
+  PENDING_NEW = 2,
+  NEW = 3,
+  REJECTED = 4,
+  PARTIALLY_FILLED = 5,
+  FILLED = 6,
+  PENDING_CANCELL = 7,
+  CANCELLED = 8,
+  EXPIRED = 9,
+  PENDING_REPLACE = 10,
+  REPLACED = 11,
   OrderStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   OrderStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool OrderStatus_IsValid(int value);
-const OrderStatus OrderStatus_MIN = NOTSENT;
+const OrderStatus OrderStatus_MIN = ORDER_STATUS_UNKNOWN;
 const OrderStatus OrderStatus_MAX = REPLACED;
 const int OrderStatus_ARRAYSIZE = OrderStatus_MAX + 1;
 
@@ -208,27 +210,28 @@ inline bool OrderStatus_Parse(
     OrderStatus_descriptor(), name, value);
 }
 enum ExecType {
-  EXECTYPE_NEW = 0,
-  EXECTYPE_STOPPED = 1,
-  EXECTYPE_REJECED = 2,
-  EXECTYPE_EXPIRED = 3,
-  EXECTYPE_TRADE = 4,
-  EXECTYPE_PENDING_CANCEL = 5,
-  EXECTYPE_CANCELLED = 6,
-  EXECTYPE_CANCELL_REJECT = 7,
-  EXECTYPE_PENDING_REPLACE = 8,
-  EXECTYPE_REPLACE = 9,
-  EXECTYPE_REPLACE_REJECT = 10,
-  EXECTYPE_TRADE_CORREC = 11,
-  EXECTYPE_TRADE_CANCEL = 12,
-  EXECTYPE_ORDER_STATUS = 13,
-  EXECTYPE_PENDING_NEW = 14,
-  EXECTYPE_CLEARING_HOLD = 15,
+  EXECTYPE_UNKNOWN = 0,
+  EXECTYPE_NEW = 1,
+  EXECTYPE_STOPPED = 2,
+  EXECTYPE_REJECED = 3,
+  EXECTYPE_EXPIRED = 4,
+  EXECTYPE_TRADE = 5,
+  EXECTYPE_PENDING_CANCEL = 6,
+  EXECTYPE_CANCELLED = 7,
+  EXECTYPE_CANCELL_REJECT = 8,
+  EXECTYPE_PENDING_REPLACE = 9,
+  EXECTYPE_REPLACE = 10,
+  EXECTYPE_REPLACE_REJECT = 11,
+  EXECTYPE_TRADE_CORREC = 12,
+  EXECTYPE_TRADE_CANCEL = 13,
+  EXECTYPE_ORDER_STATUS = 14,
+  EXECTYPE_PENDING_NEW = 15,
+  EXECTYPE_CLEARING_HOLD = 16,
   ExecType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ExecType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool ExecType_IsValid(int value);
-const ExecType ExecType_MIN = EXECTYPE_NEW;
+const ExecType ExecType_MIN = EXECTYPE_UNKNOWN;
 const ExecType ExecType_MAX = EXECTYPE_CLEARING_HOLD;
 const int ExecType_ARRAYSIZE = ExecType_MAX + 1;
 
@@ -243,23 +246,24 @@ inline bool ExecType_Parse(
     ExecType_descriptor(), name, value);
 }
 enum OrderSide {
-  BUY = 0,
-  SELL = 1,
-  LOF_CREATION = 2,
-  LOF_REDEMPTION = 3,
-  ETF_CREATION = 4,
-  ETF_REDEMPTION = 5,
-  MERGE = 6,
-  SPLIT = 7,
-  CB_CONVERT = 8,
-  CB_REDEMPTION = 9,
-  ORDER_SIDE_UNKNOWN = 10,
+  ORDER_SIDE_UNKNOWN = 0,
+  BUY = 1,
+  SELL = 2,
+  LOF_CREATION = 3,
+  LOF_REDEMPTION = 4,
+  ETF_CREATION = 5,
+  ETF_REDEMPTION = 6,
+  MERGE = 7,
+  SPLIT = 8,
+  CB_CONVERT = 9,
+  CB_REDEMPTION = 10,
+  AUTO = 11,
   OrderSide_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   OrderSide_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool OrderSide_IsValid(int value);
-const OrderSide OrderSide_MIN = BUY;
-const OrderSide OrderSide_MAX = ORDER_SIDE_UNKNOWN;
+const OrderSide OrderSide_MIN = ORDER_SIDE_UNKNOWN;
+const OrderSide OrderSide_MAX = AUTO;
 const int OrderSide_ARRAYSIZE = OrderSide_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* OrderSide_descriptor();
@@ -273,19 +277,20 @@ inline bool OrderSide_Parse(
     OrderSide_descriptor(), name, value);
 }
 enum OrderType {
-  MARKET = 0,
-  STOP = 1,
-  LIMIT = 2,
-  STOP_LIMIT = 3,
-  MARKET_ON_CLOSE = 4,
-  PEGGED = 5,
-  TRAILING_STOP = 6,
-  TRAILING_STOP_LIMIT = 7,
+  ORDER_TYPE_UNKNOWN = 0,
+  MARKET = 1,
+  STOP = 2,
+  LIMIT = 3,
+  STOP_LIMIT = 4,
+  MARKET_ON_CLOSE = 5,
+  PEGGED = 6,
+  TRAILING_STOP = 7,
+  TRAILING_STOP_LIMIT = 8,
   OrderType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   OrderType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool OrderType_IsValid(int value);
-const OrderType OrderType_MIN = MARKET;
+const OrderType OrderType_MIN = ORDER_TYPE_UNKNOWN;
 const OrderType OrderType_MAX = TRAILING_STOP_LIMIT;
 const int OrderType_ARRAYSIZE = OrderType_MAX + 1;
 
@@ -300,22 +305,23 @@ inline bool OrderType_Parse(
     OrderType_descriptor(), name, value);
 }
 enum TimeInForce {
-  ATC = 0,
-  DAY = 1,
-  GTC = 2,
-  IOC = 3,
-  OPG = 4,
-  OC = 5,
-  FOK = 6,
-  GTX = 7,
-  GTD = 8,
-  GFS = 9,
-  AUC = 10,
+  TIME_IN_FORCE_UNKNOWN = 0,
+  ATC = 1,
+  DAY = 2,
+  GTC = 3,
+  IOC = 4,
+  OPG = 5,
+  OC = 6,
+  FOK = 7,
+  GTX = 8,
+  GTD = 9,
+  GFS = 10,
+  AUC = 11,
   TimeInForce_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   TimeInForce_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool TimeInForce_IsValid(int value);
-const TimeInForce TimeInForce_MIN = ATC;
+const TimeInForce TimeInForce_MIN = TIME_IN_FORCE_UNKNOWN;
 const TimeInForce TimeInForce_MAX = AUC;
 const int TimeInForce_ARRAYSIZE = TimeInForce_MAX + 1;
 
@@ -353,13 +359,14 @@ inline bool BusinessType_Parse(
     BusinessType_descriptor(), name, value);
 }
 enum PositionSide {
-  LONG = 0,
-  SHORT = 1,
+  POSITION_SIDE_UNKNOWN = 0,
+  LONG = 1,
+  SHORT = 2,
   PositionSide_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   PositionSide_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool PositionSide_IsValid(int value);
-const PositionSide PositionSide_MIN = LONG;
+const PositionSide PositionSide_MIN = POSITION_SIDE_UNKNOWN;
 const PositionSide PositionSide_MAX = SHORT;
 const int PositionSide_ARRAYSIZE = PositionSide_MAX + 1;
 
@@ -421,22 +428,23 @@ inline bool OpenCloseType_Parse(
     OpenCloseType_descriptor(), name, value);
 }
 enum InstrumentType {
-  INSTRUMENT_TYPE_STOCK = 0,
-  INSTRUMENT_TYPE_FUTURE = 1,
-  INSTRUMENT_TYPE_OPTION = 2,
-  INSTRUMENT_TYPE_FUTURE_OPTION = 3,
-  INSTRUMENT_TYPE_BOND = 4,
-  INSTRUMENT_TYPE_FX = 5,
-  INSTRUMENT_TYPE_INDEX = 6,
-  INSTRUMENT_TYPE_ETF = 7,
-  INSTRUMENT_TYPE_MULTI_LEG = 8,
-  INSTRUMENT_TYPE_SYNTHETIC = 9,
-  INSTRUMENT_TYPE_LOF = 10,
+  INSTRUMENT_TYPE_UNKNOWN = 0,
+  INSTRUMENT_TYPE_STOCK = 1,
+  INSTRUMENT_TYPE_FUTURE = 2,
+  INSTRUMENT_TYPE_OPTION = 3,
+  INSTRUMENT_TYPE_FUTURE_OPTION = 4,
+  INSTRUMENT_TYPE_BOND = 5,
+  INSTRUMENT_TYPE_FX = 6,
+  INSTRUMENT_TYPE_INDEX = 7,
+  INSTRUMENT_TYPE_ETF = 8,
+  INSTRUMENT_TYPE_MULTI_LEG = 9,
+  INSTRUMENT_TYPE_SYNTHETIC = 10,
+  INSTRUMENT_TYPE_LOF = 11,
   InstrumentType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   InstrumentType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool InstrumentType_IsValid(int value);
-const InstrumentType InstrumentType_MIN = INSTRUMENT_TYPE_STOCK;
+const InstrumentType InstrumentType_MIN = INSTRUMENT_TYPE_UNKNOWN;
 const InstrumentType InstrumentType_MAX = INSTRUMENT_TYPE_LOF;
 const int InstrumentType_ARRAYSIZE = InstrumentType_MAX + 1;
 
@@ -479,7 +487,7 @@ inline bool IdCardType_Parse(
     IdCardType_descriptor(), name, value);
 }
 enum ExchangeType {
-  EXCHANGETYPE_Undefined = 0,
+  EXCHANGETYPE_UNDEFINED = 0,
   SHFE = 1,
   DCE = 2,
   CZCE = 3,
@@ -494,7 +502,7 @@ enum ExchangeType {
   ExchangeType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool ExchangeType_IsValid(int value);
-const ExchangeType ExchangeType_MIN = EXCHANGETYPE_Undefined;
+const ExchangeType ExchangeType_MIN = EXCHANGETYPE_UNDEFINED;
 const ExchangeType ExchangeType_MAX = HKEx;
 const int ExchangeType_ARRAYSIZE = ExchangeType_MAX + 1;
 
@@ -509,18 +517,19 @@ inline bool ExchangeType_Parse(
     ExchangeType_descriptor(), name, value);
 }
 enum InstLifePhaseType {
-  InstLifePhaseType_NotStart = 0,
-  InstLifePhaseType_Started = 1,
-  InstLifePhaseType_Pause = 2,
-  InstLifePhaseType_Expired = 3,
-  InstLifePhaseType_Issue = 4,
-  InstLifePhaseType_FirstList = 5,
-  InstLifePhaseType_UnList = 6,
+  InstLifePhaseType_Unknown = 0,
+  InstLifePhaseType_NotStart = 1,
+  InstLifePhaseType_Started = 2,
+  InstLifePhaseType_Pause = 3,
+  InstLifePhaseType_Expired = 4,
+  InstLifePhaseType_Issue = 5,
+  InstLifePhaseType_FirstList = 6,
+  InstLifePhaseType_UnList = 7,
   InstLifePhaseType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   InstLifePhaseType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool InstLifePhaseType_IsValid(int value);
-const InstLifePhaseType InstLifePhaseType_MIN = InstLifePhaseType_NotStart;
+const InstLifePhaseType InstLifePhaseType_MIN = InstLifePhaseType_Unknown;
 const InstLifePhaseType InstLifePhaseType_MAX = InstLifePhaseType_UnList;
 const int InstLifePhaseType_ARRAYSIZE = InstLifePhaseType_MAX + 1;
 
@@ -535,20 +544,21 @@ inline bool InstLifePhaseType_Parse(
     InstLifePhaseType_descriptor(), name, value);
 }
 enum TradingPhaseType {
-  TradingPhaseType_BeforeTrading = 0,
-  TradingPhaseType_NoTrading = 1,
-  TradingPhaseType_Continuous = 2,
-  TradingPhaseType_AuctionOrdering = 3,
-  TradingPhaseType_AuctionBalance = 4,
-  TradingPhaseType_AuctionMatch = 5,
-  TradingPhaseType_Closed = 6,
-  TradingPhaseType_Suspension = 7,
-  TradingPhaseType_Fuse = 8,
+  TradingPhaseType_Unknown = 0,
+  TradingPhaseType_BeforeTrading = 1,
+  TradingPhaseType_NoTrading = 2,
+  TradingPhaseType_Continuous = 3,
+  TradingPhaseType_AuctionOrdering = 4,
+  TradingPhaseType_AuctionBalance = 5,
+  TradingPhaseType_AuctionMatch = 6,
+  TradingPhaseType_Closed = 7,
+  TradingPhaseType_Suspension = 8,
+  TradingPhaseType_Fuse = 9,
   TradingPhaseType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   TradingPhaseType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool TradingPhaseType_IsValid(int value);
-const TradingPhaseType TradingPhaseType_MIN = TradingPhaseType_BeforeTrading;
+const TradingPhaseType TradingPhaseType_MIN = TradingPhaseType_Unknown;
 const TradingPhaseType TradingPhaseType_MAX = TradingPhaseType_Fuse;
 const int TradingPhaseType_ARRAYSIZE = TradingPhaseType_MAX + 1;
 
