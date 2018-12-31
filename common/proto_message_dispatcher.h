@@ -21,7 +21,7 @@ template<class T>
 class proto_message_dispatcher: public zmq_msg_dispatcher {
 public:
     typedef void (T::*dealer_msg_func)(void* data, size_t size);
-    typedef void (T::*router_msg_func)(zmq::message_t& router_id, google::protobuf::Message& body);
+    typedef void (T::*router_msg_func)(zmq::socket_t* router, zmq::message_t& router_id, google::protobuf::Message& body);
     typedef void (T::*pull_msg_func)(google::protobuf::Message& body);
 
     proto_message_dispatcher(zmq_poller_reactor* reactor);

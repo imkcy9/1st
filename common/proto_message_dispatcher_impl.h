@@ -40,25 +40,25 @@ proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket) {
 
     zmq::message_t msg_type;
     socket->recv(&msg_type);
-    std::string type((char*) msg_type.data());
+    std::string type((char*) msg_type.data(), msg_type.size());
 
     zmq::message_t msg;
     socket->recv(&msg);
-    LOG_INFO("{}", (char*) rid.data());
+    //LOG_INFO("{}", (char*) rid.data());
 
     auto it = router_funcs_.find(type);
-    LOG_INFO("{}", (char*) rid.data());
+    //LOG_INFO("{}", (char*) rid.data());
     if (it != router_funcs_.end()) {
         std::pair<google::protobuf::Message*, router_msg_func>& p = it->second;
         p.first->ParseFromArray(msg.data(), msg.size());
-        (static_cast<T *> (this)->*p.second)(rid, *p.first);
+        (static_cast<T *> (this)->*p.second)(socket, rid, *p.first);
     }
 
     while (msg.more()) {
         socket->recv(&msg);
     }
 
-    LOG_INFO("{} size:{}", (char*) msg.data(), msg.size());
+    //LOG_INFO("{} size:{}", (char*) msg.data(), msg.size());
 
 
 
@@ -94,7 +94,7 @@ void
 proto_message_dispatcher<T>::on_recv_pull_message(zmq::socket_t* socket) {
     zmq::message_t msg_type;
     socket->recv(&msg_type);
-    std::string type((char*) msg_type.data());
+    std::string type((char*) msg_type.data(),msg_type.size());
 
     zmq::message_t msg;
     socket->recv(&msg);
