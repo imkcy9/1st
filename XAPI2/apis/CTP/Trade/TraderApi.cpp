@@ -1692,7 +1692,7 @@ void CTraderApi::OnTrade(CThostFtdcTradeField *pTrade, int nRequestID, bool bIsL
 		{
 			// 找到对应的报单
 			strcpy(pField->ID, it->second.c_str());
-
+                        
 			m_msgQueue->Input_Copy(ResponseType::ResponseType_OnRtnTrade, m_msgQueue, m_pClass, bIsLast, 0, pField, sizeof(TradeField), nullptr, 0, nullptr, 0);
 
 			unordered_map<string, OrderField*>::iterator it2 = m_id_platform_order.find(it->second);
@@ -1704,6 +1704,7 @@ void CTraderApi::OnTrade(CThostFtdcTradeField *pTrade, int nRequestID, bool bIsL
 			else
 			{
 				// 更新订单的状态
+                            pField->ClientOrderID = it2->second->ClientOrderID;
 				// 是否要通知接口
 			}
 

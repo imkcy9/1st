@@ -161,7 +161,7 @@ message OrderField
 	string		text = 27;
 
 	///预留数字
-	int32		reserve_int32 = 28;
+	int32		client_order_id = 28;
 	///预留字符串
 	string		reserve_char64 = 29;
 
@@ -434,6 +434,8 @@ message InstrumentField
 	string          	underlying_instrid = 15;
 	///合约生命周期状态
 	InstLifePhaseType	instlife_phase = 16;
+
+        bool                    is_last = 17;
 };
 
 ///账号资金

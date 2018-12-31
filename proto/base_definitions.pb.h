@@ -1580,11 +1580,11 @@ class OrderField : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::int32 raw_error_id() const;
   void set_raw_error_id(::google::protobuf::int32 value);
 
-  // int32 reserve_int32 = 28;
-  void clear_reserve_int32();
-  static const int kReserveInt32FieldNumber = 28;
-  ::google::protobuf::int32 reserve_int32() const;
-  void set_reserve_int32(::google::protobuf::int32 value);
+  // int32 client_order_id = 28;
+  void clear_client_order_id();
+  static const int kClientOrderIdFieldNumber = 28;
+  ::google::protobuf::int32 client_order_id() const;
+  void set_client_order_id(::google::protobuf::int32 value);
 
   // .FIRST.BusinessType business = 33;
   void clear_business();
@@ -1627,7 +1627,7 @@ class OrderField : public ::google::protobuf::Message /* @@protoc_insertion_poin
   double avg_px_;
   ::google::protobuf::int32 xerror_id_;
   ::google::protobuf::int32 raw_error_id_;
-  ::google::protobuf::int32 reserve_int32_;
+  ::google::protobuf::int32 client_order_id_;
   int business_;
   mutable int _cached_size_;
   friend struct ::protobuf_base_5fdefinitions_2eproto::TableStruct;
@@ -3495,6 +3495,12 @@ class InstrumentField : public ::google::protobuf::Message /* @@protoc_insertion
   ::FIRST::InstLifePhaseType instlife_phase() const;
   void set_instlife_phase(::FIRST::InstLifePhaseType value);
 
+  // bool is_last = 17;
+  void clear_is_last();
+  static const int kIsLastFieldNumber = 17;
+  bool is_last() const;
+  void set_is_last(bool value);
+
   // @@protoc_insertion_point(class_scope:FIRST.InstrumentField)
  private:
 
@@ -3515,6 +3521,7 @@ class InstrumentField : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::int32 expire_date_;
   int options_type_;
   int instlife_phase_;
+  bool is_last_;
   mutable int _cached_size_;
   friend struct ::protobuf_base_5fdefinitions_2eproto::TableStruct;
   friend void ::protobuf_base_5fdefinitions_2eproto::InitDefaultsInstrumentFieldImpl();
@@ -7504,18 +7511,18 @@ inline void OrderField::set_allocated_text(::std::string* text) {
   // @@protoc_insertion_point(field_set_allocated:FIRST.OrderField.text)
 }
 
-// int32 reserve_int32 = 28;
-inline void OrderField::clear_reserve_int32() {
-  reserve_int32_ = 0;
+// int32 client_order_id = 28;
+inline void OrderField::clear_client_order_id() {
+  client_order_id_ = 0;
 }
-inline ::google::protobuf::int32 OrderField::reserve_int32() const {
-  // @@protoc_insertion_point(field_get:FIRST.OrderField.reserve_int32)
-  return reserve_int32_;
+inline ::google::protobuf::int32 OrderField::client_order_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.OrderField.client_order_id)
+  return client_order_id_;
 }
-inline void OrderField::set_reserve_int32(::google::protobuf::int32 value) {
+inline void OrderField::set_client_order_id(::google::protobuf::int32 value) {
   
-  reserve_int32_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.OrderField.reserve_int32)
+  client_order_id_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.OrderField.client_order_id)
 }
 
 // string reserve_char64 = 29;
@@ -10883,6 +10890,20 @@ inline void InstrumentField::set_instlife_phase(::FIRST::InstLifePhaseType value
   
   instlife_phase_ = value;
   // @@protoc_insertion_point(field_set:FIRST.InstrumentField.instlife_phase)
+}
+
+// bool is_last = 17;
+inline void InstrumentField::clear_is_last() {
+  is_last_ = false;
+}
+inline bool InstrumentField::is_last() const {
+  // @@protoc_insertion_point(field_get:FIRST.InstrumentField.is_last)
+  return is_last_;
+}
+inline void InstrumentField::set_is_last(bool value) {
+  
+  is_last_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.InstrumentField.is_last)
 }
 
 // -------------------------------------------------------------------
