@@ -32,11 +32,9 @@ proto_message_dispatcher<T>::~proto_message_dispatcher() {
 template <class T>
 void
 proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket) {
-
     zmq::message_t rid;
     socket->recv(&rid);
     ZMQ_ASSERT(rid.more());
-
 
     zmq::message_t msg_type;
     socket->recv(&msg_type);
@@ -44,30 +42,19 @@ proto_message_dispatcher<T>::on_recv_router_message(zmq::socket_t* socket) {
 
     zmq::message_t msg;
     socket->recv(&msg);
-    //LOG_INFO("{}", (char*) rid.data());
 
     auto it = router_funcs_.find(type);
-    //LOG_INFO("{}", (char*) rid.data());
     if (it != router_funcs_.end()) {
         std::pair<google::protobuf::Message*, router_msg_func>& p = it->second;
         p.first->ParseFromArray(msg.data(), msg.size());
         (static_cast<T *> (this)->*p.second)(socket, rid, *p.first);
+    } else {
+        LOG_ERROR("Unknown router prototype message: {}", type);
     }
 
     while (msg.more()) {
         socket->recv(&msg);
     }
-
-    //LOG_INFO("{} size:{}", (char*) msg.data(), msg.size());
-
-
-
-    //socket->send("test111",8);
-    //socket->send("test123",8);
-    //socket->send("nono123",8);
-    //int c = ((char*)msg.data())[0];
-    //LOG_INFO("{}", c);
-    //LOG_INFO("{}", (char*)msg.data() + 1);
     ZMQ_ASSERT(!msg.more());
 }
 
@@ -104,6 +91,8 @@ proto_message_dispatcher<T>::on_recv_pull_message(zmq::socket_t* socket) {
         std::pair<google::protobuf::Message*, pull_msg_func>& p = it->second;
         p.first->ParseFromArray(msg.data(), msg.size());
         (static_cast<T *> (this)->*p.second)(*p.first);
+    } else {
+        LOG_ERROR("Unknown pull prototype message: {}", type);
     }
 
     while (msg.more()) {
@@ -118,23 +107,21 @@ void proto_message_dispatcher<T>::on_recv_other_message(zmq::socket_t* socket) {
 }
 
 template <class T>
-template <class M>
-void proto_message_dispatcher<T>::add_dealer_msg_mapping(const std::string message_tyep, dealer_msg_func func) {
+template <class PROTOBUF_MESSAGE_TYPE>
+void proto_message_dispatcher<T>::add_dealer_msg_mapping(dealer_msg_func func) {
 
 }
 
 template <class T>
-template <class M>
-void proto_message_dispatcher<T>::add_router_msg_mapping(const std::string message_tyep, router_msg_func func) {
-    std::string type = message_tyep;
-    router_funcs_[type] = std::make_pair(new M(), func);
+template <class PROTOBUF_MESSAGE_TYPE>
+void proto_message_dispatcher<T>::add_router_msg_mapping(router_msg_func func) {
+    router_funcs_[PROTOBUF_MESSAGE_TYPE::default_instance().GetTypeName()] = std::make_pair(new PROTOBUF_MESSAGE_TYPE(), func);
 }
 
 template <class T>
-template <class M>
-void proto_message_dispatcher<T>::add_pull_msg_mapping(const std::string message_tyep, pull_msg_func func) {
-    std::string type = message_tyep;
-    pull_funcs_[type] = std::make_pair(new M(), func);
+template <class PROTOBUF_MESSAGE_TYPE>
+void proto_message_dispatcher<T>::add_pull_msg_mapping(pull_msg_func func) {
+    pull_funcs_[PROTOBUF_MESSAGE_TYPE::default_instance().GetTypeName()] = std::make_pair(new PROTOBUF_MESSAGE_TYPE(), func);
 }
 
 template <class T>
