@@ -30,6 +30,16 @@ class CreateOrderResponseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<CreateOrderResponse>
       _instance;
 } _CreateOrderResponse_default_instance_;
+class CancelOrderRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CancelOrderRequest>
+      _instance;
+} _CancelOrderRequest_default_instance_;
+class CancelOrderResponseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CancelOrderResponse>
+      _instance;
+} _CancelOrderResponse_default_instance_;
 class OrderFeedDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<OrderFeed>
@@ -86,6 +96,50 @@ void InitDefaultsCreateOrderResponse() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsCreateOrderResponseImpl);
 }
 
+void InitDefaultsCancelOrderRequestImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_base_5fdefinitions_2eproto::InitDefaultsOrderField();
+  {
+    void* ptr = &::FIRST::_CancelOrderRequest_default_instance_;
+    new (ptr) ::FIRST::CancelOrderRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::FIRST::CancelOrderRequest::InitAsDefaultInstance();
+}
+
+void InitDefaultsCancelOrderRequest() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsCancelOrderRequestImpl);
+}
+
+void InitDefaultsCancelOrderResponseImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_base_5fdefinitions_2eproto::InitDefaultsOrderField();
+  {
+    void* ptr = &::FIRST::_CancelOrderResponse_default_instance_;
+    new (ptr) ::FIRST::CancelOrderResponse();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::FIRST::CancelOrderResponse::InitAsDefaultInstance();
+}
+
+void InitDefaultsCancelOrderResponse() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsCancelOrderResponseImpl);
+}
+
 void InitDefaultsOrderFeedImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -130,8 +184,8 @@ void InitDefaultsTradeFeed() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsTradeFeedImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[4];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
+::google::protobuf::Metadata file_level_metadata[6];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -140,20 +194,33 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderRequest, request_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderRequest, in_timestamp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderRequest, order_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderRequest, out_timestamp_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, request_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, in_timestamp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, order_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, out_timestamp_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, status_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CreateOrderResponse, reason_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderRequest, request_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderRequest, client_order_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderRequest, order_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderResponse, request_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderResponse, order_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderResponse, status_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::CancelOrderResponse, reason_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::OrderFeed, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -175,14 +242,18 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::FIRST::CreateOrderRequest)},
-  { 9, -1, sizeof(::FIRST::CreateOrderResponse)},
-  { 20, -1, sizeof(::FIRST::OrderFeed)},
-  { 29, -1, sizeof(::FIRST::TradeFeed)},
+  { 7, -1, sizeof(::FIRST::CreateOrderResponse)},
+  { 16, -1, sizeof(::FIRST::CancelOrderRequest)},
+  { 24, -1, sizeof(::FIRST::CancelOrderResponse)},
+  { 33, -1, sizeof(::FIRST::OrderFeed)},
+  { 42, -1, sizeof(::FIRST::TradeFeed)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_CreateOrderRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_CreateOrderResponse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_CancelOrderRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_CancelOrderResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_OrderFeed_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_TradeFeed_default_instance_),
 };
@@ -203,31 +274,36 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 4);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 6);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\027first_definitions.proto\022\005FIRST\032\026base_d"
-      "efinitions.proto\"w\n\022CreateOrderRequest\022\022"
-      "\n\nrequest_id\030\001 \001(\004\022\024\n\014in_timestamp\030\002 \001(\004"
-      "\022 \n\005order\030\003 \001(\0132\021.FIRST.OrderField\022\025\n\rou"
-      "t_timestamp\030\004 \001(\004\"\340\001\n\023CreateOrderRespons"
-      "e\022\022\n\nrequest_id\030\001 \001(\004\022\024\n\014in_timestamp\030\002 "
-      "\001(\004\022 \n\005order\030\003 \001(\0132\021.FIRST.OrderField\022\025\n"
-      "\rout_timestamp\030\004 \001(\004\0221\n\006status\030\005 \001(\0162!.F"
-      "IRST.CreateOrderResponse.Status\022\016\n\006reaso"
-      "n\030\006 \001(\t\"#\n\006Status\022\013\n\007SUCCESS\020\000\022\014\n\010REJECT"
-      "ED\020\001\"n\n\tOrderFeed\022\022\n\nrequest_id\030\001 \001(\004\022\024\n"
-      "\014in_timestamp\030\002 \001(\004\022 \n\005order\030\003 \001(\0132\021.FIR"
-      "ST.OrderField\022\025\n\rout_timestamp\030\004 \001(\004\"n\n\t"
-      "TradeFeed\022\022\n\nrequest_id\030\001 \001(\004\022\024\n\014in_time"
-      "stamp\030\002 \001(\004\022 \n\005trade\030\003 \001(\0132\021.FIRST.Trade"
-      "Field\022\025\n\rout_timestamp\030\004 \001(\004b\006proto3"
+      "efinitions.proto\"J\n\022CreateOrderRequest\022\022"
+      "\n\nrequest_id\030\001 \001(\r\022 \n\005order\030\003 \001(\0132\021.FIRS"
+      "T.OrderField\"\263\001\n\023CreateOrderResponse\022\022\n\n"
+      "request_id\030\001 \001(\r\022 \n\005order\030\003 \001(\0132\021.FIRST."
+      "OrderField\0221\n\006status\030\005 \001(\0162!.FIRST.Creat"
+      "eOrderResponse.Status\022\016\n\006reason\030\006 \001(\t\"#\n"
+      "\006Status\022\013\n\007SUCCESS\020\000\022\014\n\010REJECTED\020\001\"c\n\022Ca"
+      "ncelOrderRequest\022\022\n\nrequest_id\030\001 \001(\r\022\027\n\017"
+      "client_order_id\030\003 \001(\004\022 \n\005order\030\004 \001(\0132\021.F"
+      "IRST.OrderField\"\263\001\n\023CancelOrderResponse\022"
+      "\022\n\nrequest_id\030\001 \001(\r\022 \n\005order\030\003 \001(\0132\021.FIR"
+      "ST.OrderField\0221\n\006status\030\005 \001(\0162!.FIRST.Ca"
+      "ncelOrderResponse.Status\022\016\n\006reason\030\006 \001(\t"
+      "\"#\n\006Status\022\013\n\007SUCCESS\020\000\022\014\n\010REJECTED\020\001\"n\n"
+      "\tOrderFeed\022\022\n\nrequest_id\030\001 \001(\004\022\024\n\014in_tim"
+      "estamp\030\002 \001(\004\022 \n\005order\030\003 \001(\0132\021.FIRST.Orde"
+      "rField\022\025\n\rout_timestamp\030\004 \001(\004\"n\n\tTradeFe"
+      "ed\022\022\n\nrequest_id\030\001 \001(\004\022\024\n\014in_timestamp\030\002"
+      " \001(\004\022 \n\005trade\030\003 \001(\0132\021.FIRST.TradeField\022\025"
+      "\n\rout_timestamp\030\004 \001(\004b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 636);
+      descriptor, 829);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "first_definitions.proto", &protobuf_RegisterTypes);
   ::protobuf_base_5fdefinitions_2eproto::AddDescriptors();
@@ -266,6 +342,27 @@ const CreateOrderResponse_Status CreateOrderResponse::Status_MIN;
 const CreateOrderResponse_Status CreateOrderResponse::Status_MAX;
 const int CreateOrderResponse::Status_ARRAYSIZE;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+const ::google::protobuf::EnumDescriptor* CancelOrderResponse_Status_descriptor() {
+  protobuf_first_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_first_5fdefinitions_2eproto::file_level_enum_descriptors[1];
+}
+bool CancelOrderResponse_Status_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const CancelOrderResponse_Status CancelOrderResponse::SUCCESS;
+const CancelOrderResponse_Status CancelOrderResponse::REJECTED;
+const CancelOrderResponse_Status CancelOrderResponse::Status_MIN;
+const CancelOrderResponse_Status CancelOrderResponse::Status_MAX;
+const int CancelOrderResponse::Status_ARRAYSIZE;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 // ===================================================================
 
@@ -281,9 +378,7 @@ void CreateOrderRequest::clear_order() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CreateOrderRequest::kRequestIdFieldNumber;
-const int CreateOrderRequest::kInTimestampFieldNumber;
 const int CreateOrderRequest::kOrderFieldNumber;
-const int CreateOrderRequest::kOutTimestampFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CreateOrderRequest::CreateOrderRequest()
@@ -304,16 +399,14 @@ CreateOrderRequest::CreateOrderRequest(const CreateOrderRequest& from)
   } else {
     order_ = NULL;
   }
-  ::memcpy(&request_id_, &from.request_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&out_timestamp_) -
-    reinterpret_cast<char*>(&request_id_)) + sizeof(out_timestamp_));
+  request_id_ = from.request_id_;
   // @@protoc_insertion_point(copy_constructor:FIRST.CreateOrderRequest)
 }
 
 void CreateOrderRequest::SharedCtor() {
   ::memset(&order_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&out_timestamp_) -
-      reinterpret_cast<char*>(&order_)) + sizeof(out_timestamp_));
+      reinterpret_cast<char*>(&request_id_) -
+      reinterpret_cast<char*>(&order_)) + sizeof(request_id_));
   _cached_size_ = 0;
 }
 
@@ -359,9 +452,7 @@ void CreateOrderRequest::Clear() {
     delete order_;
   }
   order_ = NULL;
-  ::memset(&request_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&out_timestamp_) -
-      reinterpret_cast<char*>(&request_id_)) + sizeof(out_timestamp_));
+  request_id_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -375,28 +466,14 @@ bool CreateOrderRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 request_id = 1;
+      // uint32 request_id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &request_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint64 in_timestamp = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &in_timestamp_)));
         } else {
           goto handle_unusual;
         }
@@ -409,20 +486,6 @@ bool CreateOrderRequest::MergePartialFromCodedStream(
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_order()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint64 out_timestamp = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &out_timestamp_)));
         } else {
           goto handle_unusual;
         }
@@ -455,25 +518,15 @@ void CreateOrderRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   if (this->request_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->request_id(), output);
-  }
-
-  // uint64 in_timestamp = 2;
-  if (this->in_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->in_timestamp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->request_id(), output);
   }
 
   // .FIRST.OrderField order = 3;
   if (this->has_order()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, *this->order_, output);
-  }
-
-  // uint64 out_timestamp = 4;
-  if (this->out_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->out_timestamp(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -490,14 +543,9 @@ void CreateOrderRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   if (this->request_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->request_id(), target);
-  }
-
-  // uint64 in_timestamp = 2;
-  if (this->in_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->in_timestamp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->request_id(), target);
   }
 
   // .FIRST.OrderField order = 3;
@@ -505,11 +553,6 @@ void CreateOrderRequest::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         3, *this->order_, deterministic, target);
-  }
-
-  // uint64 out_timestamp = 4;
-  if (this->out_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->out_timestamp(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -536,25 +579,11 @@ size_t CreateOrderRequest::ByteSizeLong() const {
         *this->order_);
   }
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   if (this->request_id() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->request_id());
-  }
-
-  // uint64 in_timestamp = 2;
-  if (this->in_timestamp() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->in_timestamp());
-  }
-
-  // uint64 out_timestamp = 4;
-  if (this->out_timestamp() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->out_timestamp());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -592,12 +621,6 @@ void CreateOrderRequest::MergeFrom(const CreateOrderRequest& from) {
   if (from.request_id() != 0) {
     set_request_id(from.request_id());
   }
-  if (from.in_timestamp() != 0) {
-    set_in_timestamp(from.in_timestamp());
-  }
-  if (from.out_timestamp() != 0) {
-    set_out_timestamp(from.out_timestamp());
-  }
 }
 
 void CreateOrderRequest::CopyFrom(const ::google::protobuf::Message& from) {
@@ -626,8 +649,6 @@ void CreateOrderRequest::InternalSwap(CreateOrderRequest* other) {
   using std::swap;
   swap(order_, other->order_);
   swap(request_id_, other->request_id_);
-  swap(in_timestamp_, other->in_timestamp_);
-  swap(out_timestamp_, other->out_timestamp_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -652,9 +673,7 @@ void CreateOrderResponse::clear_order() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CreateOrderResponse::kRequestIdFieldNumber;
-const int CreateOrderResponse::kInTimestampFieldNumber;
 const int CreateOrderResponse::kOrderFieldNumber;
-const int CreateOrderResponse::kOutTimestampFieldNumber;
 const int CreateOrderResponse::kStatusFieldNumber;
 const int CreateOrderResponse::kReasonFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -755,28 +774,14 @@ bool CreateOrderResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 request_id = 1;
+      // uint32 request_id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &request_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint64 in_timestamp = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &in_timestamp_)));
         } else {
           goto handle_unusual;
         }
@@ -789,20 +794,6 @@ bool CreateOrderResponse::MergePartialFromCodedStream(
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_order()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint64 out_timestamp = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &out_timestamp_)));
         } else {
           goto handle_unusual;
         }
@@ -866,25 +857,15 @@ void CreateOrderResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   if (this->request_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->request_id(), output);
-  }
-
-  // uint64 in_timestamp = 2;
-  if (this->in_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->in_timestamp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->request_id(), output);
   }
 
   // .FIRST.OrderField order = 3;
   if (this->has_order()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, *this->order_, output);
-  }
-
-  // uint64 out_timestamp = 4;
-  if (this->out_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->out_timestamp(), output);
   }
 
   // .FIRST.CreateOrderResponse.Status status = 5;
@@ -917,14 +898,9 @@ void CreateOrderResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   if (this->request_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->request_id(), target);
-  }
-
-  // uint64 in_timestamp = 2;
-  if (this->in_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->in_timestamp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->request_id(), target);
   }
 
   // .FIRST.OrderField order = 3;
@@ -932,11 +908,6 @@ void CreateOrderResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         3, *this->order_, deterministic, target);
-  }
-
-  // uint64 out_timestamp = 4;
-  if (this->out_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->out_timestamp(), target);
   }
 
   // .FIRST.CreateOrderResponse.Status status = 5;
@@ -987,25 +958,11 @@ size_t CreateOrderResponse::ByteSizeLong() const {
         *this->order_);
   }
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   if (this->request_id() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->request_id());
-  }
-
-  // uint64 in_timestamp = 2;
-  if (this->in_timestamp() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->in_timestamp());
-  }
-
-  // uint64 out_timestamp = 4;
-  if (this->out_timestamp() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->out_timestamp());
   }
 
   // .FIRST.CreateOrderResponse.Status status = 5;
@@ -1053,12 +1010,6 @@ void CreateOrderResponse::MergeFrom(const CreateOrderResponse& from) {
   if (from.request_id() != 0) {
     set_request_id(from.request_id());
   }
-  if (from.in_timestamp() != 0) {
-    set_in_timestamp(from.in_timestamp());
-  }
-  if (from.out_timestamp() != 0) {
-    set_out_timestamp(from.out_timestamp());
-  }
   if (from.status() != 0) {
     set_status(from.status());
   }
@@ -1091,14 +1042,741 @@ void CreateOrderResponse::InternalSwap(CreateOrderResponse* other) {
   reason_.Swap(&other->reason_);
   swap(order_, other->order_);
   swap(request_id_, other->request_id_);
-  swap(in_timestamp_, other->in_timestamp_);
-  swap(out_timestamp_, other->out_timestamp_);
   swap(status_, other->status_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata CreateOrderResponse::GetMetadata() const {
+  protobuf_first_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_first_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void CancelOrderRequest::InitAsDefaultInstance() {
+  ::FIRST::_CancelOrderRequest_default_instance_._instance.get_mutable()->order_ = const_cast< ::FIRST::OrderField*>(
+      ::FIRST::OrderField::internal_default_instance());
+}
+void CancelOrderRequest::clear_order() {
+  if (GetArenaNoVirtual() == NULL && order_ != NULL) {
+    delete order_;
+  }
+  order_ = NULL;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CancelOrderRequest::kRequestIdFieldNumber;
+const int CancelOrderRequest::kClientOrderIdFieldNumber;
+const int CancelOrderRequest::kOrderFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CancelOrderRequest::CancelOrderRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCancelOrderRequest();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:FIRST.CancelOrderRequest)
+}
+CancelOrderRequest::CancelOrderRequest(const CancelOrderRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_order()) {
+    order_ = new ::FIRST::OrderField(*from.order_);
+  } else {
+    order_ = NULL;
+  }
+  ::memcpy(&client_order_id_, &from.client_order_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&request_id_) -
+    reinterpret_cast<char*>(&client_order_id_)) + sizeof(request_id_));
+  // @@protoc_insertion_point(copy_constructor:FIRST.CancelOrderRequest)
+}
+
+void CancelOrderRequest::SharedCtor() {
+  ::memset(&order_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&request_id_) -
+      reinterpret_cast<char*>(&order_)) + sizeof(request_id_));
+  _cached_size_ = 0;
+}
+
+CancelOrderRequest::~CancelOrderRequest() {
+  // @@protoc_insertion_point(destructor:FIRST.CancelOrderRequest)
+  SharedDtor();
+}
+
+void CancelOrderRequest::SharedDtor() {
+  if (this != internal_default_instance()) delete order_;
+}
+
+void CancelOrderRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CancelOrderRequest::descriptor() {
+  ::protobuf_first_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_first_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CancelOrderRequest& CancelOrderRequest::default_instance() {
+  ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCancelOrderRequest();
+  return *internal_default_instance();
+}
+
+CancelOrderRequest* CancelOrderRequest::New(::google::protobuf::Arena* arena) const {
+  CancelOrderRequest* n = new CancelOrderRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CancelOrderRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:FIRST.CancelOrderRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaNoVirtual() == NULL && order_ != NULL) {
+    delete order_;
+  }
+  order_ = NULL;
+  ::memset(&client_order_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&request_id_) -
+      reinterpret_cast<char*>(&client_order_id_)) + sizeof(request_id_));
+  _internal_metadata_.Clear();
+}
+
+bool CancelOrderRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:FIRST.CancelOrderRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 request_id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &request_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 client_order_id = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &client_order_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .FIRST.OrderField order = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_order()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:FIRST.CancelOrderRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:FIRST.CancelOrderRequest)
+  return false;
+#undef DO_
+}
+
+void CancelOrderRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:FIRST.CancelOrderRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 request_id = 1;
+  if (this->request_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->request_id(), output);
+  }
+
+  // uint64 client_order_id = 3;
+  if (this->client_order_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->client_order_id(), output);
+  }
+
+  // .FIRST.OrderField order = 4;
+  if (this->has_order()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->order_, output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:FIRST.CancelOrderRequest)
+}
+
+::google::protobuf::uint8* CancelOrderRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:FIRST.CancelOrderRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 request_id = 1;
+  if (this->request_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->request_id(), target);
+  }
+
+  // uint64 client_order_id = 3;
+  if (this->client_order_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->client_order_id(), target);
+  }
+
+  // .FIRST.OrderField order = 4;
+  if (this->has_order()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, *this->order_, deterministic, target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:FIRST.CancelOrderRequest)
+  return target;
+}
+
+size_t CancelOrderRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:FIRST.CancelOrderRequest)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // .FIRST.OrderField order = 4;
+  if (this->has_order()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->order_);
+  }
+
+  // uint64 client_order_id = 3;
+  if (this->client_order_id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->client_order_id());
+  }
+
+  // uint32 request_id = 1;
+  if (this->request_id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->request_id());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CancelOrderRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:FIRST.CancelOrderRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CancelOrderRequest* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CancelOrderRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:FIRST.CancelOrderRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:FIRST.CancelOrderRequest)
+    MergeFrom(*source);
+  }
+}
+
+void CancelOrderRequest::MergeFrom(const CancelOrderRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:FIRST.CancelOrderRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_order()) {
+    mutable_order()->::FIRST::OrderField::MergeFrom(from.order());
+  }
+  if (from.client_order_id() != 0) {
+    set_client_order_id(from.client_order_id());
+  }
+  if (from.request_id() != 0) {
+    set_request_id(from.request_id());
+  }
+}
+
+void CancelOrderRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:FIRST.CancelOrderRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CancelOrderRequest::CopyFrom(const CancelOrderRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:FIRST.CancelOrderRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CancelOrderRequest::IsInitialized() const {
+  return true;
+}
+
+void CancelOrderRequest::Swap(CancelOrderRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CancelOrderRequest::InternalSwap(CancelOrderRequest* other) {
+  using std::swap;
+  swap(order_, other->order_);
+  swap(client_order_id_, other->client_order_id_);
+  swap(request_id_, other->request_id_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CancelOrderRequest::GetMetadata() const {
+  protobuf_first_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_first_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void CancelOrderResponse::InitAsDefaultInstance() {
+  ::FIRST::_CancelOrderResponse_default_instance_._instance.get_mutable()->order_ = const_cast< ::FIRST::OrderField*>(
+      ::FIRST::OrderField::internal_default_instance());
+}
+void CancelOrderResponse::clear_order() {
+  if (GetArenaNoVirtual() == NULL && order_ != NULL) {
+    delete order_;
+  }
+  order_ = NULL;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CancelOrderResponse::kRequestIdFieldNumber;
+const int CancelOrderResponse::kOrderFieldNumber;
+const int CancelOrderResponse::kStatusFieldNumber;
+const int CancelOrderResponse::kReasonFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CancelOrderResponse::CancelOrderResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCancelOrderResponse();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:FIRST.CancelOrderResponse)
+}
+CancelOrderResponse::CancelOrderResponse(const CancelOrderResponse& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  reason_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.reason().size() > 0) {
+    reason_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.reason_);
+  }
+  if (from.has_order()) {
+    order_ = new ::FIRST::OrderField(*from.order_);
+  } else {
+    order_ = NULL;
+  }
+  ::memcpy(&request_id_, &from.request_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&status_) -
+    reinterpret_cast<char*>(&request_id_)) + sizeof(status_));
+  // @@protoc_insertion_point(copy_constructor:FIRST.CancelOrderResponse)
+}
+
+void CancelOrderResponse::SharedCtor() {
+  reason_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&order_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&status_) -
+      reinterpret_cast<char*>(&order_)) + sizeof(status_));
+  _cached_size_ = 0;
+}
+
+CancelOrderResponse::~CancelOrderResponse() {
+  // @@protoc_insertion_point(destructor:FIRST.CancelOrderResponse)
+  SharedDtor();
+}
+
+void CancelOrderResponse::SharedDtor() {
+  reason_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete order_;
+}
+
+void CancelOrderResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CancelOrderResponse::descriptor() {
+  ::protobuf_first_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_first_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CancelOrderResponse& CancelOrderResponse::default_instance() {
+  ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCancelOrderResponse();
+  return *internal_default_instance();
+}
+
+CancelOrderResponse* CancelOrderResponse::New(::google::protobuf::Arena* arena) const {
+  CancelOrderResponse* n = new CancelOrderResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CancelOrderResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:FIRST.CancelOrderResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  reason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && order_ != NULL) {
+    delete order_;
+  }
+  order_ = NULL;
+  ::memset(&request_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&status_) -
+      reinterpret_cast<char*>(&request_id_)) + sizeof(status_));
+  _internal_metadata_.Clear();
+}
+
+bool CancelOrderResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:FIRST.CancelOrderResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 request_id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &request_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .FIRST.OrderField order = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_order()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .FIRST.CancelOrderResponse.Status status = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_status(static_cast< ::FIRST::CancelOrderResponse_Status >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string reason = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_reason()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->reason().data(), static_cast<int>(this->reason().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "FIRST.CancelOrderResponse.reason"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:FIRST.CancelOrderResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:FIRST.CancelOrderResponse)
+  return false;
+#undef DO_
+}
+
+void CancelOrderResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:FIRST.CancelOrderResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 request_id = 1;
+  if (this->request_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->request_id(), output);
+  }
+
+  // .FIRST.OrderField order = 3;
+  if (this->has_order()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->order_, output);
+  }
+
+  // .FIRST.CancelOrderResponse.Status status = 5;
+  if (this->status() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      5, this->status(), output);
+  }
+
+  // string reason = 6;
+  if (this->reason().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->reason().data(), static_cast<int>(this->reason().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "FIRST.CancelOrderResponse.reason");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->reason(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:FIRST.CancelOrderResponse)
+}
+
+::google::protobuf::uint8* CancelOrderResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:FIRST.CancelOrderResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 request_id = 1;
+  if (this->request_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->request_id(), target);
+  }
+
+  // .FIRST.OrderField order = 3;
+  if (this->has_order()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        3, *this->order_, deterministic, target);
+  }
+
+  // .FIRST.CancelOrderResponse.Status status = 5;
+  if (this->status() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      5, this->status(), target);
+  }
+
+  // string reason = 6;
+  if (this->reason().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->reason().data(), static_cast<int>(this->reason().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "FIRST.CancelOrderResponse.reason");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->reason(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:FIRST.CancelOrderResponse)
+  return target;
+}
+
+size_t CancelOrderResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:FIRST.CancelOrderResponse)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string reason = 6;
+  if (this->reason().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->reason());
+  }
+
+  // .FIRST.OrderField order = 3;
+  if (this->has_order()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->order_);
+  }
+
+  // uint32 request_id = 1;
+  if (this->request_id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->request_id());
+  }
+
+  // .FIRST.CancelOrderResponse.Status status = 5;
+  if (this->status() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CancelOrderResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:FIRST.CancelOrderResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CancelOrderResponse* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CancelOrderResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:FIRST.CancelOrderResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:FIRST.CancelOrderResponse)
+    MergeFrom(*source);
+  }
+}
+
+void CancelOrderResponse::MergeFrom(const CancelOrderResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:FIRST.CancelOrderResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.reason().size() > 0) {
+
+    reason_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.reason_);
+  }
+  if (from.has_order()) {
+    mutable_order()->::FIRST::OrderField::MergeFrom(from.order());
+  }
+  if (from.request_id() != 0) {
+    set_request_id(from.request_id());
+  }
+  if (from.status() != 0) {
+    set_status(from.status());
+  }
+}
+
+void CancelOrderResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:FIRST.CancelOrderResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CancelOrderResponse::CopyFrom(const CancelOrderResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:FIRST.CancelOrderResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CancelOrderResponse::IsInitialized() const {
+  return true;
+}
+
+void CancelOrderResponse::Swap(CancelOrderResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CancelOrderResponse::InternalSwap(CancelOrderResponse* other) {
+  using std::swap;
+  reason_.Swap(&other->reason_);
+  swap(order_, other->order_);
+  swap(request_id_, other->request_id_);
+  swap(status_, other->status_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CancelOrderResponse::GetMetadata() const {
   protobuf_first_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_first_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages];
 }

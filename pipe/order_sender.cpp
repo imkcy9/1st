@@ -23,6 +23,7 @@ order_sender::order_sender()
     add_router_msg_mapping<FIRST::OrderFeed>(&order_sender::on_order_feed);
     add_router_msg_mapping<FIRST::TradeFeed>(&order_sender::on_trade_feed);
     add_router_msg_mapping<FIRST::CreateOrderResponse>(&order_sender::on_create_order_response);
+    add_router_msg_mapping<FIRST::CancelOrderResponse>(&order_sender::on_cancel_order_response);
 }
 
 order_sender::~order_sender() {
@@ -75,6 +76,8 @@ void order_sender::zmq_timer_event(int id_) {
     orderRequest.set_request_id(1);
     orderRequest.mutable_order()->set_instrument_id("SR901");
     orderRequest.mutable_order()->set_open_close(FIRST::OpenCloseType::OPEN);
+    orderRequest.mutable_order()->set_client_id("kcy");
+    orderRequest.mutable_order()->set_account_id("chengye.ke");
     orderRequest.mutable_order()->set_hedge_flag(FIRST::HedgeFlagType::SPECULATION);
     orderRequest.mutable_order()->set_price(5000);
     orderRequest.mutable_order()->set_qty(1);
@@ -96,6 +99,23 @@ void order_sender::zmq_timer_event(int id_) {
 
 void order_sender::on_order_feed(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
     LOG_INFO("on_order_feed {}", body.ShortDebugString());
+    
+//    FIRST::OrderFeed& feed = (FIRST::OrderFeed&)body;
+//    
+//    if(feed.order().exec_type() == FIRST::ExecType::EXECTYPE_CANCELL_REJECT)
+//        return;
+//    int clOrdid = feed.order().client_order_id();
+//    FIRST::CancelOrderRequest req;
+//    req.set_request_id(1);
+//    req.set_client_order_id(clOrdid);
+//    req.mutable_order()->set_id(feed.order().id());
+//    
+//    zmq::message_t msg(req.ByteSizeLong());
+//    req.SerializePartialToArray(msg.data(), msg.size());
+//    
+//    router->send(rid, ZMQ_SNDMORE);
+//    router->send(req.GetTypeName().c_str(), req.GetTypeName().size(), ZMQ_SNDMORE);
+//    router->send(msg);
 }
 
 void order_sender::on_trade_feed(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
@@ -105,3 +125,9 @@ void order_sender::on_trade_feed(zmq::socket_t* router, zmq::message_t& rid, goo
 void order_sender::on_create_order_response(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
     LOG_INFO("on_create_order_response {}", body.ShortDebugString());
 }
+
+void order_sender::on_cancel_order_response(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
+    LOG_INFO("on_cancel_order_response {}", body.ShortDebugString());
+    
+}
+

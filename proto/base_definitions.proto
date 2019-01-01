@@ -319,28 +319,30 @@ message RspUserLoginField
 	string		    lang = 12;
 };
 
-///深度行情N档
-message DepthMarketDataNField
+///行情
+message Ticker
 {
-	///占用总字节大小
-	int32   			size = 1;
+
 	///交易日，用于给数据接收器划分到同一文件使用，基本没啥别的用处
-	int64   			trading_day = 2;
-	///日历日，实际日期
-	int64   			action_day = 3;
+	int64   			trading_day = 1;
+
 	///时间
-	int64   			update_time = 4;
+	int64   			update_time = 2;
 	///毫秒
-	int64   			update_millisec = 5;
+	int64   			update_millisec = 3;
 
 	///唯一符号，这里的用途主要给map做映射，找到通知哪个合约来行情了使用
-	string  			symbol = 6;
+	string  			symbol = 4;
 	///合约代码
-	string          	instrument_id = 7;
+	string          	instrument_id = 5;
 
-	string      		exchange_id = 8;
+	string      		exchange_id = 6;
 	///交易所代码，枚举类型，主要是用于过滤使用，效率比字符串比较要高
-	ExchangeType		exchange = 9;
+	ExchangeType		exchange = 7;
+
+        repeated    DepthField  bid_depth = 8;
+
+        repeated    DepthField  offer_depth = 9;
 
 	///最新价
 	double  			last_price = 10;
@@ -377,9 +379,6 @@ message DepthMarketDataNField
 	double  		    preopeninterest = 24;
 	///交易阶段类型
 	TradingPhaseType	trading_phase = 25;
-
-	///买档个数
-	int32    			bidcount = 26;
 };
 
 

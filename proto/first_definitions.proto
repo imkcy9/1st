@@ -6,17 +6,55 @@ package FIRST;
 
 //CreateOrderOperation
 message CreateOrderRequest {
-    uint64 request_id = 1;
-    uint64 in_timestamp = 2;
+
+    uint32 request_id = 1;
+
+    //uint64 in_timestamp = 2;
+
     OrderField order = 3;
-    uint64 out_timestamp = 4;
+
+    //uint64 out_timestamp = 4;
 }
 
 message CreateOrderResponse {
-    uint64 request_id = 1;
-    uint64 in_timestamp = 2;
+
+    uint32 request_id = 1;
+
+    //uint64 in_timestamp = 2;
+
     OrderField order = 3;
-    uint64 out_timestamp = 4;
+
+    //uint64 out_timestamp = 4;
+
+    enum Status {
+        SUCCESS = 0;
+        REJECTED = 1;
+    }
+    Status status = 5;
+    string reason = 6;
+}
+
+//
+message CancelOrderRequest {
+    uint32 request_id = 1;
+
+    //uint64 in_timestamp = 2;
+
+    uint64 client_order_id = 3;
+
+    OrderField order = 4;
+
+    //uint64 out_timestamp = 5;
+}
+
+message CancelOrderResponse {
+    uint32 request_id = 1;
+
+    //uint64 in_timestamp = 2;
+
+    OrderField order = 3;
+
+    //uint64 out_timestamp = 4;
     enum Status {
         SUCCESS = 0;
         REJECTED = 1;

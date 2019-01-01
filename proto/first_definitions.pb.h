@@ -38,7 +38,7 @@ namespace protobuf_first_5fdefinitions_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[4];
+  static const ::google::protobuf::internal::ParseTable schema[6];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -48,6 +48,10 @@ void InitDefaultsCreateOrderRequestImpl();
 void InitDefaultsCreateOrderRequest();
 void InitDefaultsCreateOrderResponseImpl();
 void InitDefaultsCreateOrderResponse();
+void InitDefaultsCancelOrderRequestImpl();
+void InitDefaultsCancelOrderRequest();
+void InitDefaultsCancelOrderResponseImpl();
+void InitDefaultsCancelOrderResponse();
 void InitDefaultsOrderFeedImpl();
 void InitDefaultsOrderFeed();
 void InitDefaultsTradeFeedImpl();
@@ -55,11 +59,19 @@ void InitDefaultsTradeFeed();
 inline void InitDefaults() {
   InitDefaultsCreateOrderRequest();
   InitDefaultsCreateOrderResponse();
+  InitDefaultsCancelOrderRequest();
+  InitDefaultsCancelOrderResponse();
   InitDefaultsOrderFeed();
   InitDefaultsTradeFeed();
 }
 }  // namespace protobuf_first_5fdefinitions_2eproto
 namespace FIRST {
+class CancelOrderRequest;
+class CancelOrderRequestDefaultTypeInternal;
+extern CancelOrderRequestDefaultTypeInternal _CancelOrderRequest_default_instance_;
+class CancelOrderResponse;
+class CancelOrderResponseDefaultTypeInternal;
+extern CancelOrderResponseDefaultTypeInternal _CancelOrderResponse_default_instance_;
 class CreateOrderRequest;
 class CreateOrderRequestDefaultTypeInternal;
 extern CreateOrderRequestDefaultTypeInternal _CreateOrderRequest_default_instance_;
@@ -95,6 +107,27 @@ inline bool CreateOrderResponse_Status_Parse(
     const ::std::string& name, CreateOrderResponse_Status* value) {
   return ::google::protobuf::internal::ParseNamedEnum<CreateOrderResponse_Status>(
     CreateOrderResponse_Status_descriptor(), name, value);
+}
+enum CancelOrderResponse_Status {
+  CancelOrderResponse_Status_SUCCESS = 0,
+  CancelOrderResponse_Status_REJECTED = 1,
+  CancelOrderResponse_Status_CancelOrderResponse_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  CancelOrderResponse_Status_CancelOrderResponse_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool CancelOrderResponse_Status_IsValid(int value);
+const CancelOrderResponse_Status CancelOrderResponse_Status_Status_MIN = CancelOrderResponse_Status_SUCCESS;
+const CancelOrderResponse_Status CancelOrderResponse_Status_Status_MAX = CancelOrderResponse_Status_REJECTED;
+const int CancelOrderResponse_Status_Status_ARRAYSIZE = CancelOrderResponse_Status_Status_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* CancelOrderResponse_Status_descriptor();
+inline const ::std::string& CancelOrderResponse_Status_Name(CancelOrderResponse_Status value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    CancelOrderResponse_Status_descriptor(), value);
+}
+inline bool CancelOrderResponse_Status_Parse(
+    const ::std::string& name, CancelOrderResponse_Status* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<CancelOrderResponse_Status>(
+    CancelOrderResponse_Status_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -189,32 +222,18 @@ class CreateOrderRequest : public ::google::protobuf::Message /* @@protoc_insert
   ::FIRST::OrderField* mutable_order();
   void set_allocated_order(::FIRST::OrderField* order);
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   void clear_request_id();
   static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::uint64 request_id() const;
-  void set_request_id(::google::protobuf::uint64 value);
-
-  // uint64 in_timestamp = 2;
-  void clear_in_timestamp();
-  static const int kInTimestampFieldNumber = 2;
-  ::google::protobuf::uint64 in_timestamp() const;
-  void set_in_timestamp(::google::protobuf::uint64 value);
-
-  // uint64 out_timestamp = 4;
-  void clear_out_timestamp();
-  static const int kOutTimestampFieldNumber = 4;
-  ::google::protobuf::uint64 out_timestamp() const;
-  void set_out_timestamp(::google::protobuf::uint64 value);
+  ::google::protobuf::uint32 request_id() const;
+  void set_request_id(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:FIRST.CreateOrderRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::FIRST::OrderField* order_;
-  ::google::protobuf::uint64 request_id_;
-  ::google::protobuf::uint64 in_timestamp_;
-  ::google::protobuf::uint64 out_timestamp_;
+  ::google::protobuf::uint32 request_id_;
   mutable int _cached_size_;
   friend struct ::protobuf_first_5fdefinitions_2eproto::TableStruct;
   friend void ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCreateOrderRequestImpl();
@@ -352,23 +371,11 @@ class CreateOrderResponse : public ::google::protobuf::Message /* @@protoc_inser
   ::FIRST::OrderField* mutable_order();
   void set_allocated_order(::FIRST::OrderField* order);
 
-  // uint64 request_id = 1;
+  // uint32 request_id = 1;
   void clear_request_id();
   static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::uint64 request_id() const;
-  void set_request_id(::google::protobuf::uint64 value);
-
-  // uint64 in_timestamp = 2;
-  void clear_in_timestamp();
-  static const int kInTimestampFieldNumber = 2;
-  ::google::protobuf::uint64 in_timestamp() const;
-  void set_in_timestamp(::google::protobuf::uint64 value);
-
-  // uint64 out_timestamp = 4;
-  void clear_out_timestamp();
-  static const int kOutTimestampFieldNumber = 4;
-  ::google::protobuf::uint64 out_timestamp() const;
-  void set_out_timestamp(::google::protobuf::uint64 value);
+  ::google::protobuf::uint32 request_id() const;
+  void set_request_id(::google::protobuf::uint32 value);
 
   // .FIRST.CreateOrderResponse.Status status = 5;
   void clear_status();
@@ -382,13 +389,284 @@ class CreateOrderResponse : public ::google::protobuf::Message /* @@protoc_inser
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr reason_;
   ::FIRST::OrderField* order_;
-  ::google::protobuf::uint64 request_id_;
-  ::google::protobuf::uint64 in_timestamp_;
-  ::google::protobuf::uint64 out_timestamp_;
+  ::google::protobuf::uint32 request_id_;
   int status_;
   mutable int _cached_size_;
   friend struct ::protobuf_first_5fdefinitions_2eproto::TableStruct;
   friend void ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCreateOrderResponseImpl();
+};
+// -------------------------------------------------------------------
+
+class CancelOrderRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:FIRST.CancelOrderRequest) */ {
+ public:
+  CancelOrderRequest();
+  virtual ~CancelOrderRequest();
+
+  CancelOrderRequest(const CancelOrderRequest& from);
+
+  inline CancelOrderRequest& operator=(const CancelOrderRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CancelOrderRequest(CancelOrderRequest&& from) noexcept
+    : CancelOrderRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline CancelOrderRequest& operator=(CancelOrderRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CancelOrderRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CancelOrderRequest* internal_default_instance() {
+    return reinterpret_cast<const CancelOrderRequest*>(
+               &_CancelOrderRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(CancelOrderRequest* other);
+  friend void swap(CancelOrderRequest& a, CancelOrderRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CancelOrderRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CancelOrderRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CancelOrderRequest& from);
+  void MergeFrom(const CancelOrderRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CancelOrderRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .FIRST.OrderField order = 4;
+  bool has_order() const;
+  void clear_order();
+  static const int kOrderFieldNumber = 4;
+  const ::FIRST::OrderField& order() const;
+  ::FIRST::OrderField* release_order();
+  ::FIRST::OrderField* mutable_order();
+  void set_allocated_order(::FIRST::OrderField* order);
+
+  // uint64 client_order_id = 3;
+  void clear_client_order_id();
+  static const int kClientOrderIdFieldNumber = 3;
+  ::google::protobuf::uint64 client_order_id() const;
+  void set_client_order_id(::google::protobuf::uint64 value);
+
+  // uint32 request_id = 1;
+  void clear_request_id();
+  static const int kRequestIdFieldNumber = 1;
+  ::google::protobuf::uint32 request_id() const;
+  void set_request_id(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:FIRST.CancelOrderRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::FIRST::OrderField* order_;
+  ::google::protobuf::uint64 client_order_id_;
+  ::google::protobuf::uint32 request_id_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_first_5fdefinitions_2eproto::TableStruct;
+  friend void ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCancelOrderRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class CancelOrderResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:FIRST.CancelOrderResponse) */ {
+ public:
+  CancelOrderResponse();
+  virtual ~CancelOrderResponse();
+
+  CancelOrderResponse(const CancelOrderResponse& from);
+
+  inline CancelOrderResponse& operator=(const CancelOrderResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CancelOrderResponse(CancelOrderResponse&& from) noexcept
+    : CancelOrderResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline CancelOrderResponse& operator=(CancelOrderResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CancelOrderResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CancelOrderResponse* internal_default_instance() {
+    return reinterpret_cast<const CancelOrderResponse*>(
+               &_CancelOrderResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(CancelOrderResponse* other);
+  friend void swap(CancelOrderResponse& a, CancelOrderResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CancelOrderResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CancelOrderResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CancelOrderResponse& from);
+  void MergeFrom(const CancelOrderResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CancelOrderResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  typedef CancelOrderResponse_Status Status;
+  static const Status SUCCESS =
+    CancelOrderResponse_Status_SUCCESS;
+  static const Status REJECTED =
+    CancelOrderResponse_Status_REJECTED;
+  static inline bool Status_IsValid(int value) {
+    return CancelOrderResponse_Status_IsValid(value);
+  }
+  static const Status Status_MIN =
+    CancelOrderResponse_Status_Status_MIN;
+  static const Status Status_MAX =
+    CancelOrderResponse_Status_Status_MAX;
+  static const int Status_ARRAYSIZE =
+    CancelOrderResponse_Status_Status_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Status_descriptor() {
+    return CancelOrderResponse_Status_descriptor();
+  }
+  static inline const ::std::string& Status_Name(Status value) {
+    return CancelOrderResponse_Status_Name(value);
+  }
+  static inline bool Status_Parse(const ::std::string& name,
+      Status* value) {
+    return CancelOrderResponse_Status_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // string reason = 6;
+  void clear_reason();
+  static const int kReasonFieldNumber = 6;
+  const ::std::string& reason() const;
+  void set_reason(const ::std::string& value);
+  #if LANG_CXX11
+  void set_reason(::std::string&& value);
+  #endif
+  void set_reason(const char* value);
+  void set_reason(const char* value, size_t size);
+  ::std::string* mutable_reason();
+  ::std::string* release_reason();
+  void set_allocated_reason(::std::string* reason);
+
+  // .FIRST.OrderField order = 3;
+  bool has_order() const;
+  void clear_order();
+  static const int kOrderFieldNumber = 3;
+  const ::FIRST::OrderField& order() const;
+  ::FIRST::OrderField* release_order();
+  ::FIRST::OrderField* mutable_order();
+  void set_allocated_order(::FIRST::OrderField* order);
+
+  // uint32 request_id = 1;
+  void clear_request_id();
+  static const int kRequestIdFieldNumber = 1;
+  ::google::protobuf::uint32 request_id() const;
+  void set_request_id(::google::protobuf::uint32 value);
+
+  // .FIRST.CancelOrderResponse.Status status = 5;
+  void clear_status();
+  static const int kStatusFieldNumber = 5;
+  ::FIRST::CancelOrderResponse_Status status() const;
+  void set_status(::FIRST::CancelOrderResponse_Status value);
+
+  // @@protoc_insertion_point(class_scope:FIRST.CancelOrderResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr reason_;
+  ::FIRST::OrderField* order_;
+  ::google::protobuf::uint32 request_id_;
+  int status_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_first_5fdefinitions_2eproto::TableStruct;
+  friend void ::protobuf_first_5fdefinitions_2eproto::InitDefaultsCancelOrderResponseImpl();
 };
 // -------------------------------------------------------------------
 
@@ -427,7 +705,7 @@ class OrderFeed : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_OrderFeed_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    4;
 
   void Swap(OrderFeed* other);
   friend void swap(OrderFeed& a, OrderFeed& b) {
@@ -550,7 +828,7 @@ class TradeFeed : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_TradeFeed_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
+    5;
 
   void Swap(TradeFeed* other);
   friend void swap(TradeFeed& a, TradeFeed& b) {
@@ -647,32 +925,18 @@ class TradeFeed : public ::google::protobuf::Message /* @@protoc_insertion_point
 #endif  // __GNUC__
 // CreateOrderRequest
 
-// uint64 request_id = 1;
+// uint32 request_id = 1;
 inline void CreateOrderRequest::clear_request_id() {
-  request_id_ = GOOGLE_ULONGLONG(0);
+  request_id_ = 0u;
 }
-inline ::google::protobuf::uint64 CreateOrderRequest::request_id() const {
+inline ::google::protobuf::uint32 CreateOrderRequest::request_id() const {
   // @@protoc_insertion_point(field_get:FIRST.CreateOrderRequest.request_id)
   return request_id_;
 }
-inline void CreateOrderRequest::set_request_id(::google::protobuf::uint64 value) {
+inline void CreateOrderRequest::set_request_id(::google::protobuf::uint32 value) {
   
   request_id_ = value;
   // @@protoc_insertion_point(field_set:FIRST.CreateOrderRequest.request_id)
-}
-
-// uint64 in_timestamp = 2;
-inline void CreateOrderRequest::clear_in_timestamp() {
-  in_timestamp_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 CreateOrderRequest::in_timestamp() const {
-  // @@protoc_insertion_point(field_get:FIRST.CreateOrderRequest.in_timestamp)
-  return in_timestamp_;
-}
-inline void CreateOrderRequest::set_in_timestamp(::google::protobuf::uint64 value) {
-  
-  in_timestamp_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.CreateOrderRequest.in_timestamp)
 }
 
 // .FIRST.OrderField order = 3;
@@ -719,50 +983,22 @@ inline void CreateOrderRequest::set_allocated_order(::FIRST::OrderField* order) 
   // @@protoc_insertion_point(field_set_allocated:FIRST.CreateOrderRequest.order)
 }
 
-// uint64 out_timestamp = 4;
-inline void CreateOrderRequest::clear_out_timestamp() {
-  out_timestamp_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 CreateOrderRequest::out_timestamp() const {
-  // @@protoc_insertion_point(field_get:FIRST.CreateOrderRequest.out_timestamp)
-  return out_timestamp_;
-}
-inline void CreateOrderRequest::set_out_timestamp(::google::protobuf::uint64 value) {
-  
-  out_timestamp_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.CreateOrderRequest.out_timestamp)
-}
-
 // -------------------------------------------------------------------
 
 // CreateOrderResponse
 
-// uint64 request_id = 1;
+// uint32 request_id = 1;
 inline void CreateOrderResponse::clear_request_id() {
-  request_id_ = GOOGLE_ULONGLONG(0);
+  request_id_ = 0u;
 }
-inline ::google::protobuf::uint64 CreateOrderResponse::request_id() const {
+inline ::google::protobuf::uint32 CreateOrderResponse::request_id() const {
   // @@protoc_insertion_point(field_get:FIRST.CreateOrderResponse.request_id)
   return request_id_;
 }
-inline void CreateOrderResponse::set_request_id(::google::protobuf::uint64 value) {
+inline void CreateOrderResponse::set_request_id(::google::protobuf::uint32 value) {
   
   request_id_ = value;
   // @@protoc_insertion_point(field_set:FIRST.CreateOrderResponse.request_id)
-}
-
-// uint64 in_timestamp = 2;
-inline void CreateOrderResponse::clear_in_timestamp() {
-  in_timestamp_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 CreateOrderResponse::in_timestamp() const {
-  // @@protoc_insertion_point(field_get:FIRST.CreateOrderResponse.in_timestamp)
-  return in_timestamp_;
-}
-inline void CreateOrderResponse::set_in_timestamp(::google::protobuf::uint64 value) {
-  
-  in_timestamp_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.CreateOrderResponse.in_timestamp)
 }
 
 // .FIRST.OrderField order = 3;
@@ -807,20 +1043,6 @@ inline void CreateOrderResponse::set_allocated_order(::FIRST::OrderField* order)
   }
   order_ = order;
   // @@protoc_insertion_point(field_set_allocated:FIRST.CreateOrderResponse.order)
-}
-
-// uint64 out_timestamp = 4;
-inline void CreateOrderResponse::clear_out_timestamp() {
-  out_timestamp_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 CreateOrderResponse::out_timestamp() const {
-  // @@protoc_insertion_point(field_get:FIRST.CreateOrderResponse.out_timestamp)
-  return out_timestamp_;
-}
-inline void CreateOrderResponse::set_out_timestamp(::google::protobuf::uint64 value) {
-  
-  out_timestamp_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.CreateOrderResponse.out_timestamp)
 }
 
 // .FIRST.CreateOrderResponse.Status status = 5;
@@ -888,6 +1110,211 @@ inline void CreateOrderResponse::set_allocated_reason(::std::string* reason) {
   }
   reason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), reason);
   // @@protoc_insertion_point(field_set_allocated:FIRST.CreateOrderResponse.reason)
+}
+
+// -------------------------------------------------------------------
+
+// CancelOrderRequest
+
+// uint32 request_id = 1;
+inline void CancelOrderRequest::clear_request_id() {
+  request_id_ = 0u;
+}
+inline ::google::protobuf::uint32 CancelOrderRequest::request_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderRequest.request_id)
+  return request_id_;
+}
+inline void CancelOrderRequest::set_request_id(::google::protobuf::uint32 value) {
+  
+  request_id_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.CancelOrderRequest.request_id)
+}
+
+// uint64 client_order_id = 3;
+inline void CancelOrderRequest::clear_client_order_id() {
+  client_order_id_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 CancelOrderRequest::client_order_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderRequest.client_order_id)
+  return client_order_id_;
+}
+inline void CancelOrderRequest::set_client_order_id(::google::protobuf::uint64 value) {
+  
+  client_order_id_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.CancelOrderRequest.client_order_id)
+}
+
+// .FIRST.OrderField order = 4;
+inline bool CancelOrderRequest::has_order() const {
+  return this != internal_default_instance() && order_ != NULL;
+}
+inline const ::FIRST::OrderField& CancelOrderRequest::order() const {
+  const ::FIRST::OrderField* p = order_;
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderRequest.order)
+  return p != NULL ? *p : *reinterpret_cast<const ::FIRST::OrderField*>(
+      &::FIRST::_OrderField_default_instance_);
+}
+inline ::FIRST::OrderField* CancelOrderRequest::release_order() {
+  // @@protoc_insertion_point(field_release:FIRST.CancelOrderRequest.order)
+  
+  ::FIRST::OrderField* temp = order_;
+  order_ = NULL;
+  return temp;
+}
+inline ::FIRST::OrderField* CancelOrderRequest::mutable_order() {
+  
+  if (order_ == NULL) {
+    order_ = new ::FIRST::OrderField;
+  }
+  // @@protoc_insertion_point(field_mutable:FIRST.CancelOrderRequest.order)
+  return order_;
+}
+inline void CancelOrderRequest::set_allocated_order(::FIRST::OrderField* order) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(order_);
+  }
+  if (order) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      order = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, order, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  order_ = order;
+  // @@protoc_insertion_point(field_set_allocated:FIRST.CancelOrderRequest.order)
+}
+
+// -------------------------------------------------------------------
+
+// CancelOrderResponse
+
+// uint32 request_id = 1;
+inline void CancelOrderResponse::clear_request_id() {
+  request_id_ = 0u;
+}
+inline ::google::protobuf::uint32 CancelOrderResponse::request_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderResponse.request_id)
+  return request_id_;
+}
+inline void CancelOrderResponse::set_request_id(::google::protobuf::uint32 value) {
+  
+  request_id_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.CancelOrderResponse.request_id)
+}
+
+// .FIRST.OrderField order = 3;
+inline bool CancelOrderResponse::has_order() const {
+  return this != internal_default_instance() && order_ != NULL;
+}
+inline const ::FIRST::OrderField& CancelOrderResponse::order() const {
+  const ::FIRST::OrderField* p = order_;
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderResponse.order)
+  return p != NULL ? *p : *reinterpret_cast<const ::FIRST::OrderField*>(
+      &::FIRST::_OrderField_default_instance_);
+}
+inline ::FIRST::OrderField* CancelOrderResponse::release_order() {
+  // @@protoc_insertion_point(field_release:FIRST.CancelOrderResponse.order)
+  
+  ::FIRST::OrderField* temp = order_;
+  order_ = NULL;
+  return temp;
+}
+inline ::FIRST::OrderField* CancelOrderResponse::mutable_order() {
+  
+  if (order_ == NULL) {
+    order_ = new ::FIRST::OrderField;
+  }
+  // @@protoc_insertion_point(field_mutable:FIRST.CancelOrderResponse.order)
+  return order_;
+}
+inline void CancelOrderResponse::set_allocated_order(::FIRST::OrderField* order) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(order_);
+  }
+  if (order) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      order = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, order, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  order_ = order;
+  // @@protoc_insertion_point(field_set_allocated:FIRST.CancelOrderResponse.order)
+}
+
+// .FIRST.CancelOrderResponse.Status status = 5;
+inline void CancelOrderResponse::clear_status() {
+  status_ = 0;
+}
+inline ::FIRST::CancelOrderResponse_Status CancelOrderResponse::status() const {
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderResponse.status)
+  return static_cast< ::FIRST::CancelOrderResponse_Status >(status_);
+}
+inline void CancelOrderResponse::set_status(::FIRST::CancelOrderResponse_Status value) {
+  
+  status_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.CancelOrderResponse.status)
+}
+
+// string reason = 6;
+inline void CancelOrderResponse::clear_reason() {
+  reason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CancelOrderResponse::reason() const {
+  // @@protoc_insertion_point(field_get:FIRST.CancelOrderResponse.reason)
+  return reason_.GetNoArena();
+}
+inline void CancelOrderResponse::set_reason(const ::std::string& value) {
+  
+  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:FIRST.CancelOrderResponse.reason)
+}
+#if LANG_CXX11
+inline void CancelOrderResponse::set_reason(::std::string&& value) {
+  
+  reason_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:FIRST.CancelOrderResponse.reason)
+}
+#endif
+inline void CancelOrderResponse::set_reason(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:FIRST.CancelOrderResponse.reason)
+}
+inline void CancelOrderResponse::set_reason(const char* value, size_t size) {
+  
+  reason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:FIRST.CancelOrderResponse.reason)
+}
+inline ::std::string* CancelOrderResponse::mutable_reason() {
+  
+  // @@protoc_insertion_point(field_mutable:FIRST.CancelOrderResponse.reason)
+  return reason_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CancelOrderResponse::release_reason() {
+  // @@protoc_insertion_point(field_release:FIRST.CancelOrderResponse.reason)
+  
+  return reason_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CancelOrderResponse::set_allocated_reason(::std::string* reason) {
+  if (reason != NULL) {
+    
+  } else {
+    
+  }
+  reason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), reason);
+  // @@protoc_insertion_point(field_set_allocated:FIRST.CancelOrderResponse.reason)
 }
 
 // -------------------------------------------------------------------
@@ -1079,6 +1506,10 @@ inline void TradeFeed::set_out_timestamp(::google::protobuf::uint64 value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -1091,6 +1522,11 @@ template <> struct is_proto_enum< ::FIRST::CreateOrderResponse_Status> : ::googl
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::FIRST::CreateOrderResponse_Status>() {
   return ::FIRST::CreateOrderResponse_Status_descriptor();
+}
+template <> struct is_proto_enum< ::FIRST::CancelOrderResponse_Status> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::FIRST::CancelOrderResponse_Status>() {
+  return ::FIRST::CancelOrderResponse_Status_descriptor();
 }
 
 }  // namespace protobuf

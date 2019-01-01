@@ -70,11 +70,11 @@ class RspUserLoginFieldDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<RspUserLoginField>
       _instance;
 } _RspUserLoginField_default_instance_;
-class DepthMarketDataNFieldDefaultTypeInternal {
+class TickerDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<DepthMarketDataNField>
+  ::google::protobuf::internal::ExplicitlyConstructed<Ticker>
       _instance;
-} _DepthMarketDataNField_default_instance_;
+} _Ticker_default_instance_;
 class DepthFieldDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<DepthField>
@@ -322,7 +322,7 @@ void InitDefaultsRspUserLoginField() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsRspUserLoginFieldImpl);
 }
 
-void InitDefaultsDepthMarketDataNFieldImpl() {
+void InitDefaultsTickerImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
 #ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
@@ -330,17 +330,18 @@ void InitDefaultsDepthMarketDataNFieldImpl() {
 #else
   ::google::protobuf::internal::InitProtobufDefaults();
 #endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_base_5fdefinitions_2eproto::InitDefaultsDepthField();
   {
-    void* ptr = &::FIRST::_DepthMarketDataNField_default_instance_;
-    new (ptr) ::FIRST::DepthMarketDataNField();
+    void* ptr = &::FIRST::_Ticker_default_instance_;
+    new (ptr) ::FIRST::Ticker();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::FIRST::DepthMarketDataNField::InitAsDefaultInstance();
+  ::FIRST::Ticker::InitAsDefaultInstance();
 }
 
-void InitDefaultsDepthMarketDataNField() {
+void InitDefaultsTicker() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsDepthMarketDataNFieldImpl);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsTickerImpl);
 }
 
 void InitDefaultsDepthFieldImpl() {
@@ -702,36 +703,35 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::RspUserLoginField, version_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::RspUserLoginField, lang_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, size_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, trading_day_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, action_day_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, update_time_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, update_millisec_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, symbol_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, instrument_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, exchange_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, exchange_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, last_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, volume_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, turnover_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, openinterest_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, average_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, open_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, highest_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, lowest_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, close_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, settlement_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, upperlimit_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, lowerlimit_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, preclose_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, presettlement_price_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, preopeninterest_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, trading_phase_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthMarketDataNField, bidcount_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, trading_day_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, update_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, update_millisec_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, symbol_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, instrument_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, exchange_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, exchange_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, bid_depth_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, offer_depth_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, last_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, volume_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, turnover_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, openinterest_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, average_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, open_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, highest_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, lowest_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, close_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, settlement_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, upperlimit_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, lowerlimit_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, preclose_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, presettlement_price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, preopeninterest_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::Ticker, trading_phase_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::DepthField, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -837,14 +837,14 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 176, -1, sizeof(::FIRST::ErrorField)},
   { 185, -1, sizeof(::FIRST::LogField)},
   { 192, -1, sizeof(::FIRST::RspUserLoginField)},
-  { 208, -1, sizeof(::FIRST::DepthMarketDataNField)},
-  { 239, -1, sizeof(::FIRST::DepthField)},
-  { 247, -1, sizeof(::FIRST::InstrumentField)},
-  { 269, -1, sizeof(::FIRST::AccountField)},
-  { 294, -1, sizeof(::FIRST::QuoteRequestField)},
-  { 305, -1, sizeof(::FIRST::SettlementInfoField)},
-  { 312, -1, sizeof(::FIRST::InvestorField)},
-  { 322, -1, sizeof(::FIRST::InstrumentStatusField)},
+  { 208, -1, sizeof(::FIRST::Ticker)},
+  { 238, -1, sizeof(::FIRST::DepthField)},
+  { 246, -1, sizeof(::FIRST::InstrumentField)},
+  { 268, -1, sizeof(::FIRST::AccountField)},
+  { 293, -1, sizeof(::FIRST::QuoteRequestField)},
+  { 304, -1, sizeof(::FIRST::SettlementInfoField)},
+  { 311, -1, sizeof(::FIRST::InvestorField)},
+  { 321, -1, sizeof(::FIRST::InstrumentStatusField)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -858,7 +858,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_ErrorField_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_LogField_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_RspUserLoginField_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_DepthMarketDataNField_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_Ticker_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_DepthField_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_InstrumentField_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::FIRST::_AccountField_default_instance_),
@@ -987,63 +987,63 @@ void AddDescriptorsImpl() {
       "d\030\004 \001(\t\022\017\n\007user_id\030\005 \001(\t\022\021\n\taccountid\030\006 "
       "\001(\t\022\025\n\rinvestor_name\030\007 \001(\t\022\021\n\txerror_id\030"
       "\010 \001(\005\022\023\n\013raw_errorid\030\t \001(\005\022\014\n\004text\030\n \001(\t"
-      "\022\017\n\007version\030\013 \001(\t\022\014\n\004lang\030\014 \001(\t\"\366\004\n\025Dept"
-      "hMarketDataNField\022\014\n\004size\030\001 \001(\005\022\023\n\013tradi"
-      "ng_day\030\002 \001(\003\022\022\n\naction_day\030\003 \001(\003\022\023\n\013upda"
-      "te_time\030\004 \001(\003\022\027\n\017update_millisec\030\005 \001(\003\022\016"
-      "\n\006symbol\030\006 \001(\t\022\025\n\rinstrument_id\030\007 \001(\t\022\023\n"
-      "\013exchange_id\030\010 \001(\t\022%\n\010exchange\030\t \001(\0162\023.F"
-      "IRST.ExchangeType\022\022\n\nlast_price\030\n \001(\001\022\016\n"
-      "\006volume\030\013 \001(\001\022\020\n\010turnover\030\014 \001(\001\022\024\n\014openi"
-      "nterest\030\r \001(\001\022\025\n\raverage_price\030\016 \001(\001\022\022\n\n"
-      "open_price\030\017 \001(\001\022\025\n\rhighest_price\030\020 \001(\001\022"
-      "\024\n\014lowest_price\030\021 \001(\001\022\023\n\013close_price\030\022 \001"
-      "(\001\022\030\n\020settlement_price\030\023 \001(\001\022\030\n\020upperlim"
-      "it_price\030\024 \001(\001\022\030\n\020lowerlimit_price\030\025 \001(\001"
-      "\022\026\n\016preclose_price\030\026 \001(\001\022\033\n\023presettlemen"
-      "t_price\030\027 \001(\001\022\027\n\017preopeninterest\030\030 \001(\001\022."
-      "\n\rtrading_phase\030\031 \001(\0162\027.FIRST.TradingPha"
-      "seType\022\020\n\010bidcount\030\032 \001(\005\"8\n\nDepthField\022\r"
-      "\n\005price\030\001 \001(\001\022\014\n\004size\030\002 \001(\001\022\r\n\005count\030\003 \001"
-      "(\001\"\274\003\n\017InstrumentField\022\027\n\017instrument_nam"
-      "e\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\022\025\n\rinstrument_id"
-      "\030\003 \001(\t\022\023\n\013exchange_id\030\004 \001(\t\022\021\n\tclient_id"
-      "\030\005 \001(\t\022\022\n\naccount_id\030\006 \001(\t\022\027\n\017exchange_i"
-      "nstid\030\007 \001(\t\022#\n\004type\030\010 \001(\0162\025.FIRST.Instru"
-      "mentType\022\027\n\017volume_multiple\030\t \001(\005\022\022\n\npri"
-      "ce_tick\030\n \001(\001\022\023\n\013expire_date\030\013 \001(\005\022\024\n\014st"
-      "rike_price\030\014 \001(\001\022$\n\014options_type\030\r \001(\0162\016"
-      ".FIRST.PutCall\022\022\n\nproduct_id\030\016 \001(\t\022\032\n\022un"
-      "derlying_instrid\030\017 \001(\t\0220\n\016instlife_phase"
-      "\030\020 \001(\0162\030.FIRST.InstLifePhaseType\022\017\n\007is_l"
-      "ast\030\021 \001(\010\"\265\003\n\014AccountField\022\021\n\tclient_id\030"
-      "\001 \001(\t\022\022\n\naccount_id\030\002 \001(\t\022\023\n\013currency_id"
-      "\030\003 \001(\t\022\023\n\013pre_balance\030\004 \001(\001\022\023\n\013curr_marg"
-      "in\030\005 \001(\001\022\024\n\014close_profit\030\006 \001(\001\022\027\n\017positi"
-      "on_profit\030\007 \001(\001\022\017\n\007balance\030\010 \001(\001\022\021\n\tavai"
-      "lable\030\t \001(\001\022\017\n\007deposit\030\n \001(\001\022\020\n\010withdraw"
-      "\030\013 \001(\001\022\025\n\rwithdrawquota\030\014 \001(\001\022\033\n\023frozen_"
-      "transfer_fee\030\r \001(\001\022\030\n\020frozen_stamp_tax\030\016"
-      " \001(\001\022\031\n\021frozen_commission\030\017 \001(\001\022\023\n\013froze"
-      "n_cash\030\020 \001(\001\022\024\n\014transfer_fee\030\021 \001(\001\022\021\n\tst"
-      "amp_tax\030\022 \001(\001\022\022\n\ncommission\030\023 \001(\001\022\016\n\006cas"
-      "hin\030\024 \001(\001\"\212\001\n\021QuoteRequestField\022\016\n\006symbo"
-      "l\030\001 \001(\t\022\025\n\rinstrument_id\030\002 \001(\t\022\023\n\013exchan"
-      "ge_id\030\003 \001(\t\022\023\n\013trading_day\030\004 \001(\005\022\022\n\nquot"
-      "e_time\030\005 \001(\003\022\020\n\010quote_id\030\006 \001(\t\"8\n\023Settle"
-      "mentInfoField\022\014\n\004size\030\001 \001(\005\022\023\n\013trading_d"
-      "ay\030\002 \001(\003\"\232\001\n\rInvestorField\022\023\n\013investor_i"
-      "d\030\001 \001(\t\022\021\n\tbroker_id\030\002 \001(\t\022/\n\024identified"
-      "_card_type\030\003 \001(\0162\021.FIRST.IdCardType\022\031\n\021i"
-      "dentified_cardno\030\004 \001(\t\022\025\n\rinvestor_name\030"
-      "\005 \001(\t\"\233\001\n\025InstrumentStatusField\022\016\n\006symbo"
-      "l\030\001 \001(\t\022\025\n\rinstrument_id\030\002 \001(\t\022\023\n\013exchan"
-      "ge_id\030\003 \001(\t\0222\n\021instrument_status\030\004 \001(\0162\027"
-      ".FIRST.TradingPhaseType\022\022\n\nenter_time\030\005 "
-      "\001(\003b\006proto3"
+      "\022\017\n\007version\030\013 \001(\t\022\014\n\004lang\030\014 \001(\t\"\201\005\n\006Tick"
+      "er\022\023\n\013trading_day\030\001 \001(\003\022\023\n\013update_time\030\002"
+      " \001(\003\022\027\n\017update_millisec\030\003 \001(\003\022\016\n\006symbol\030"
+      "\004 \001(\t\022\025\n\rinstrument_id\030\005 \001(\t\022\023\n\013exchange"
+      "_id\030\006 \001(\t\022%\n\010exchange\030\007 \001(\0162\023.FIRST.Exch"
+      "angeType\022$\n\tbid_depth\030\010 \003(\0132\021.FIRST.Dept"
+      "hField\022&\n\013offer_depth\030\t \003(\0132\021.FIRST.Dept"
+      "hField\022\022\n\nlast_price\030\n \001(\001\022\016\n\006volume\030\013 \001"
+      "(\001\022\020\n\010turnover\030\014 \001(\001\022\024\n\014openinterest\030\r \001"
+      "(\001\022\025\n\raverage_price\030\016 \001(\001\022\022\n\nopen_price\030"
+      "\017 \001(\001\022\025\n\rhighest_price\030\020 \001(\001\022\024\n\014lowest_p"
+      "rice\030\021 \001(\001\022\023\n\013close_price\030\022 \001(\001\022\030\n\020settl"
+      "ement_price\030\023 \001(\001\022\030\n\020upperlimit_price\030\024 "
+      "\001(\001\022\030\n\020lowerlimit_price\030\025 \001(\001\022\026\n\016preclos"
+      "e_price\030\026 \001(\001\022\033\n\023presettlement_price\030\027 \001"
+      "(\001\022\027\n\017preopeninterest\030\030 \001(\001\022.\n\rtrading_p"
+      "hase\030\031 \001(\0162\027.FIRST.TradingPhaseType\"8\n\nD"
+      "epthField\022\r\n\005price\030\001 \001(\001\022\014\n\004size\030\002 \001(\001\022\r"
+      "\n\005count\030\003 \001(\001\"\274\003\n\017InstrumentField\022\027\n\017ins"
+      "trument_name\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\022\025\n\rin"
+      "strument_id\030\003 \001(\t\022\023\n\013exchange_id\030\004 \001(\t\022\021"
+      "\n\tclient_id\030\005 \001(\t\022\022\n\naccount_id\030\006 \001(\t\022\027\n"
+      "\017exchange_instid\030\007 \001(\t\022#\n\004type\030\010 \001(\0162\025.F"
+      "IRST.InstrumentType\022\027\n\017volume_multiple\030\t"
+      " \001(\005\022\022\n\nprice_tick\030\n \001(\001\022\023\n\013expire_date\030"
+      "\013 \001(\005\022\024\n\014strike_price\030\014 \001(\001\022$\n\014options_t"
+      "ype\030\r \001(\0162\016.FIRST.PutCall\022\022\n\nproduct_id\030"
+      "\016 \001(\t\022\032\n\022underlying_instrid\030\017 \001(\t\0220\n\016ins"
+      "tlife_phase\030\020 \001(\0162\030.FIRST.InstLifePhaseT"
+      "ype\022\017\n\007is_last\030\021 \001(\010\"\265\003\n\014AccountField\022\021\n"
+      "\tclient_id\030\001 \001(\t\022\022\n\naccount_id\030\002 \001(\t\022\023\n\013"
+      "currency_id\030\003 \001(\t\022\023\n\013pre_balance\030\004 \001(\001\022\023"
+      "\n\013curr_margin\030\005 \001(\001\022\024\n\014close_profit\030\006 \001("
+      "\001\022\027\n\017position_profit\030\007 \001(\001\022\017\n\007balance\030\010 "
+      "\001(\001\022\021\n\tavailable\030\t \001(\001\022\017\n\007deposit\030\n \001(\001\022"
+      "\020\n\010withdraw\030\013 \001(\001\022\025\n\rwithdrawquota\030\014 \001(\001"
+      "\022\033\n\023frozen_transfer_fee\030\r \001(\001\022\030\n\020frozen_"
+      "stamp_tax\030\016 \001(\001\022\031\n\021frozen_commission\030\017 \001"
+      "(\001\022\023\n\013frozen_cash\030\020 \001(\001\022\024\n\014transfer_fee\030"
+      "\021 \001(\001\022\021\n\tstamp_tax\030\022 \001(\001\022\022\n\ncommission\030\023"
+      " \001(\001\022\016\n\006cashin\030\024 \001(\001\"\212\001\n\021QuoteRequestFie"
+      "ld\022\016\n\006symbol\030\001 \001(\t\022\025\n\rinstrument_id\030\002 \001("
+      "\t\022\023\n\013exchange_id\030\003 \001(\t\022\023\n\013trading_day\030\004 "
+      "\001(\005\022\022\n\nquote_time\030\005 \001(\003\022\020\n\010quote_id\030\006 \001("
+      "\t\"8\n\023SettlementInfoField\022\014\n\004size\030\001 \001(\005\022\023"
+      "\n\013trading_day\030\002 \001(\003\"\232\001\n\rInvestorField\022\023\n"
+      "\013investor_id\030\001 \001(\t\022\021\n\tbroker_id\030\002 \001(\t\022/\n"
+      "\024identified_card_type\030\003 \001(\0162\021.FIRST.IdCa"
+      "rdType\022\031\n\021identified_cardno\030\004 \001(\t\022\025\n\rinv"
+      "estor_name\030\005 \001(\t\"\233\001\n\025InstrumentStatusFie"
+      "ld\022\016\n\006symbol\030\001 \001(\t\022\025\n\rinstrument_id\030\002 \001("
+      "\t\022\023\n\013exchange_id\030\003 \001(\t\0222\n\021instrument_sta"
+      "tus\030\004 \001(\0162\027.FIRST.TradingPhaseType\022\022\n\nen"
+      "ter_time\030\005 \001(\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 6011);
+      descriptor, 6022);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "base_definitions.proto", &protobuf_RegisterTypes);
   ::protobuf_enum_2eproto::AddDescriptors();
@@ -10527,48 +10527,49 @@ void RspUserLoginField::InternalSwap(RspUserLoginField* other) {
 
 // ===================================================================
 
-void DepthMarketDataNField::InitAsDefaultInstance() {
+void Ticker::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DepthMarketDataNField::kSizeFieldNumber;
-const int DepthMarketDataNField::kTradingDayFieldNumber;
-const int DepthMarketDataNField::kActionDayFieldNumber;
-const int DepthMarketDataNField::kUpdateTimeFieldNumber;
-const int DepthMarketDataNField::kUpdateMillisecFieldNumber;
-const int DepthMarketDataNField::kSymbolFieldNumber;
-const int DepthMarketDataNField::kInstrumentIdFieldNumber;
-const int DepthMarketDataNField::kExchangeIdFieldNumber;
-const int DepthMarketDataNField::kExchangeFieldNumber;
-const int DepthMarketDataNField::kLastPriceFieldNumber;
-const int DepthMarketDataNField::kVolumeFieldNumber;
-const int DepthMarketDataNField::kTurnoverFieldNumber;
-const int DepthMarketDataNField::kOpeninterestFieldNumber;
-const int DepthMarketDataNField::kAveragePriceFieldNumber;
-const int DepthMarketDataNField::kOpenPriceFieldNumber;
-const int DepthMarketDataNField::kHighestPriceFieldNumber;
-const int DepthMarketDataNField::kLowestPriceFieldNumber;
-const int DepthMarketDataNField::kClosePriceFieldNumber;
-const int DepthMarketDataNField::kSettlementPriceFieldNumber;
-const int DepthMarketDataNField::kUpperlimitPriceFieldNumber;
-const int DepthMarketDataNField::kLowerlimitPriceFieldNumber;
-const int DepthMarketDataNField::kPreclosePriceFieldNumber;
-const int DepthMarketDataNField::kPresettlementPriceFieldNumber;
-const int DepthMarketDataNField::kPreopeninterestFieldNumber;
-const int DepthMarketDataNField::kTradingPhaseFieldNumber;
-const int DepthMarketDataNField::kBidcountFieldNumber;
+const int Ticker::kTradingDayFieldNumber;
+const int Ticker::kUpdateTimeFieldNumber;
+const int Ticker::kUpdateMillisecFieldNumber;
+const int Ticker::kSymbolFieldNumber;
+const int Ticker::kInstrumentIdFieldNumber;
+const int Ticker::kExchangeIdFieldNumber;
+const int Ticker::kExchangeFieldNumber;
+const int Ticker::kBidDepthFieldNumber;
+const int Ticker::kOfferDepthFieldNumber;
+const int Ticker::kLastPriceFieldNumber;
+const int Ticker::kVolumeFieldNumber;
+const int Ticker::kTurnoverFieldNumber;
+const int Ticker::kOpeninterestFieldNumber;
+const int Ticker::kAveragePriceFieldNumber;
+const int Ticker::kOpenPriceFieldNumber;
+const int Ticker::kHighestPriceFieldNumber;
+const int Ticker::kLowestPriceFieldNumber;
+const int Ticker::kClosePriceFieldNumber;
+const int Ticker::kSettlementPriceFieldNumber;
+const int Ticker::kUpperlimitPriceFieldNumber;
+const int Ticker::kLowerlimitPriceFieldNumber;
+const int Ticker::kPreclosePriceFieldNumber;
+const int Ticker::kPresettlementPriceFieldNumber;
+const int Ticker::kPreopeninterestFieldNumber;
+const int Ticker::kTradingPhaseFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-DepthMarketDataNField::DepthMarketDataNField()
+Ticker::Ticker()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_base_5fdefinitions_2eproto::InitDefaultsDepthMarketDataNField();
+    ::protobuf_base_5fdefinitions_2eproto::InitDefaultsTicker();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(constructor:FIRST.Ticker)
 }
-DepthMarketDataNField::DepthMarketDataNField(const DepthMarketDataNField& from)
+Ticker::Ticker(const Ticker& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
+      bid_depth_(from.bid_depth_),
+      offer_depth_(from.offer_depth_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   symbol_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -10584,98 +10585,86 @@ DepthMarketDataNField::DepthMarketDataNField(const DepthMarketDataNField& from)
     exchange_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.exchange_id_);
   }
   ::memcpy(&trading_day_, &from.trading_day_,
-    static_cast<size_t>(reinterpret_cast<char*>(&bidcount_) -
-    reinterpret_cast<char*>(&trading_day_)) + sizeof(bidcount_));
-  // @@protoc_insertion_point(copy_constructor:FIRST.DepthMarketDataNField)
+    static_cast<size_t>(reinterpret_cast<char*>(&preopeninterest_) -
+    reinterpret_cast<char*>(&trading_day_)) + sizeof(preopeninterest_));
+  // @@protoc_insertion_point(copy_constructor:FIRST.Ticker)
 }
 
-void DepthMarketDataNField::SharedCtor() {
+void Ticker::SharedCtor() {
   symbol_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   instrument_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   exchange_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&trading_day_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&bidcount_) -
-      reinterpret_cast<char*>(&trading_day_)) + sizeof(bidcount_));
+      reinterpret_cast<char*>(&preopeninterest_) -
+      reinterpret_cast<char*>(&trading_day_)) + sizeof(preopeninterest_));
   _cached_size_ = 0;
 }
 
-DepthMarketDataNField::~DepthMarketDataNField() {
-  // @@protoc_insertion_point(destructor:FIRST.DepthMarketDataNField)
+Ticker::~Ticker() {
+  // @@protoc_insertion_point(destructor:FIRST.Ticker)
   SharedDtor();
 }
 
-void DepthMarketDataNField::SharedDtor() {
+void Ticker::SharedDtor() {
   symbol_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   instrument_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   exchange_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void DepthMarketDataNField::SetCachedSize(int size) const {
+void Ticker::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* DepthMarketDataNField::descriptor() {
+const ::google::protobuf::Descriptor* Ticker::descriptor() {
   ::protobuf_base_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_base_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const DepthMarketDataNField& DepthMarketDataNField::default_instance() {
-  ::protobuf_base_5fdefinitions_2eproto::InitDefaultsDepthMarketDataNField();
+const Ticker& Ticker::default_instance() {
+  ::protobuf_base_5fdefinitions_2eproto::InitDefaultsTicker();
   return *internal_default_instance();
 }
 
-DepthMarketDataNField* DepthMarketDataNField::New(::google::protobuf::Arena* arena) const {
-  DepthMarketDataNField* n = new DepthMarketDataNField;
+Ticker* Ticker::New(::google::protobuf::Arena* arena) const {
+  Ticker* n = new Ticker;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void DepthMarketDataNField::Clear() {
-// @@protoc_insertion_point(message_clear_start:FIRST.DepthMarketDataNField)
+void Ticker::Clear() {
+// @@protoc_insertion_point(message_clear_start:FIRST.Ticker)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  bid_depth_.Clear();
+  offer_depth_.Clear();
   symbol_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   instrument_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   exchange_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&trading_day_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&bidcount_) -
-      reinterpret_cast<char*>(&trading_day_)) + sizeof(bidcount_));
+      reinterpret_cast<char*>(&preopeninterest_) -
+      reinterpret_cast<char*>(&trading_day_)) + sizeof(preopeninterest_));
   _internal_metadata_.Clear();
 }
 
-bool DepthMarketDataNField::MergePartialFromCodedStream(
+bool Ticker::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(parse_start:FIRST.Ticker)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 size = 1;
+      // int64 trading_day = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &size_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int64 trading_day = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
@@ -10686,24 +10675,10 @@ bool DepthMarketDataNField::MergePartialFromCodedStream(
         break;
       }
 
-      // int64 action_day = 3;
-      case 3: {
+      // int64 update_time = 2;
+      case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &action_day_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int64 update_time = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
@@ -10714,10 +10689,10 @@ bool DepthMarketDataNField::MergePartialFromCodedStream(
         break;
       }
 
-      // int64 update_millisec = 5;
-      case 5: {
+      // int64 update_millisec = 3;
+      case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
@@ -10728,63 +10703,85 @@ bool DepthMarketDataNField::MergePartialFromCodedStream(
         break;
       }
 
-      // string symbol = 6;
-      case 6: {
+      // string symbol = 4;
+      case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_symbol()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->symbol().data(), static_cast<int>(this->symbol().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "FIRST.DepthMarketDataNField.symbol"));
+            "FIRST.Ticker.symbol"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // string instrument_id = 7;
-      case 7: {
+      // string instrument_id = 5;
+      case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_instrument_id()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->instrument_id().data(), static_cast<int>(this->instrument_id().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "FIRST.DepthMarketDataNField.instrument_id"));
+            "FIRST.Ticker.instrument_id"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // string exchange_id = 8;
-      case 8: {
+      // string exchange_id = 6;
+      case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_exchange_id()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->exchange_id().data(), static_cast<int>(this->exchange_id().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "FIRST.DepthMarketDataNField.exchange_id"));
+            "FIRST.Ticker.exchange_id"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .FIRST.ExchangeType exchange = 9;
-      case 9: {
+      // .FIRST.ExchangeType exchange = 7;
+      case 7: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
           set_exchange(static_cast< ::FIRST::ExchangeType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .FIRST.DepthField bid_depth = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_bid_depth()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .FIRST.DepthField offer_depth = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_offer_depth()));
         } else {
           goto handle_unusual;
         }
@@ -11016,20 +11013,6 @@ bool DepthMarketDataNField::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 bidcount = 26;
-      case 26: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(208u /* 208 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &bidcount_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -11042,79 +11025,83 @@ bool DepthMarketDataNField::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(parse_success:FIRST.Ticker)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(parse_failure:FIRST.Ticker)
   return false;
 #undef DO_
 }
 
-void DepthMarketDataNField::SerializeWithCachedSizes(
+void Ticker::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(serialize_start:FIRST.Ticker)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 size = 1;
-  if (this->size() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->size(), output);
-  }
-
-  // int64 trading_day = 2;
+  // int64 trading_day = 1;
   if (this->trading_day() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->trading_day(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->trading_day(), output);
   }
 
-  // int64 action_day = 3;
-  if (this->action_day() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->action_day(), output);
-  }
-
-  // int64 update_time = 4;
+  // int64 update_time = 2;
   if (this->update_time() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->update_time(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->update_time(), output);
   }
 
-  // int64 update_millisec = 5;
+  // int64 update_millisec = 3;
   if (this->update_millisec() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(5, this->update_millisec(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->update_millisec(), output);
   }
 
-  // string symbol = 6;
+  // string symbol = 4;
   if (this->symbol().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->symbol().data(), static_cast<int>(this->symbol().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "FIRST.DepthMarketDataNField.symbol");
+      "FIRST.Ticker.symbol");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->symbol(), output);
+      4, this->symbol(), output);
   }
 
-  // string instrument_id = 7;
+  // string instrument_id = 5;
   if (this->instrument_id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->instrument_id().data(), static_cast<int>(this->instrument_id().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "FIRST.DepthMarketDataNField.instrument_id");
+      "FIRST.Ticker.instrument_id");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->instrument_id(), output);
+      5, this->instrument_id(), output);
   }
 
-  // string exchange_id = 8;
+  // string exchange_id = 6;
   if (this->exchange_id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->exchange_id().data(), static_cast<int>(this->exchange_id().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "FIRST.DepthMarketDataNField.exchange_id");
+      "FIRST.Ticker.exchange_id");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->exchange_id(), output);
+      6, this->exchange_id(), output);
   }
 
-  // .FIRST.ExchangeType exchange = 9;
+  // .FIRST.ExchangeType exchange = 7;
   if (this->exchange() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      9, this->exchange(), output);
+      7, this->exchange(), output);
+  }
+
+  // repeated .FIRST.DepthField bid_depth = 8;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->bid_depth_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->bid_depth(static_cast<int>(i)), output);
+  }
+
+  // repeated .FIRST.DepthField offer_depth = 9;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->offer_depth_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->offer_depth(static_cast<int>(i)), output);
   }
 
   // double last_price = 10;
@@ -11198,87 +11185,88 @@ void DepthMarketDataNField::SerializeWithCachedSizes(
       25, this->trading_phase(), output);
   }
 
-  // int32 bidcount = 26;
-  if (this->bidcount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(26, this->bidcount(), output);
-  }
-
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(serialize_end:FIRST.Ticker)
 }
 
-::google::protobuf::uint8* DepthMarketDataNField::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Ticker::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(serialize_to_array_start:FIRST.Ticker)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 size = 1;
-  if (this->size() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->size(), target);
-  }
-
-  // int64 trading_day = 2;
+  // int64 trading_day = 1;
   if (this->trading_day() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->trading_day(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->trading_day(), target);
   }
 
-  // int64 action_day = 3;
-  if (this->action_day() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->action_day(), target);
-  }
-
-  // int64 update_time = 4;
+  // int64 update_time = 2;
   if (this->update_time() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->update_time(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->update_time(), target);
   }
 
-  // int64 update_millisec = 5;
+  // int64 update_millisec = 3;
   if (this->update_millisec() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(5, this->update_millisec(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->update_millisec(), target);
   }
 
-  // string symbol = 6;
+  // string symbol = 4;
   if (this->symbol().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->symbol().data(), static_cast<int>(this->symbol().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "FIRST.DepthMarketDataNField.symbol");
+      "FIRST.Ticker.symbol");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->symbol(), target);
+        4, this->symbol(), target);
   }
 
-  // string instrument_id = 7;
+  // string instrument_id = 5;
   if (this->instrument_id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->instrument_id().data(), static_cast<int>(this->instrument_id().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "FIRST.DepthMarketDataNField.instrument_id");
+      "FIRST.Ticker.instrument_id");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->instrument_id(), target);
+        5, this->instrument_id(), target);
   }
 
-  // string exchange_id = 8;
+  // string exchange_id = 6;
   if (this->exchange_id().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->exchange_id().data(), static_cast<int>(this->exchange_id().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "FIRST.DepthMarketDataNField.exchange_id");
+      "FIRST.Ticker.exchange_id");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->exchange_id(), target);
+        6, this->exchange_id(), target);
   }
 
-  // .FIRST.ExchangeType exchange = 9;
+  // .FIRST.ExchangeType exchange = 7;
   if (this->exchange() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      9, this->exchange(), target);
+      7, this->exchange(), target);
+  }
+
+  // repeated .FIRST.DepthField bid_depth = 8;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->bid_depth_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        8, this->bid_depth(static_cast<int>(i)), deterministic, target);
+  }
+
+  // repeated .FIRST.DepthField offer_depth = 9;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->offer_depth_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        9, this->offer_depth(static_cast<int>(i)), deterministic, target);
   }
 
   // double last_price = 10;
@@ -11362,21 +11350,16 @@ void DepthMarketDataNField::SerializeWithCachedSizes(
       25, this->trading_phase(), target);
   }
 
-  // int32 bidcount = 26;
-  if (this->bidcount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(26, this->bidcount(), target);
-  }
-
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(serialize_to_array_end:FIRST.Ticker)
   return target;
 }
 
-size_t DepthMarketDataNField::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:FIRST.DepthMarketDataNField)
+size_t Ticker::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:FIRST.Ticker)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -11384,66 +11367,68 @@ size_t DepthMarketDataNField::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string symbol = 6;
+  // repeated .FIRST.DepthField bid_depth = 8;
+  {
+    unsigned int count = static_cast<unsigned int>(this->bid_depth_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->bid_depth(static_cast<int>(i)));
+    }
+  }
+
+  // repeated .FIRST.DepthField offer_depth = 9;
+  {
+    unsigned int count = static_cast<unsigned int>(this->offer_depth_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->offer_depth(static_cast<int>(i)));
+    }
+  }
+
+  // string symbol = 4;
   if (this->symbol().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->symbol());
   }
 
-  // string instrument_id = 7;
+  // string instrument_id = 5;
   if (this->instrument_id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->instrument_id());
   }
 
-  // string exchange_id = 8;
+  // string exchange_id = 6;
   if (this->exchange_id().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->exchange_id());
   }
 
-  // int64 trading_day = 2;
+  // int64 trading_day = 1;
   if (this->trading_day() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->trading_day());
   }
 
-  // int64 action_day = 3;
-  if (this->action_day() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int64Size(
-        this->action_day());
-  }
-
-  // int64 update_time = 4;
+  // int64 update_time = 2;
   if (this->update_time() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->update_time());
   }
 
-  // int64 update_millisec = 5;
+  // int64 update_millisec = 3;
   if (this->update_millisec() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->update_millisec());
-  }
-
-  // int32 size = 1;
-  if (this->size() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->size());
-  }
-
-  // .FIRST.ExchangeType exchange = 9;
-  if (this->exchange() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->exchange());
   }
 
   // double last_price = 10;
@@ -11479,6 +11464,18 @@ size_t DepthMarketDataNField::ByteSizeLong() const {
   // double highest_price = 16;
   if (this->highest_price() != 0) {
     total_size += 2 + 8;
+  }
+
+  // .FIRST.ExchangeType exchange = 7;
+  if (this->exchange() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->exchange());
+  }
+
+  // .FIRST.TradingPhaseType trading_phase = 25;
+  if (this->trading_phase() != 0) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->trading_phase());
   }
 
   // double lowest_price = 17;
@@ -11521,19 +11518,6 @@ size_t DepthMarketDataNField::ByteSizeLong() const {
     total_size += 2 + 8;
   }
 
-  // .FIRST.TradingPhaseType trading_phase = 25;
-  if (this->trading_phase() != 0) {
-    total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->trading_phase());
-  }
-
-  // int32 bidcount = 26;
-  if (this->bidcount() != 0) {
-    total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->bidcount());
-  }
-
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -11541,28 +11525,30 @@ size_t DepthMarketDataNField::ByteSizeLong() const {
   return total_size;
 }
 
-void DepthMarketDataNField::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:FIRST.DepthMarketDataNField)
+void Ticker::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:FIRST.Ticker)
   GOOGLE_DCHECK_NE(&from, this);
-  const DepthMarketDataNField* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const DepthMarketDataNField>(
+  const Ticker* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Ticker>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:FIRST.Ticker)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:FIRST.Ticker)
     MergeFrom(*source);
   }
 }
 
-void DepthMarketDataNField::MergeFrom(const DepthMarketDataNField& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:FIRST.DepthMarketDataNField)
+void Ticker::MergeFrom(const Ticker& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:FIRST.Ticker)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  bid_depth_.MergeFrom(from.bid_depth_);
+  offer_depth_.MergeFrom(from.offer_depth_);
   if (from.symbol().size() > 0) {
 
     symbol_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.symbol_);
@@ -11578,20 +11564,11 @@ void DepthMarketDataNField::MergeFrom(const DepthMarketDataNField& from) {
   if (from.trading_day() != 0) {
     set_trading_day(from.trading_day());
   }
-  if (from.action_day() != 0) {
-    set_action_day(from.action_day());
-  }
   if (from.update_time() != 0) {
     set_update_time(from.update_time());
   }
   if (from.update_millisec() != 0) {
     set_update_millisec(from.update_millisec());
-  }
-  if (from.size() != 0) {
-    set_size(from.size());
-  }
-  if (from.exchange() != 0) {
-    set_exchange(from.exchange());
   }
   if (from.last_price() != 0) {
     set_last_price(from.last_price());
@@ -11613,6 +11590,12 @@ void DepthMarketDataNField::MergeFrom(const DepthMarketDataNField& from) {
   }
   if (from.highest_price() != 0) {
     set_highest_price(from.highest_price());
+  }
+  if (from.exchange() != 0) {
+    set_exchange(from.exchange());
+  }
+  if (from.trading_phase() != 0) {
+    set_trading_phase(from.trading_phase());
   }
   if (from.lowest_price() != 0) {
     set_lowest_price(from.lowest_price());
@@ -11638,47 +11621,40 @@ void DepthMarketDataNField::MergeFrom(const DepthMarketDataNField& from) {
   if (from.preopeninterest() != 0) {
     set_preopeninterest(from.preopeninterest());
   }
-  if (from.trading_phase() != 0) {
-    set_trading_phase(from.trading_phase());
-  }
-  if (from.bidcount() != 0) {
-    set_bidcount(from.bidcount());
-  }
 }
 
-void DepthMarketDataNField::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:FIRST.DepthMarketDataNField)
+void Ticker::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:FIRST.Ticker)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void DepthMarketDataNField::CopyFrom(const DepthMarketDataNField& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:FIRST.DepthMarketDataNField)
+void Ticker::CopyFrom(const Ticker& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:FIRST.Ticker)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool DepthMarketDataNField::IsInitialized() const {
+bool Ticker::IsInitialized() const {
   return true;
 }
 
-void DepthMarketDataNField::Swap(DepthMarketDataNField* other) {
+void Ticker::Swap(Ticker* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void DepthMarketDataNField::InternalSwap(DepthMarketDataNField* other) {
+void Ticker::InternalSwap(Ticker* other) {
   using std::swap;
+  bid_depth_.InternalSwap(&other->bid_depth_);
+  offer_depth_.InternalSwap(&other->offer_depth_);
   symbol_.Swap(&other->symbol_);
   instrument_id_.Swap(&other->instrument_id_);
   exchange_id_.Swap(&other->exchange_id_);
   swap(trading_day_, other->trading_day_);
-  swap(action_day_, other->action_day_);
   swap(update_time_, other->update_time_);
   swap(update_millisec_, other->update_millisec_);
-  swap(size_, other->size_);
-  swap(exchange_, other->exchange_);
   swap(last_price_, other->last_price_);
   swap(volume_, other->volume_);
   swap(turnover_, other->turnover_);
@@ -11686,6 +11662,8 @@ void DepthMarketDataNField::InternalSwap(DepthMarketDataNField* other) {
   swap(average_price_, other->average_price_);
   swap(open_price_, other->open_price_);
   swap(highest_price_, other->highest_price_);
+  swap(exchange_, other->exchange_);
+  swap(trading_phase_, other->trading_phase_);
   swap(lowest_price_, other->lowest_price_);
   swap(close_price_, other->close_price_);
   swap(settlement_price_, other->settlement_price_);
@@ -11694,13 +11672,11 @@ void DepthMarketDataNField::InternalSwap(DepthMarketDataNField* other) {
   swap(preclose_price_, other->preclose_price_);
   swap(presettlement_price_, other->presettlement_price_);
   swap(preopeninterest_, other->preopeninterest_);
-  swap(trading_phase_, other->trading_phase_);
-  swap(bidcount_, other->bidcount_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata DepthMarketDataNField::GetMetadata() const {
+::google::protobuf::Metadata Ticker::GetMetadata() const {
   protobuf_base_5fdefinitions_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_base_5fdefinitions_2eproto::file_level_metadata[kIndexInFileMessages];
 }

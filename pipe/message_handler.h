@@ -18,7 +18,7 @@ public:
     //------------------request from client----------------------------
     void on_req_login(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
     void on_create_order_request(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body);
-    
+    void cancel_order_request(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body);
     //------------------response from xapi----------------------------
     void on_resp_instrument(google::protobuf::Message& body);
     void on_order_feed(google::protobuf::Message& body);

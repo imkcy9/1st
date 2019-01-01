@@ -63,8 +63,8 @@ void InitDefaultsLogFieldImpl();
 void InitDefaultsLogField();
 void InitDefaultsRspUserLoginFieldImpl();
 void InitDefaultsRspUserLoginField();
-void InitDefaultsDepthMarketDataNFieldImpl();
-void InitDefaultsDepthMarketDataNField();
+void InitDefaultsTickerImpl();
+void InitDefaultsTicker();
 void InitDefaultsDepthFieldImpl();
 void InitDefaultsDepthField();
 void InitDefaultsInstrumentFieldImpl();
@@ -90,7 +90,7 @@ inline void InitDefaults() {
   InitDefaultsErrorField();
   InitDefaultsLogField();
   InitDefaultsRspUserLoginField();
-  InitDefaultsDepthMarketDataNField();
+  InitDefaultsTicker();
   InitDefaultsDepthField();
   InitDefaultsInstrumentField();
   InitDefaultsAccountField();
@@ -107,9 +107,6 @@ extern AccountFieldDefaultTypeInternal _AccountField_default_instance_;
 class DepthField;
 class DepthFieldDefaultTypeInternal;
 extern DepthFieldDefaultTypeInternal _DepthField_default_instance_;
-class DepthMarketDataNField;
-class DepthMarketDataNFieldDefaultTypeInternal;
-extern DepthMarketDataNFieldDefaultTypeInternal _DepthMarketDataNField_default_instance_;
 class ErrorField;
 class ErrorFieldDefaultTypeInternal;
 extern ErrorFieldDefaultTypeInternal _ErrorField_default_instance_;
@@ -149,6 +146,9 @@ extern ServerInfoFieldDefaultTypeInternal _ServerInfoField_default_instance_;
 class SettlementInfoField;
 class SettlementInfoFieldDefaultTypeInternal;
 extern SettlementInfoFieldDefaultTypeInternal _SettlementInfoField_default_instance_;
+class Ticker;
+class TickerDefaultTypeInternal;
+extern TickerDefaultTypeInternal _Ticker_default_instance_;
 class TradeField;
 class TradeFieldDefaultTypeInternal;
 extern TradeFieldDefaultTypeInternal _TradeField_default_instance_;
@@ -2834,24 +2834,24 @@ class RspUserLoginField : public ::google::protobuf::Message /* @@protoc_inserti
 };
 // -------------------------------------------------------------------
 
-class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:FIRST.DepthMarketDataNField) */ {
+class Ticker : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:FIRST.Ticker) */ {
  public:
-  DepthMarketDataNField();
-  virtual ~DepthMarketDataNField();
+  Ticker();
+  virtual ~Ticker();
 
-  DepthMarketDataNField(const DepthMarketDataNField& from);
+  Ticker(const Ticker& from);
 
-  inline DepthMarketDataNField& operator=(const DepthMarketDataNField& from) {
+  inline Ticker& operator=(const Ticker& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  DepthMarketDataNField(DepthMarketDataNField&& from) noexcept
-    : DepthMarketDataNField() {
+  Ticker(Ticker&& from) noexcept
+    : Ticker() {
     *this = ::std::move(from);
   }
 
-  inline DepthMarketDataNField& operator=(DepthMarketDataNField&& from) noexcept {
+  inline Ticker& operator=(Ticker&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2861,30 +2861,30 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const DepthMarketDataNField& default_instance();
+  static const Ticker& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const DepthMarketDataNField* internal_default_instance() {
-    return reinterpret_cast<const DepthMarketDataNField*>(
-               &_DepthMarketDataNField_default_instance_);
+  static inline const Ticker* internal_default_instance() {
+    return reinterpret_cast<const Ticker*>(
+               &_Ticker_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     10;
 
-  void Swap(DepthMarketDataNField* other);
-  friend void swap(DepthMarketDataNField& a, DepthMarketDataNField& b) {
+  void Swap(Ticker* other);
+  friend void swap(Ticker& a, Ticker& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline DepthMarketDataNField* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline Ticker* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  DepthMarketDataNField* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  Ticker* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const DepthMarketDataNField& from);
-  void MergeFrom(const DepthMarketDataNField& from);
+  void CopyFrom(const Ticker& from);
+  void MergeFrom(const Ticker& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -2900,7 +2900,7 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(DepthMarketDataNField* other);
+  void InternalSwap(Ticker* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -2916,9 +2916,33 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
 
   // accessors -------------------------------------------------------
 
-  // string symbol = 6;
+  // repeated .FIRST.DepthField bid_depth = 8;
+  int bid_depth_size() const;
+  void clear_bid_depth();
+  static const int kBidDepthFieldNumber = 8;
+  const ::FIRST::DepthField& bid_depth(int index) const;
+  ::FIRST::DepthField* mutable_bid_depth(int index);
+  ::FIRST::DepthField* add_bid_depth();
+  ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >*
+      mutable_bid_depth();
+  const ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >&
+      bid_depth() const;
+
+  // repeated .FIRST.DepthField offer_depth = 9;
+  int offer_depth_size() const;
+  void clear_offer_depth();
+  static const int kOfferDepthFieldNumber = 9;
+  const ::FIRST::DepthField& offer_depth(int index) const;
+  ::FIRST::DepthField* mutable_offer_depth(int index);
+  ::FIRST::DepthField* add_offer_depth();
+  ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >*
+      mutable_offer_depth();
+  const ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >&
+      offer_depth() const;
+
+  // string symbol = 4;
   void clear_symbol();
-  static const int kSymbolFieldNumber = 6;
+  static const int kSymbolFieldNumber = 4;
   const ::std::string& symbol() const;
   void set_symbol(const ::std::string& value);
   #if LANG_CXX11
@@ -2930,9 +2954,9 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   ::std::string* release_symbol();
   void set_allocated_symbol(::std::string* symbol);
 
-  // string instrument_id = 7;
+  // string instrument_id = 5;
   void clear_instrument_id();
-  static const int kInstrumentIdFieldNumber = 7;
+  static const int kInstrumentIdFieldNumber = 5;
   const ::std::string& instrument_id() const;
   void set_instrument_id(const ::std::string& value);
   #if LANG_CXX11
@@ -2944,9 +2968,9 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   ::std::string* release_instrument_id();
   void set_allocated_instrument_id(::std::string* instrument_id);
 
-  // string exchange_id = 8;
+  // string exchange_id = 6;
   void clear_exchange_id();
-  static const int kExchangeIdFieldNumber = 8;
+  static const int kExchangeIdFieldNumber = 6;
   const ::std::string& exchange_id() const;
   void set_exchange_id(const ::std::string& value);
   #if LANG_CXX11
@@ -2958,41 +2982,23 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   ::std::string* release_exchange_id();
   void set_allocated_exchange_id(::std::string* exchange_id);
 
-  // int64 trading_day = 2;
+  // int64 trading_day = 1;
   void clear_trading_day();
-  static const int kTradingDayFieldNumber = 2;
+  static const int kTradingDayFieldNumber = 1;
   ::google::protobuf::int64 trading_day() const;
   void set_trading_day(::google::protobuf::int64 value);
 
-  // int64 action_day = 3;
-  void clear_action_day();
-  static const int kActionDayFieldNumber = 3;
-  ::google::protobuf::int64 action_day() const;
-  void set_action_day(::google::protobuf::int64 value);
-
-  // int64 update_time = 4;
+  // int64 update_time = 2;
   void clear_update_time();
-  static const int kUpdateTimeFieldNumber = 4;
+  static const int kUpdateTimeFieldNumber = 2;
   ::google::protobuf::int64 update_time() const;
   void set_update_time(::google::protobuf::int64 value);
 
-  // int64 update_millisec = 5;
+  // int64 update_millisec = 3;
   void clear_update_millisec();
-  static const int kUpdateMillisecFieldNumber = 5;
+  static const int kUpdateMillisecFieldNumber = 3;
   ::google::protobuf::int64 update_millisec() const;
   void set_update_millisec(::google::protobuf::int64 value);
-
-  // int32 size = 1;
-  void clear_size();
-  static const int kSizeFieldNumber = 1;
-  ::google::protobuf::int32 size() const;
-  void set_size(::google::protobuf::int32 value);
-
-  // .FIRST.ExchangeType exchange = 9;
-  void clear_exchange();
-  static const int kExchangeFieldNumber = 9;
-  ::FIRST::ExchangeType exchange() const;
-  void set_exchange(::FIRST::ExchangeType value);
 
   // double last_price = 10;
   void clear_last_price();
@@ -3035,6 +3041,18 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   static const int kHighestPriceFieldNumber = 16;
   double highest_price() const;
   void set_highest_price(double value);
+
+  // .FIRST.ExchangeType exchange = 7;
+  void clear_exchange();
+  static const int kExchangeFieldNumber = 7;
+  ::FIRST::ExchangeType exchange() const;
+  void set_exchange(::FIRST::ExchangeType value);
+
+  // .FIRST.TradingPhaseType trading_phase = 25;
+  void clear_trading_phase();
+  static const int kTradingPhaseFieldNumber = 25;
+  ::FIRST::TradingPhaseType trading_phase() const;
+  void set_trading_phase(::FIRST::TradingPhaseType value);
 
   // double lowest_price = 17;
   void clear_lowest_price();
@@ -3084,31 +3102,18 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   double preopeninterest() const;
   void set_preopeninterest(double value);
 
-  // .FIRST.TradingPhaseType trading_phase = 25;
-  void clear_trading_phase();
-  static const int kTradingPhaseFieldNumber = 25;
-  ::FIRST::TradingPhaseType trading_phase() const;
-  void set_trading_phase(::FIRST::TradingPhaseType value);
-
-  // int32 bidcount = 26;
-  void clear_bidcount();
-  static const int kBidcountFieldNumber = 26;
-  ::google::protobuf::int32 bidcount() const;
-  void set_bidcount(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:FIRST.DepthMarketDataNField)
+  // @@protoc_insertion_point(class_scope:FIRST.Ticker)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField > bid_depth_;
+  ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField > offer_depth_;
   ::google::protobuf::internal::ArenaStringPtr symbol_;
   ::google::protobuf::internal::ArenaStringPtr instrument_id_;
   ::google::protobuf::internal::ArenaStringPtr exchange_id_;
   ::google::protobuf::int64 trading_day_;
-  ::google::protobuf::int64 action_day_;
   ::google::protobuf::int64 update_time_;
   ::google::protobuf::int64 update_millisec_;
-  ::google::protobuf::int32 size_;
-  int exchange_;
   double last_price_;
   double volume_;
   double turnover_;
@@ -3116,6 +3121,8 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   double average_price_;
   double open_price_;
   double highest_price_;
+  int exchange_;
+  int trading_phase_;
   double lowest_price_;
   double close_price_;
   double settlement_price_;
@@ -3124,11 +3131,9 @@ class DepthMarketDataNField : public ::google::protobuf::Message /* @@protoc_ins
   double preclose_price_;
   double presettlement_price_;
   double preopeninterest_;
-  int trading_phase_;
-  ::google::protobuf::int32 bidcount_;
   mutable int _cached_size_;
   friend struct ::protobuf_base_5fdefinitions_2eproto::TableStruct;
-  friend void ::protobuf_base_5fdefinitions_2eproto::InitDefaultsDepthMarketDataNFieldImpl();
+  friend void ::protobuf_base_5fdefinitions_2eproto::InitDefaultsTickerImpl();
 };
 // -------------------------------------------------------------------
 
@@ -9784,487 +9789,505 @@ inline void RspUserLoginField::set_allocated_lang(::std::string* lang) {
 
 // -------------------------------------------------------------------
 
-// DepthMarketDataNField
+// Ticker
 
-// int32 size = 1;
-inline void DepthMarketDataNField::clear_size() {
-  size_ = 0;
-}
-inline ::google::protobuf::int32 DepthMarketDataNField::size() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.size)
-  return size_;
-}
-inline void DepthMarketDataNField::set_size(::google::protobuf::int32 value) {
-  
-  size_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.size)
-}
-
-// int64 trading_day = 2;
-inline void DepthMarketDataNField::clear_trading_day() {
+// int64 trading_day = 1;
+inline void Ticker::clear_trading_day() {
   trading_day_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int64 DepthMarketDataNField::trading_day() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.trading_day)
+inline ::google::protobuf::int64 Ticker::trading_day() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.trading_day)
   return trading_day_;
 }
-inline void DepthMarketDataNField::set_trading_day(::google::protobuf::int64 value) {
+inline void Ticker::set_trading_day(::google::protobuf::int64 value) {
   
   trading_day_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.trading_day)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.trading_day)
 }
 
-// int64 action_day = 3;
-inline void DepthMarketDataNField::clear_action_day() {
-  action_day_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 DepthMarketDataNField::action_day() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.action_day)
-  return action_day_;
-}
-inline void DepthMarketDataNField::set_action_day(::google::protobuf::int64 value) {
-  
-  action_day_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.action_day)
-}
-
-// int64 update_time = 4;
-inline void DepthMarketDataNField::clear_update_time() {
+// int64 update_time = 2;
+inline void Ticker::clear_update_time() {
   update_time_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int64 DepthMarketDataNField::update_time() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.update_time)
+inline ::google::protobuf::int64 Ticker::update_time() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.update_time)
   return update_time_;
 }
-inline void DepthMarketDataNField::set_update_time(::google::protobuf::int64 value) {
+inline void Ticker::set_update_time(::google::protobuf::int64 value) {
   
   update_time_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.update_time)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.update_time)
 }
 
-// int64 update_millisec = 5;
-inline void DepthMarketDataNField::clear_update_millisec() {
+// int64 update_millisec = 3;
+inline void Ticker::clear_update_millisec() {
   update_millisec_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int64 DepthMarketDataNField::update_millisec() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.update_millisec)
+inline ::google::protobuf::int64 Ticker::update_millisec() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.update_millisec)
   return update_millisec_;
 }
-inline void DepthMarketDataNField::set_update_millisec(::google::protobuf::int64 value) {
+inline void Ticker::set_update_millisec(::google::protobuf::int64 value) {
   
   update_millisec_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.update_millisec)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.update_millisec)
 }
 
-// string symbol = 6;
-inline void DepthMarketDataNField::clear_symbol() {
+// string symbol = 4;
+inline void Ticker::clear_symbol() {
   symbol_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& DepthMarketDataNField::symbol() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.symbol)
+inline const ::std::string& Ticker::symbol() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.symbol)
   return symbol_.GetNoArena();
 }
-inline void DepthMarketDataNField::set_symbol(const ::std::string& value) {
+inline void Ticker::set_symbol(const ::std::string& value) {
   
   symbol_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.symbol)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.symbol)
 }
 #if LANG_CXX11
-inline void DepthMarketDataNField::set_symbol(::std::string&& value) {
+inline void Ticker::set_symbol(::std::string&& value) {
   
   symbol_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:FIRST.DepthMarketDataNField.symbol)
+  // @@protoc_insertion_point(field_set_rvalue:FIRST.Ticker.symbol)
 }
 #endif
-inline void DepthMarketDataNField::set_symbol(const char* value) {
+inline void Ticker::set_symbol(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   symbol_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:FIRST.DepthMarketDataNField.symbol)
+  // @@protoc_insertion_point(field_set_char:FIRST.Ticker.symbol)
 }
-inline void DepthMarketDataNField::set_symbol(const char* value, size_t size) {
+inline void Ticker::set_symbol(const char* value, size_t size) {
   
   symbol_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:FIRST.DepthMarketDataNField.symbol)
+  // @@protoc_insertion_point(field_set_pointer:FIRST.Ticker.symbol)
 }
-inline ::std::string* DepthMarketDataNField::mutable_symbol() {
+inline ::std::string* Ticker::mutable_symbol() {
   
-  // @@protoc_insertion_point(field_mutable:FIRST.DepthMarketDataNField.symbol)
+  // @@protoc_insertion_point(field_mutable:FIRST.Ticker.symbol)
   return symbol_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* DepthMarketDataNField::release_symbol() {
-  // @@protoc_insertion_point(field_release:FIRST.DepthMarketDataNField.symbol)
+inline ::std::string* Ticker::release_symbol() {
+  // @@protoc_insertion_point(field_release:FIRST.Ticker.symbol)
   
   return symbol_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void DepthMarketDataNField::set_allocated_symbol(::std::string* symbol) {
+inline void Ticker::set_allocated_symbol(::std::string* symbol) {
   if (symbol != NULL) {
     
   } else {
     
   }
   symbol_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), symbol);
-  // @@protoc_insertion_point(field_set_allocated:FIRST.DepthMarketDataNField.symbol)
+  // @@protoc_insertion_point(field_set_allocated:FIRST.Ticker.symbol)
 }
 
-// string instrument_id = 7;
-inline void DepthMarketDataNField::clear_instrument_id() {
+// string instrument_id = 5;
+inline void Ticker::clear_instrument_id() {
   instrument_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& DepthMarketDataNField::instrument_id() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.instrument_id)
+inline const ::std::string& Ticker::instrument_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.instrument_id)
   return instrument_id_.GetNoArena();
 }
-inline void DepthMarketDataNField::set_instrument_id(const ::std::string& value) {
+inline void Ticker::set_instrument_id(const ::std::string& value) {
   
   instrument_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.instrument_id)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.instrument_id)
 }
 #if LANG_CXX11
-inline void DepthMarketDataNField::set_instrument_id(::std::string&& value) {
+inline void Ticker::set_instrument_id(::std::string&& value) {
   
   instrument_id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:FIRST.DepthMarketDataNField.instrument_id)
+  // @@protoc_insertion_point(field_set_rvalue:FIRST.Ticker.instrument_id)
 }
 #endif
-inline void DepthMarketDataNField::set_instrument_id(const char* value) {
+inline void Ticker::set_instrument_id(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   instrument_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:FIRST.DepthMarketDataNField.instrument_id)
+  // @@protoc_insertion_point(field_set_char:FIRST.Ticker.instrument_id)
 }
-inline void DepthMarketDataNField::set_instrument_id(const char* value, size_t size) {
+inline void Ticker::set_instrument_id(const char* value, size_t size) {
   
   instrument_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:FIRST.DepthMarketDataNField.instrument_id)
+  // @@protoc_insertion_point(field_set_pointer:FIRST.Ticker.instrument_id)
 }
-inline ::std::string* DepthMarketDataNField::mutable_instrument_id() {
+inline ::std::string* Ticker::mutable_instrument_id() {
   
-  // @@protoc_insertion_point(field_mutable:FIRST.DepthMarketDataNField.instrument_id)
+  // @@protoc_insertion_point(field_mutable:FIRST.Ticker.instrument_id)
   return instrument_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* DepthMarketDataNField::release_instrument_id() {
-  // @@protoc_insertion_point(field_release:FIRST.DepthMarketDataNField.instrument_id)
+inline ::std::string* Ticker::release_instrument_id() {
+  // @@protoc_insertion_point(field_release:FIRST.Ticker.instrument_id)
   
   return instrument_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void DepthMarketDataNField::set_allocated_instrument_id(::std::string* instrument_id) {
+inline void Ticker::set_allocated_instrument_id(::std::string* instrument_id) {
   if (instrument_id != NULL) {
     
   } else {
     
   }
   instrument_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instrument_id);
-  // @@protoc_insertion_point(field_set_allocated:FIRST.DepthMarketDataNField.instrument_id)
+  // @@protoc_insertion_point(field_set_allocated:FIRST.Ticker.instrument_id)
 }
 
-// string exchange_id = 8;
-inline void DepthMarketDataNField::clear_exchange_id() {
+// string exchange_id = 6;
+inline void Ticker::clear_exchange_id() {
   exchange_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& DepthMarketDataNField::exchange_id() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.exchange_id)
+inline const ::std::string& Ticker::exchange_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.exchange_id)
   return exchange_id_.GetNoArena();
 }
-inline void DepthMarketDataNField::set_exchange_id(const ::std::string& value) {
+inline void Ticker::set_exchange_id(const ::std::string& value) {
   
   exchange_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.exchange_id)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.exchange_id)
 }
 #if LANG_CXX11
-inline void DepthMarketDataNField::set_exchange_id(::std::string&& value) {
+inline void Ticker::set_exchange_id(::std::string&& value) {
   
   exchange_id_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:FIRST.DepthMarketDataNField.exchange_id)
+  // @@protoc_insertion_point(field_set_rvalue:FIRST.Ticker.exchange_id)
 }
 #endif
-inline void DepthMarketDataNField::set_exchange_id(const char* value) {
+inline void Ticker::set_exchange_id(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   exchange_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:FIRST.DepthMarketDataNField.exchange_id)
+  // @@protoc_insertion_point(field_set_char:FIRST.Ticker.exchange_id)
 }
-inline void DepthMarketDataNField::set_exchange_id(const char* value, size_t size) {
+inline void Ticker::set_exchange_id(const char* value, size_t size) {
   
   exchange_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:FIRST.DepthMarketDataNField.exchange_id)
+  // @@protoc_insertion_point(field_set_pointer:FIRST.Ticker.exchange_id)
 }
-inline ::std::string* DepthMarketDataNField::mutable_exchange_id() {
+inline ::std::string* Ticker::mutable_exchange_id() {
   
-  // @@protoc_insertion_point(field_mutable:FIRST.DepthMarketDataNField.exchange_id)
+  // @@protoc_insertion_point(field_mutable:FIRST.Ticker.exchange_id)
   return exchange_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* DepthMarketDataNField::release_exchange_id() {
-  // @@protoc_insertion_point(field_release:FIRST.DepthMarketDataNField.exchange_id)
+inline ::std::string* Ticker::release_exchange_id() {
+  // @@protoc_insertion_point(field_release:FIRST.Ticker.exchange_id)
   
   return exchange_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void DepthMarketDataNField::set_allocated_exchange_id(::std::string* exchange_id) {
+inline void Ticker::set_allocated_exchange_id(::std::string* exchange_id) {
   if (exchange_id != NULL) {
     
   } else {
     
   }
   exchange_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), exchange_id);
-  // @@protoc_insertion_point(field_set_allocated:FIRST.DepthMarketDataNField.exchange_id)
+  // @@protoc_insertion_point(field_set_allocated:FIRST.Ticker.exchange_id)
 }
 
-// .FIRST.ExchangeType exchange = 9;
-inline void DepthMarketDataNField::clear_exchange() {
+// .FIRST.ExchangeType exchange = 7;
+inline void Ticker::clear_exchange() {
   exchange_ = 0;
 }
-inline ::FIRST::ExchangeType DepthMarketDataNField::exchange() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.exchange)
+inline ::FIRST::ExchangeType Ticker::exchange() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.exchange)
   return static_cast< ::FIRST::ExchangeType >(exchange_);
 }
-inline void DepthMarketDataNField::set_exchange(::FIRST::ExchangeType value) {
+inline void Ticker::set_exchange(::FIRST::ExchangeType value) {
   
   exchange_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.exchange)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.exchange)
+}
+
+// repeated .FIRST.DepthField bid_depth = 8;
+inline int Ticker::bid_depth_size() const {
+  return bid_depth_.size();
+}
+inline void Ticker::clear_bid_depth() {
+  bid_depth_.Clear();
+}
+inline const ::FIRST::DepthField& Ticker::bid_depth(int index) const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.bid_depth)
+  return bid_depth_.Get(index);
+}
+inline ::FIRST::DepthField* Ticker::mutable_bid_depth(int index) {
+  // @@protoc_insertion_point(field_mutable:FIRST.Ticker.bid_depth)
+  return bid_depth_.Mutable(index);
+}
+inline ::FIRST::DepthField* Ticker::add_bid_depth() {
+  // @@protoc_insertion_point(field_add:FIRST.Ticker.bid_depth)
+  return bid_depth_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >*
+Ticker::mutable_bid_depth() {
+  // @@protoc_insertion_point(field_mutable_list:FIRST.Ticker.bid_depth)
+  return &bid_depth_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >&
+Ticker::bid_depth() const {
+  // @@protoc_insertion_point(field_list:FIRST.Ticker.bid_depth)
+  return bid_depth_;
+}
+
+// repeated .FIRST.DepthField offer_depth = 9;
+inline int Ticker::offer_depth_size() const {
+  return offer_depth_.size();
+}
+inline void Ticker::clear_offer_depth() {
+  offer_depth_.Clear();
+}
+inline const ::FIRST::DepthField& Ticker::offer_depth(int index) const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.offer_depth)
+  return offer_depth_.Get(index);
+}
+inline ::FIRST::DepthField* Ticker::mutable_offer_depth(int index) {
+  // @@protoc_insertion_point(field_mutable:FIRST.Ticker.offer_depth)
+  return offer_depth_.Mutable(index);
+}
+inline ::FIRST::DepthField* Ticker::add_offer_depth() {
+  // @@protoc_insertion_point(field_add:FIRST.Ticker.offer_depth)
+  return offer_depth_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >*
+Ticker::mutable_offer_depth() {
+  // @@protoc_insertion_point(field_mutable_list:FIRST.Ticker.offer_depth)
+  return &offer_depth_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::FIRST::DepthField >&
+Ticker::offer_depth() const {
+  // @@protoc_insertion_point(field_list:FIRST.Ticker.offer_depth)
+  return offer_depth_;
 }
 
 // double last_price = 10;
-inline void DepthMarketDataNField::clear_last_price() {
+inline void Ticker::clear_last_price() {
   last_price_ = 0;
 }
-inline double DepthMarketDataNField::last_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.last_price)
+inline double Ticker::last_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.last_price)
   return last_price_;
 }
-inline void DepthMarketDataNField::set_last_price(double value) {
+inline void Ticker::set_last_price(double value) {
   
   last_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.last_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.last_price)
 }
 
 // double volume = 11;
-inline void DepthMarketDataNField::clear_volume() {
+inline void Ticker::clear_volume() {
   volume_ = 0;
 }
-inline double DepthMarketDataNField::volume() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.volume)
+inline double Ticker::volume() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.volume)
   return volume_;
 }
-inline void DepthMarketDataNField::set_volume(double value) {
+inline void Ticker::set_volume(double value) {
   
   volume_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.volume)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.volume)
 }
 
 // double turnover = 12;
-inline void DepthMarketDataNField::clear_turnover() {
+inline void Ticker::clear_turnover() {
   turnover_ = 0;
 }
-inline double DepthMarketDataNField::turnover() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.turnover)
+inline double Ticker::turnover() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.turnover)
   return turnover_;
 }
-inline void DepthMarketDataNField::set_turnover(double value) {
+inline void Ticker::set_turnover(double value) {
   
   turnover_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.turnover)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.turnover)
 }
 
 // double openinterest = 13;
-inline void DepthMarketDataNField::clear_openinterest() {
+inline void Ticker::clear_openinterest() {
   openinterest_ = 0;
 }
-inline double DepthMarketDataNField::openinterest() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.openinterest)
+inline double Ticker::openinterest() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.openinterest)
   return openinterest_;
 }
-inline void DepthMarketDataNField::set_openinterest(double value) {
+inline void Ticker::set_openinterest(double value) {
   
   openinterest_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.openinterest)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.openinterest)
 }
 
 // double average_price = 14;
-inline void DepthMarketDataNField::clear_average_price() {
+inline void Ticker::clear_average_price() {
   average_price_ = 0;
 }
-inline double DepthMarketDataNField::average_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.average_price)
+inline double Ticker::average_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.average_price)
   return average_price_;
 }
-inline void DepthMarketDataNField::set_average_price(double value) {
+inline void Ticker::set_average_price(double value) {
   
   average_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.average_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.average_price)
 }
 
 // double open_price = 15;
-inline void DepthMarketDataNField::clear_open_price() {
+inline void Ticker::clear_open_price() {
   open_price_ = 0;
 }
-inline double DepthMarketDataNField::open_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.open_price)
+inline double Ticker::open_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.open_price)
   return open_price_;
 }
-inline void DepthMarketDataNField::set_open_price(double value) {
+inline void Ticker::set_open_price(double value) {
   
   open_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.open_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.open_price)
 }
 
 // double highest_price = 16;
-inline void DepthMarketDataNField::clear_highest_price() {
+inline void Ticker::clear_highest_price() {
   highest_price_ = 0;
 }
-inline double DepthMarketDataNField::highest_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.highest_price)
+inline double Ticker::highest_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.highest_price)
   return highest_price_;
 }
-inline void DepthMarketDataNField::set_highest_price(double value) {
+inline void Ticker::set_highest_price(double value) {
   
   highest_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.highest_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.highest_price)
 }
 
 // double lowest_price = 17;
-inline void DepthMarketDataNField::clear_lowest_price() {
+inline void Ticker::clear_lowest_price() {
   lowest_price_ = 0;
 }
-inline double DepthMarketDataNField::lowest_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.lowest_price)
+inline double Ticker::lowest_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.lowest_price)
   return lowest_price_;
 }
-inline void DepthMarketDataNField::set_lowest_price(double value) {
+inline void Ticker::set_lowest_price(double value) {
   
   lowest_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.lowest_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.lowest_price)
 }
 
 // double close_price = 18;
-inline void DepthMarketDataNField::clear_close_price() {
+inline void Ticker::clear_close_price() {
   close_price_ = 0;
 }
-inline double DepthMarketDataNField::close_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.close_price)
+inline double Ticker::close_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.close_price)
   return close_price_;
 }
-inline void DepthMarketDataNField::set_close_price(double value) {
+inline void Ticker::set_close_price(double value) {
   
   close_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.close_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.close_price)
 }
 
 // double settlement_price = 19;
-inline void DepthMarketDataNField::clear_settlement_price() {
+inline void Ticker::clear_settlement_price() {
   settlement_price_ = 0;
 }
-inline double DepthMarketDataNField::settlement_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.settlement_price)
+inline double Ticker::settlement_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.settlement_price)
   return settlement_price_;
 }
-inline void DepthMarketDataNField::set_settlement_price(double value) {
+inline void Ticker::set_settlement_price(double value) {
   
   settlement_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.settlement_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.settlement_price)
 }
 
 // double upperlimit_price = 20;
-inline void DepthMarketDataNField::clear_upperlimit_price() {
+inline void Ticker::clear_upperlimit_price() {
   upperlimit_price_ = 0;
 }
-inline double DepthMarketDataNField::upperlimit_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.upperlimit_price)
+inline double Ticker::upperlimit_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.upperlimit_price)
   return upperlimit_price_;
 }
-inline void DepthMarketDataNField::set_upperlimit_price(double value) {
+inline void Ticker::set_upperlimit_price(double value) {
   
   upperlimit_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.upperlimit_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.upperlimit_price)
 }
 
 // double lowerlimit_price = 21;
-inline void DepthMarketDataNField::clear_lowerlimit_price() {
+inline void Ticker::clear_lowerlimit_price() {
   lowerlimit_price_ = 0;
 }
-inline double DepthMarketDataNField::lowerlimit_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.lowerlimit_price)
+inline double Ticker::lowerlimit_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.lowerlimit_price)
   return lowerlimit_price_;
 }
-inline void DepthMarketDataNField::set_lowerlimit_price(double value) {
+inline void Ticker::set_lowerlimit_price(double value) {
   
   lowerlimit_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.lowerlimit_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.lowerlimit_price)
 }
 
 // double preclose_price = 22;
-inline void DepthMarketDataNField::clear_preclose_price() {
+inline void Ticker::clear_preclose_price() {
   preclose_price_ = 0;
 }
-inline double DepthMarketDataNField::preclose_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.preclose_price)
+inline double Ticker::preclose_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.preclose_price)
   return preclose_price_;
 }
-inline void DepthMarketDataNField::set_preclose_price(double value) {
+inline void Ticker::set_preclose_price(double value) {
   
   preclose_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.preclose_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.preclose_price)
 }
 
 // double presettlement_price = 23;
-inline void DepthMarketDataNField::clear_presettlement_price() {
+inline void Ticker::clear_presettlement_price() {
   presettlement_price_ = 0;
 }
-inline double DepthMarketDataNField::presettlement_price() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.presettlement_price)
+inline double Ticker::presettlement_price() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.presettlement_price)
   return presettlement_price_;
 }
-inline void DepthMarketDataNField::set_presettlement_price(double value) {
+inline void Ticker::set_presettlement_price(double value) {
   
   presettlement_price_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.presettlement_price)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.presettlement_price)
 }
 
 // double preopeninterest = 24;
-inline void DepthMarketDataNField::clear_preopeninterest() {
+inline void Ticker::clear_preopeninterest() {
   preopeninterest_ = 0;
 }
-inline double DepthMarketDataNField::preopeninterest() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.preopeninterest)
+inline double Ticker::preopeninterest() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.preopeninterest)
   return preopeninterest_;
 }
-inline void DepthMarketDataNField::set_preopeninterest(double value) {
+inline void Ticker::set_preopeninterest(double value) {
   
   preopeninterest_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.preopeninterest)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.preopeninterest)
 }
 
 // .FIRST.TradingPhaseType trading_phase = 25;
-inline void DepthMarketDataNField::clear_trading_phase() {
+inline void Ticker::clear_trading_phase() {
   trading_phase_ = 0;
 }
-inline ::FIRST::TradingPhaseType DepthMarketDataNField::trading_phase() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.trading_phase)
+inline ::FIRST::TradingPhaseType Ticker::trading_phase() const {
+  // @@protoc_insertion_point(field_get:FIRST.Ticker.trading_phase)
   return static_cast< ::FIRST::TradingPhaseType >(trading_phase_);
 }
-inline void DepthMarketDataNField::set_trading_phase(::FIRST::TradingPhaseType value) {
+inline void Ticker::set_trading_phase(::FIRST::TradingPhaseType value) {
   
   trading_phase_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.trading_phase)
-}
-
-// int32 bidcount = 26;
-inline void DepthMarketDataNField::clear_bidcount() {
-  bidcount_ = 0;
-}
-inline ::google::protobuf::int32 DepthMarketDataNField::bidcount() const {
-  // @@protoc_insertion_point(field_get:FIRST.DepthMarketDataNField.bidcount)
-  return bidcount_;
-}
-inline void DepthMarketDataNField::set_bidcount(::google::protobuf::int32 value) {
-  
-  bidcount_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.DepthMarketDataNField.bidcount)
+  // @@protoc_insertion_point(field_set:FIRST.Ticker.trading_phase)
 }
 
 // -------------------------------------------------------------------

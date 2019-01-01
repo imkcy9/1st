@@ -27,6 +27,7 @@ public:
     void on_order_feed(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
     void on_trade_feed(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
     void on_create_order_response(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
+    void on_cancel_order_response(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
 private:
     zmq::context_t ctx_;
     zmq::socket_t router_;

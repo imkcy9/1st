@@ -22,6 +22,7 @@ message_handler::message_handler(zmq::context_t* ctx, zmq_poller_reactor* reacto
     add_pull_msg_mapping<FIRST::OrderFeed>(&message_handler::on_order_feed);
     add_pull_msg_mapping<FIRST::TradeFeed>(&message_handler::on_trade_feed);
     add_router_msg_mapping<FIRST::CreateOrderRequest>(&message_handler::on_create_order_request);
+    add_router_msg_mapping<FIRST::CancelOrderRequest>(&message_handler::cancel_order_request);
 }
 
 message_handler::~message_handler() {
@@ -188,6 +189,15 @@ void message_handler::on_create_order_request(zmq::socket_t* router, zmq::messag
     router->send(resp);
 }
 
+void message_handler::cancel_order_request(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
+    FIRST::CancelOrderRequest& req = (FIRST::CancelOrderRequest&)body;
+    OrderIDType in = {0};
+    memcpy(in,req.order().id().c_str(), req.order().id().size());//req.order().id().c_str();
+    OrderIDType out = {0};
+    trader_->CancelOrder(&in, 1, out);
+}
+
+
 //------------------response from xapi----------------------------
 
 void message_handler::on_resp_instrument(google::protobuf::Message& body) {
@@ -219,7 +229,7 @@ void message_handler::on_order_feed(google::protobuf::Message& body) {
         return;
     }
     LOG_DEBUG("{}", output);
-
+    
     zmq::message_t feed(orderFeed.ByteSizeLong());
     orderFeed.SerializePartialToArray(feed.data(), feed.size());
     router_.send(it->second.c_str(), it->second.size(), ZMQ_SNDMORE);
