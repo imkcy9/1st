@@ -17,8 +17,12 @@
 #include "google/protobuf/util/json_util.h"
 
 order_sender::order_sender()
-: dealer_(ctx_, ZMQ_ROUTER)
+: proto_message_dispatcher(this)
+, router_(ctx_, ZMQ_ROUTER)
 {
+    add_router_msg_mapping<FIRST::OrderFeed>(&order_sender::on_order_feed);
+    add_router_msg_mapping<FIRST::TradeFeed>(&order_sender::on_trade_feed);
+    add_router_msg_mapping<FIRST::CreateOrderResponse>(&order_sender::on_create_order_response);
 }
 
 order_sender::~order_sender() {
@@ -26,34 +30,34 @@ order_sender::~order_sender() {
 
 bool order_sender::init() {
     int mandatory = 1;
-    dealer_.setsockopt(ZMQ_ROUTER_MANDATORY,&mandatory,sizeof(mandatory));
-    dealer_.setsockopt(ZMQ_CONNECT_RID,"PIPE",4);
+    router_.setsockopt(ZMQ_ROUTER_MANDATORY,&mandatory,sizeof(mandatory));
+    router_.setsockopt(ZMQ_CONNECT_RID,"PIPE",4);
     //dealer_.connect("tcp://localhost:10003");
-    dealer_.connect("ipc:///home/kcy/1st/bin/ipc");
-    this->add_socket(&dealer_, this);
+    router_.connect("ipc:///home/kcy/1st/bin/ipc");
+    proto_message_dispatcher::add_socket(&router_);
     timers_add(1, 5000, this);
     return true;
 }
 
-void order_sender::zmq_in_event(zmq::socket_t* socket) {
-    zmq::message_t rid;
-    dealer_.recv(&rid);
-    zmq::message_t type;
-    dealer_.recv(&type);
-    zmq::message_t msg;
-    dealer_.recv(&msg);
-    ZMQ_ASSERT(!msg.more());
-    
-    FIRST::OrderFeed orderFeed;
-    orderFeed.ParsePartialFromArray(msg.data(), msg.size());
-    google::protobuf::util::JsonOptions op;
-    op.always_print_primitive_fields = true;
-    op.always_print_enums_as_ints = false;
-    op.preserve_proto_field_names = false;
-    std::string output;
-    google::protobuf::util::MessageToJsonString(orderFeed, &output, op);
-    LOG_DEBUG("{}", output);
-}
+//void order_sender::zmq_in_event(zmq::socket_t* socket) {
+//    zmq::message_t rid;
+//    router_.recv(&rid);
+//    zmq::message_t type;
+//    router_.recv(&type);
+//    zmq::message_t msg;
+//    router_.recv(&msg);
+//    ZMQ_ASSERT(!msg.more());
+//    
+//    FIRST::OrderFeed orderFeed;
+//    orderFeed.ParsePartialFromArray(msg.data(), msg.size());
+//    google::protobuf::util::JsonOptions op;
+//    op.always_print_primitive_fields = true;
+//    op.always_print_enums_as_ints = false;
+//    op.preserve_proto_field_names = false;
+//    std::string output;
+//    google::protobuf::util::MessageToJsonString(orderFeed, &output, op);
+//    LOG_DEBUG("{} : {}", output);
+//}
 
 void order_sender::zmq_timer_event(int id_) {
 //    OrderIDType Out = {1};
@@ -72,7 +76,7 @@ void order_sender::zmq_timer_event(int id_) {
     orderRequest.mutable_order()->set_instrument_id("SR901");
     orderRequest.mutable_order()->set_open_close(FIRST::OpenCloseType::OPEN);
     orderRequest.mutable_order()->set_hedge_flag(FIRST::HedgeFlagType::SPECULATION);
-    orderRequest.mutable_order()->set_price(4000);
+    orderRequest.mutable_order()->set_price(5000);
     orderRequest.mutable_order()->set_qty(1);
     orderRequest.mutable_order()->set_type(FIRST::OrderType::LIMIT);
     orderRequest.mutable_order()->set_size(FIRST::OrderSide::BUY);
@@ -81,11 +85,23 @@ void order_sender::zmq_timer_event(int id_) {
     zmq::message_t req(orderRequest.ByteSizeLong());
     orderRequest.SerializePartialToArray(req.data(), req.size());
     try {
-    dealer_.send("PIPE",4,ZMQ_SNDMORE);
-    dealer_.send(orderRequest.GetTypeName().c_str(), orderRequest.GetTypeName().size(), ZMQ_SNDMORE);
-    dealer_.send(req);
+    router_.send("PIPE",4,ZMQ_SNDMORE);
+    router_.send(orderRequest.GetTypeName().c_str(), orderRequest.GetTypeName().size(), ZMQ_SNDMORE);
+    router_.send(req);
     } catch (zmq::error_t& e) {
         LOG_ERROR("{}", e.what());
     }
     timers_cancel(id_, this);
+}
+
+void order_sender::on_order_feed(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
+    LOG_INFO("on_order_feed {}", body.ShortDebugString());
+}
+
+void order_sender::on_trade_feed(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
+    LOG_INFO("on_trade_feed {}", body.ShortDebugString());
+}
+
+void order_sender::on_create_order_response(zmq::socket_t* router, zmq::message_t& rid, google::protobuf::Message& body) {
+    LOG_INFO("on_create_order_response {}", body.ShortDebugString());
 }

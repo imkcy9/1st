@@ -1933,11 +1933,11 @@ class TradeField : public ::google::protobuf::Message /* @@protoc_insertion_poin
   double commission() const;
   void set_commission(double value);
 
-  // int32 reserveint32 = 17;
-  void clear_reserveint32();
-  static const int kReserveint32FieldNumber = 17;
-  ::google::protobuf::int32 reserveint32() const;
-  void set_reserveint32(::google::protobuf::int32 value);
+  // int32 client_order_id = 17;
+  void clear_client_order_id();
+  static const int kClientOrderIdFieldNumber = 17;
+  ::google::protobuf::int32 client_order_id() const;
+  void set_client_order_id(::google::protobuf::int32 value);
 
   // .FIRST.BusinessType business = 22;
   void clear_business();
@@ -1969,7 +1969,7 @@ class TradeField : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::int32 date_;
   ::google::protobuf::int64 time_;
   double commission_;
-  ::google::protobuf::int32 reserveint32_;
+  ::google::protobuf::int32 client_order_id_;
   int business_;
   mutable int _cached_size_;
   friend struct ::protobuf_base_5fdefinitions_2eproto::TableStruct;
@@ -8291,18 +8291,18 @@ inline void TradeField::set_commission(double value) {
   // @@protoc_insertion_point(field_set:FIRST.TradeField.commission)
 }
 
-// int32 reserveint32 = 17;
-inline void TradeField::clear_reserveint32() {
-  reserveint32_ = 0;
+// int32 client_order_id = 17;
+inline void TradeField::clear_client_order_id() {
+  client_order_id_ = 0;
 }
-inline ::google::protobuf::int32 TradeField::reserveint32() const {
-  // @@protoc_insertion_point(field_get:FIRST.TradeField.reserveint32)
-  return reserveint32_;
+inline ::google::protobuf::int32 TradeField::client_order_id() const {
+  // @@protoc_insertion_point(field_get:FIRST.TradeField.client_order_id)
+  return client_order_id_;
 }
-inline void TradeField::set_reserveint32(::google::protobuf::int32 value) {
+inline void TradeField::set_client_order_id(::google::protobuf::int32 value) {
   
-  reserveint32_ = value;
-  // @@protoc_insertion_point(field_set:FIRST.TradeField.reserveint32)
+  client_order_id_ = value;
+  // @@protoc_insertion_point(field_set:FIRST.TradeField.client_order_id)
 }
 
 // string reservechar64 = 18;

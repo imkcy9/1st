@@ -17,6 +17,7 @@
 #include "log.h"
 #include "base_definitions.pb.h"
 #include "zmq.hpp"
+#include "first_definitions.pb.h"
 
 xapi_impl::xapi_impl(zmq::socket_t* push)
 : push_(push) {
@@ -168,7 +169,8 @@ void xapi_impl::OnRtnInstrumentStatus(CXApi* pApi, InstrumentStatusField* pInstr
 }
 
 void xapi_impl::OnRtnOrder(CXApi* pApi, OrderField* pOrder) {
-    FIRST::OrderField orderField;
+    FIRST::OrderFeed orderFeed;
+    FIRST::OrderField& orderField = *orderFeed.mutable_order();
     //orderField.set_instrument_name()
     orderField.set_symbol(pOrder->Symbol);
     orderField.set_instrument_id(pOrder->InstrumentID);
@@ -203,9 +205,9 @@ void xapi_impl::OnRtnOrder(CXApi* pApi, OrderField* pOrder) {
     orderField.set_portfolio_id3(pOrder->PortfolioID3);
     orderField.set_business((FIRST::BusinessType)pOrder->Business);
     try {
-        zmq::message_t msg(orderField.ByteSizeLong());
-        orderField.SerializePartialToArray(msg.data(), msg.size());
-        push_->send(orderField.GetTypeName().c_str(), orderField.GetTypeName().size(), ZMQ_SNDMORE);
+        zmq::message_t msg(orderFeed.ByteSizeLong());
+        orderFeed.SerializePartialToArray(msg.data(), msg.size());
+        push_->send(orderFeed.GetTypeName().c_str(), orderFeed.GetTypeName().size(), ZMQ_SNDMORE);
         push_->send(msg);
     } catch (zmq::error_t& e) {
         LOG_ERROR("{}", e.what());
@@ -222,6 +224,37 @@ void xapi_impl::OnRtnQuoteRequest(CXApi* pApi, QuoteRequestField* pQuoteRequest)
 }
 
 void xapi_impl::OnRtnTrade(CXApi* pApi, TradeField* pTrade) {
-
+    FIRST::TradeFeed tradeFeed;
+    FIRST::TradeField* tradeField = tradeFeed.mutable_trade();
+    tradeField->set_symbol(pTrade->Symbol);
+    tradeField->set_instrument_id(pTrade->InstrumentID);
+    tradeField->set_exchange_id(pTrade->ExchangeID);
+    tradeField->set_client_id(pTrade->ClientID);
+    tradeField->set_account_id(pTrade->AccountID);
+    tradeField->set_side((FIRST::OrderSide)pTrade->Side);
+    tradeField->set_qty(pTrade->Qty);
+    tradeField->set_price(pTrade->Price);
+    tradeField->set_open_close((::FIRST::OpenCloseType)pTrade->OpenClose);
+    tradeField->set_hedge_flag((FIRST::HedgeFlagType)pTrade->HedgeFlag);
+    tradeField->set_date(pTrade->Date);
+    tradeField->set_time(pTrade->Time);
+    tradeField->set_id(pTrade->ID);
+    tradeField->set_tradeid(pTrade->TradeID);
+    tradeField->set_commission(pTrade->Commission);
+    tradeField->set_client_order_id(pTrade->ClientOrderID);
+    tradeField->set_reservechar64(pTrade->ReserveChar64);
+    tradeField->set_portfolioid1(pTrade->PortfolioID1);
+    tradeField->set_portfolioid2(pTrade->PortfolioID2);
+    tradeField->set_portfolioid3(pTrade->PortfolioID3);
+    tradeField->set_business((FIRST::BusinessType)pTrade->Business);
+    
+    zmq::message_t msg(tradeFeed.ByteSizeLong());
+    tradeFeed.SerializePartialToArray(msg.data(), msg.size());
+    push_->send(tradeFeed.GetTypeName().c_str(), tradeFeed.GetTypeName().size(), ZMQ_SNDMORE);
+    push_->send(msg);
 }
+
+
+
+
 

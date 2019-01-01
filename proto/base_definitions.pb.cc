@@ -635,7 +635,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, tradeid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, commission_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, reserveint32_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, client_order_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, reservechar64_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, portfolioid1_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FIRST::TradeField, portfolioid2_),
@@ -952,7 +952,7 @@ void AddDescriptorsImpl() {
       "\030\034 \001(\005\022\026\n\016reserve_char64\030\035 \001(\t\022\025\n\rportfo"
       "lio_id1\030\036 \001(\t\022\025\n\rportfolio_id2\030\037 \001(\t\022\025\n\r"
       "portfolio_id3\030  \001(\t\022%\n\010business\030! \001(\0162\023."
-      "FIRST.BusinessType\"\373\003\n\nTradeField\022\027\n\017ins"
+      "FIRST.BusinessType\"\376\003\n\nTradeField\022\027\n\017ins"
       "trument_name\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\022\025\n\rin"
       "strument_id\030\003 \001(\t\022\023\n\013exchange_id\030\004 \001(\t\022\021"
       "\n\tclient_id\030\005 \001(\t\022\022\n\naccount_id\030\006 \001(\t\022\036\n"
@@ -961,89 +961,89 @@ void AddDescriptorsImpl() {
       "FIRST.OpenCloseType\022(\n\nhedge_flag\030\013 \001(\0162"
       "\024.FIRST.HedgeFlagType\022\014\n\004date\030\014 \001(\005\022\014\n\004t"
       "ime\030\r \001(\003\022\n\n\002id\030\016 \001(\t\022\017\n\007tradeid\030\017 \001(\t\022\022"
-      "\n\ncommission\030\020 \001(\001\022\024\n\014reserveint32\030\021 \001(\005"
-      "\022\025\n\rreservechar64\030\022 \001(\t\022\024\n\014portfolioid1\030"
-      "\023 \001(\t\022\024\n\014portfolioid2\030\024 \001(\t\022\024\n\014portfolio"
-      "id3\030\025 \001(\t\022%\n\010business\030\026 \001(\0162\023.FIRST.Busi"
-      "nessType\"\252\003\n\017ServerInfoField\022\024\n\014is_using"
-      "_udp\030\001 \001(\010\022\024\n\014is_multicast\030\002 \001(\010\022\017\n\007topi"
-      "cid\030\003 \001(\005\022\014\n\004port\030\004 \001(\005\0227\n\034marketdata_to"
-      "pic_resume_type\030\005 \001(\0162\021.FIRST.ResumeType"
-      "\0224\n\031private_topic_resume_type\030\006 \001(\0162\021.FI"
-      "RST.ResumeType\0223\n\030public_topic_resume_ty"
-      "pe\030\007 \001(\0162\021.FIRST.ResumeType\0221\n\026user_topi"
-      "c_resume_type\030\010 \001(\0162\021.FIRST.ResumeType\022\021"
-      "\n\tbroker_id\030\t \001(\t\022\031\n\021user_product_info\030\n"
-      " \001(\t\022\020\n\010authcode\030\013 \001(\t\022\017\n\007address\030\014 \001(\t\022"
-      "\023\n\013config_path\030\r \001(\t\022\017\n\007extinfo\030\016 \001(\t\"a\n"
-      "\rUserInfoField\022\017\n\007user_id\030\001 \001(\t\022\020\n\010passw"
-      "ord\030\002 \001(\t\022\026\n\016extinfo_string\030\003 \001(\t\022\025\n\rext"
-      "info_int32\030\004 \001(\005\"R\n\nErrorField\022\021\n\txerror"
-      "_id\030\001 \001(\005\022\023\n\013raw_errorid\030\002 \001(\005\022\014\n\004text\030\003"
-      " \001(\t\022\016\n\006source\030\004 \001(\t\";\n\010LogField\022\036\n\005leve"
-      "l\030\001 \001(\0162\017.FIRST.LogLevel\022\017\n\007message\030\002 \001("
-      "\t\"\340\001\n\021RspUserLoginField\022\023\n\013trading_day\030\001"
-      " \001(\003\022\022\n\nlogin_time\030\002 \001(\003\022\022\n\nsession_id\030\004"
-      " \001(\t\022\017\n\007user_id\030\005 \001(\t\022\021\n\taccountid\030\006 \001(\t"
-      "\022\025\n\rinvestor_name\030\007 \001(\t\022\021\n\txerror_id\030\010 \001"
-      "(\005\022\023\n\013raw_errorid\030\t \001(\005\022\014\n\004text\030\n \001(\t\022\017\n"
-      "\007version\030\013 \001(\t\022\014\n\004lang\030\014 \001(\t\"\366\004\n\025DepthMa"
-      "rketDataNField\022\014\n\004size\030\001 \001(\005\022\023\n\013trading_"
-      "day\030\002 \001(\003\022\022\n\naction_day\030\003 \001(\003\022\023\n\013update_"
-      "time\030\004 \001(\003\022\027\n\017update_millisec\030\005 \001(\003\022\016\n\006s"
-      "ymbol\030\006 \001(\t\022\025\n\rinstrument_id\030\007 \001(\t\022\023\n\013ex"
-      "change_id\030\010 \001(\t\022%\n\010exchange\030\t \001(\0162\023.FIRS"
-      "T.ExchangeType\022\022\n\nlast_price\030\n \001(\001\022\016\n\006vo"
-      "lume\030\013 \001(\001\022\020\n\010turnover\030\014 \001(\001\022\024\n\014openinte"
-      "rest\030\r \001(\001\022\025\n\raverage_price\030\016 \001(\001\022\022\n\nope"
-      "n_price\030\017 \001(\001\022\025\n\rhighest_price\030\020 \001(\001\022\024\n\014"
-      "lowest_price\030\021 \001(\001\022\023\n\013close_price\030\022 \001(\001\022"
-      "\030\n\020settlement_price\030\023 \001(\001\022\030\n\020upperlimit_"
-      "price\030\024 \001(\001\022\030\n\020lowerlimit_price\030\025 \001(\001\022\026\n"
-      "\016preclose_price\030\026 \001(\001\022\033\n\023presettlement_p"
-      "rice\030\027 \001(\001\022\027\n\017preopeninterest\030\030 \001(\001\022.\n\rt"
-      "rading_phase\030\031 \001(\0162\027.FIRST.TradingPhaseT"
-      "ype\022\020\n\010bidcount\030\032 \001(\005\"8\n\nDepthField\022\r\n\005p"
-      "rice\030\001 \001(\001\022\014\n\004size\030\002 \001(\001\022\r\n\005count\030\003 \001(\001\""
-      "\274\003\n\017InstrumentField\022\027\n\017instrument_name\030\001"
-      " \001(\t\022\016\n\006symbol\030\002 \001(\t\022\025\n\rinstrument_id\030\003 "
-      "\001(\t\022\023\n\013exchange_id\030\004 \001(\t\022\021\n\tclient_id\030\005 "
-      "\001(\t\022\022\n\naccount_id\030\006 \001(\t\022\027\n\017exchange_inst"
-      "id\030\007 \001(\t\022#\n\004type\030\010 \001(\0162\025.FIRST.Instrumen"
-      "tType\022\027\n\017volume_multiple\030\t \001(\005\022\022\n\nprice_"
-      "tick\030\n \001(\001\022\023\n\013expire_date\030\013 \001(\005\022\024\n\014strik"
-      "e_price\030\014 \001(\001\022$\n\014options_type\030\r \001(\0162\016.FI"
-      "RST.PutCall\022\022\n\nproduct_id\030\016 \001(\t\022\032\n\022under"
-      "lying_instrid\030\017 \001(\t\0220\n\016instlife_phase\030\020 "
-      "\001(\0162\030.FIRST.InstLifePhaseType\022\017\n\007is_last"
-      "\030\021 \001(\010\"\265\003\n\014AccountField\022\021\n\tclient_id\030\001 \001"
-      "(\t\022\022\n\naccount_id\030\002 \001(\t\022\023\n\013currency_id\030\003 "
-      "\001(\t\022\023\n\013pre_balance\030\004 \001(\001\022\023\n\013curr_margin\030"
-      "\005 \001(\001\022\024\n\014close_profit\030\006 \001(\001\022\027\n\017position_"
-      "profit\030\007 \001(\001\022\017\n\007balance\030\010 \001(\001\022\021\n\tavailab"
-      "le\030\t \001(\001\022\017\n\007deposit\030\n \001(\001\022\020\n\010withdraw\030\013 "
-      "\001(\001\022\025\n\rwithdrawquota\030\014 \001(\001\022\033\n\023frozen_tra"
-      "nsfer_fee\030\r \001(\001\022\030\n\020frozen_stamp_tax\030\016 \001("
-      "\001\022\031\n\021frozen_commission\030\017 \001(\001\022\023\n\013frozen_c"
-      "ash\030\020 \001(\001\022\024\n\014transfer_fee\030\021 \001(\001\022\021\n\tstamp"
-      "_tax\030\022 \001(\001\022\022\n\ncommission\030\023 \001(\001\022\016\n\006cashin"
-      "\030\024 \001(\001\"\212\001\n\021QuoteRequestField\022\016\n\006symbol\030\001"
-      " \001(\t\022\025\n\rinstrument_id\030\002 \001(\t\022\023\n\013exchange_"
-      "id\030\003 \001(\t\022\023\n\013trading_day\030\004 \001(\005\022\022\n\nquote_t"
-      "ime\030\005 \001(\003\022\020\n\010quote_id\030\006 \001(\t\"8\n\023Settlemen"
-      "tInfoField\022\014\n\004size\030\001 \001(\005\022\023\n\013trading_day\030"
-      "\002 \001(\003\"\232\001\n\rInvestorField\022\023\n\013investor_id\030\001"
-      " \001(\t\022\021\n\tbroker_id\030\002 \001(\t\022/\n\024identified_ca"
-      "rd_type\030\003 \001(\0162\021.FIRST.IdCardType\022\031\n\021iden"
-      "tified_cardno\030\004 \001(\t\022\025\n\rinvestor_name\030\005 \001"
-      "(\t\"\233\001\n\025InstrumentStatusField\022\016\n\006symbol\030\001"
-      " \001(\t\022\025\n\rinstrument_id\030\002 \001(\t\022\023\n\013exchange_"
-      "id\030\003 \001(\t\0222\n\021instrument_status\030\004 \001(\0162\027.FI"
-      "RST.TradingPhaseType\022\022\n\nenter_time\030\005 \001(\003"
-      "b\006proto3"
+      "\n\ncommission\030\020 \001(\001\022\027\n\017client_order_id\030\021 "
+      "\001(\005\022\025\n\rreservechar64\030\022 \001(\t\022\024\n\014portfolioi"
+      "d1\030\023 \001(\t\022\024\n\014portfolioid2\030\024 \001(\t\022\024\n\014portfo"
+      "lioid3\030\025 \001(\t\022%\n\010business\030\026 \001(\0162\023.FIRST.B"
+      "usinessType\"\252\003\n\017ServerInfoField\022\024\n\014is_us"
+      "ing_udp\030\001 \001(\010\022\024\n\014is_multicast\030\002 \001(\010\022\017\n\007t"
+      "opicid\030\003 \001(\005\022\014\n\004port\030\004 \001(\005\0227\n\034marketdata"
+      "_topic_resume_type\030\005 \001(\0162\021.FIRST.ResumeT"
+      "ype\0224\n\031private_topic_resume_type\030\006 \001(\0162\021"
+      ".FIRST.ResumeType\0223\n\030public_topic_resume"
+      "_type\030\007 \001(\0162\021.FIRST.ResumeType\0221\n\026user_t"
+      "opic_resume_type\030\010 \001(\0162\021.FIRST.ResumeTyp"
+      "e\022\021\n\tbroker_id\030\t \001(\t\022\031\n\021user_product_inf"
+      "o\030\n \001(\t\022\020\n\010authcode\030\013 \001(\t\022\017\n\007address\030\014 \001"
+      "(\t\022\023\n\013config_path\030\r \001(\t\022\017\n\007extinfo\030\016 \001(\t"
+      "\"a\n\rUserInfoField\022\017\n\007user_id\030\001 \001(\t\022\020\n\010pa"
+      "ssword\030\002 \001(\t\022\026\n\016extinfo_string\030\003 \001(\t\022\025\n\r"
+      "extinfo_int32\030\004 \001(\005\"R\n\nErrorField\022\021\n\txer"
+      "ror_id\030\001 \001(\005\022\023\n\013raw_errorid\030\002 \001(\005\022\014\n\004tex"
+      "t\030\003 \001(\t\022\016\n\006source\030\004 \001(\t\";\n\010LogField\022\036\n\005l"
+      "evel\030\001 \001(\0162\017.FIRST.LogLevel\022\017\n\007message\030\002"
+      " \001(\t\"\340\001\n\021RspUserLoginField\022\023\n\013trading_da"
+      "y\030\001 \001(\003\022\022\n\nlogin_time\030\002 \001(\003\022\022\n\nsession_i"
+      "d\030\004 \001(\t\022\017\n\007user_id\030\005 \001(\t\022\021\n\taccountid\030\006 "
+      "\001(\t\022\025\n\rinvestor_name\030\007 \001(\t\022\021\n\txerror_id\030"
+      "\010 \001(\005\022\023\n\013raw_errorid\030\t \001(\005\022\014\n\004text\030\n \001(\t"
+      "\022\017\n\007version\030\013 \001(\t\022\014\n\004lang\030\014 \001(\t\"\366\004\n\025Dept"
+      "hMarketDataNField\022\014\n\004size\030\001 \001(\005\022\023\n\013tradi"
+      "ng_day\030\002 \001(\003\022\022\n\naction_day\030\003 \001(\003\022\023\n\013upda"
+      "te_time\030\004 \001(\003\022\027\n\017update_millisec\030\005 \001(\003\022\016"
+      "\n\006symbol\030\006 \001(\t\022\025\n\rinstrument_id\030\007 \001(\t\022\023\n"
+      "\013exchange_id\030\010 \001(\t\022%\n\010exchange\030\t \001(\0162\023.F"
+      "IRST.ExchangeType\022\022\n\nlast_price\030\n \001(\001\022\016\n"
+      "\006volume\030\013 \001(\001\022\020\n\010turnover\030\014 \001(\001\022\024\n\014openi"
+      "nterest\030\r \001(\001\022\025\n\raverage_price\030\016 \001(\001\022\022\n\n"
+      "open_price\030\017 \001(\001\022\025\n\rhighest_price\030\020 \001(\001\022"
+      "\024\n\014lowest_price\030\021 \001(\001\022\023\n\013close_price\030\022 \001"
+      "(\001\022\030\n\020settlement_price\030\023 \001(\001\022\030\n\020upperlim"
+      "it_price\030\024 \001(\001\022\030\n\020lowerlimit_price\030\025 \001(\001"
+      "\022\026\n\016preclose_price\030\026 \001(\001\022\033\n\023presettlemen"
+      "t_price\030\027 \001(\001\022\027\n\017preopeninterest\030\030 \001(\001\022."
+      "\n\rtrading_phase\030\031 \001(\0162\027.FIRST.TradingPha"
+      "seType\022\020\n\010bidcount\030\032 \001(\005\"8\n\nDepthField\022\r"
+      "\n\005price\030\001 \001(\001\022\014\n\004size\030\002 \001(\001\022\r\n\005count\030\003 \001"
+      "(\001\"\274\003\n\017InstrumentField\022\027\n\017instrument_nam"
+      "e\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\022\025\n\rinstrument_id"
+      "\030\003 \001(\t\022\023\n\013exchange_id\030\004 \001(\t\022\021\n\tclient_id"
+      "\030\005 \001(\t\022\022\n\naccount_id\030\006 \001(\t\022\027\n\017exchange_i"
+      "nstid\030\007 \001(\t\022#\n\004type\030\010 \001(\0162\025.FIRST.Instru"
+      "mentType\022\027\n\017volume_multiple\030\t \001(\005\022\022\n\npri"
+      "ce_tick\030\n \001(\001\022\023\n\013expire_date\030\013 \001(\005\022\024\n\014st"
+      "rike_price\030\014 \001(\001\022$\n\014options_type\030\r \001(\0162\016"
+      ".FIRST.PutCall\022\022\n\nproduct_id\030\016 \001(\t\022\032\n\022un"
+      "derlying_instrid\030\017 \001(\t\0220\n\016instlife_phase"
+      "\030\020 \001(\0162\030.FIRST.InstLifePhaseType\022\017\n\007is_l"
+      "ast\030\021 \001(\010\"\265\003\n\014AccountField\022\021\n\tclient_id\030"
+      "\001 \001(\t\022\022\n\naccount_id\030\002 \001(\t\022\023\n\013currency_id"
+      "\030\003 \001(\t\022\023\n\013pre_balance\030\004 \001(\001\022\023\n\013curr_marg"
+      "in\030\005 \001(\001\022\024\n\014close_profit\030\006 \001(\001\022\027\n\017positi"
+      "on_profit\030\007 \001(\001\022\017\n\007balance\030\010 \001(\001\022\021\n\tavai"
+      "lable\030\t \001(\001\022\017\n\007deposit\030\n \001(\001\022\020\n\010withdraw"
+      "\030\013 \001(\001\022\025\n\rwithdrawquota\030\014 \001(\001\022\033\n\023frozen_"
+      "transfer_fee\030\r \001(\001\022\030\n\020frozen_stamp_tax\030\016"
+      " \001(\001\022\031\n\021frozen_commission\030\017 \001(\001\022\023\n\013froze"
+      "n_cash\030\020 \001(\001\022\024\n\014transfer_fee\030\021 \001(\001\022\021\n\tst"
+      "amp_tax\030\022 \001(\001\022\022\n\ncommission\030\023 \001(\001\022\016\n\006cas"
+      "hin\030\024 \001(\001\"\212\001\n\021QuoteRequestField\022\016\n\006symbo"
+      "l\030\001 \001(\t\022\025\n\rinstrument_id\030\002 \001(\t\022\023\n\013exchan"
+      "ge_id\030\003 \001(\t\022\023\n\013trading_day\030\004 \001(\005\022\022\n\nquot"
+      "e_time\030\005 \001(\003\022\020\n\010quote_id\030\006 \001(\t\"8\n\023Settle"
+      "mentInfoField\022\014\n\004size\030\001 \001(\005\022\023\n\013trading_d"
+      "ay\030\002 \001(\003\"\232\001\n\rInvestorField\022\023\n\013investor_i"
+      "d\030\001 \001(\t\022\021\n\tbroker_id\030\002 \001(\t\022/\n\024identified"
+      "_card_type\030\003 \001(\0162\021.FIRST.IdCardType\022\031\n\021i"
+      "dentified_cardno\030\004 \001(\t\022\025\n\rinvestor_name\030"
+      "\005 \001(\t\"\233\001\n\025InstrumentStatusField\022\016\n\006symbo"
+      "l\030\001 \001(\t\022\025\n\rinstrument_id\030\002 \001(\t\022\023\n\013exchan"
+      "ge_id\030\003 \001(\t\0222\n\021instrument_status\030\004 \001(\0162\027"
+      ".FIRST.TradingPhaseType\022\022\n\nenter_time\030\005 "
+      "\001(\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 6008);
+      descriptor, 6011);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "base_definitions.proto", &protobuf_RegisterTypes);
   ::protobuf_enum_2eproto::AddDescriptors();
@@ -6599,7 +6599,7 @@ const int TradeField::kTimeFieldNumber;
 const int TradeField::kIdFieldNumber;
 const int TradeField::kTradeidFieldNumber;
 const int TradeField::kCommissionFieldNumber;
-const int TradeField::kReserveint32FieldNumber;
+const int TradeField::kClientOrderIdFieldNumber;
 const int TradeField::kReservechar64FieldNumber;
 const int TradeField::kPortfolioid1FieldNumber;
 const int TradeField::kPortfolioid2FieldNumber;
@@ -7013,14 +7013,14 @@ bool TradeField::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 reserveint32 = 17;
+      // int32 client_order_id = 17;
       case 17: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(136u /* 136 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &reserveint32_)));
+                 input, &client_order_id_)));
         } else {
           goto handle_unusual;
         }
@@ -7255,9 +7255,9 @@ void TradeField::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(16, this->commission(), output);
   }
 
-  // int32 reserveint32 = 17;
-  if (this->reserveint32() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(17, this->reserveint32(), output);
+  // int32 client_order_id = 17;
+  if (this->client_order_id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(17, this->client_order_id(), output);
   }
 
   // string reservechar64 = 18;
@@ -7451,9 +7451,9 @@ void TradeField::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(16, this->commission(), target);
   }
 
-  // int32 reserveint32 = 17;
-  if (this->reserveint32() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(17, this->reserveint32(), target);
+  // int32 client_order_id = 17;
+  if (this->client_order_id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(17, this->client_order_id(), target);
   }
 
   // string reservechar64 = 18;
@@ -7654,11 +7654,11 @@ size_t TradeField::ByteSizeLong() const {
     total_size += 2 + 8;
   }
 
-  // int32 reserveint32 = 17;
-  if (this->reserveint32() != 0) {
+  // int32 client_order_id = 17;
+  if (this->client_order_id() != 0) {
     total_size += 2 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->reserveint32());
+        this->client_order_id());
   }
 
   // .FIRST.BusinessType business = 22;
@@ -7768,8 +7768,8 @@ void TradeField::MergeFrom(const TradeField& from) {
   if (from.commission() != 0) {
     set_commission(from.commission());
   }
-  if (from.reserveint32() != 0) {
-    set_reserveint32(from.reserveint32());
+  if (from.client_order_id() != 0) {
+    set_client_order_id(from.client_order_id());
   }
   if (from.business() != 0) {
     set_business(from.business());
@@ -7820,7 +7820,7 @@ void TradeField::InternalSwap(TradeField* other) {
   swap(date_, other->date_);
   swap(time_, other->time_);
   swap(commission_, other->commission_);
-  swap(reserveint32_, other->reserveint32_);
+  swap(client_order_id_, other->client_order_id_);
   swap(business_, other->business_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);

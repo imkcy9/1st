@@ -21,7 +21,8 @@ public:
     
     //------------------response from xapi----------------------------
     void on_resp_instrument(google::protobuf::Message& body);
-    void on_resp_order_field(google::protobuf::Message& body);
+    void on_order_feed(google::protobuf::Message& body);
+    void on_trade_feed(google::protobuf::Message& body);
 private:
     zmq::socket_t router_;
     zmq::socket_t push_;

@@ -14,19 +14,22 @@
 #ifndef ORDER_SENDER_H
 #define ORDER_SENDER_H
 #include "zmq_poller_reactor.h"
-class order_sender : public zmq_poller_reactor, public zmq_poll_events{
+#include "proto_message_dispatcher.h"
+class order_sender : public proto_message_dispatcher<order_sender>, public zmq_poller_reactor{
 public:
     order_sender();
     virtual ~order_sender();
     
     virtual bool init();
 
-    virtual void zmq_in_event(zmq::socket_t* socket);
-
     virtual void zmq_timer_event(int id_);
+    
+    void on_order_feed(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
+    void on_trade_feed(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
+    void on_create_order_response(zmq::socket_t* router,zmq::message_t& rid, google::protobuf::Message& body);
 private:
     zmq::context_t ctx_;
-    zmq::socket_t dealer_;
+    zmq::socket_t router_;
     
 };
 

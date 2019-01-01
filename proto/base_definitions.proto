@@ -210,7 +210,7 @@ message TradeField
 	double		    commission = 16;
 
 	///预留数字
-	int32		    reserveint32 = 17;
+	int32		    client_order_id = 17;
 	///预留字符串
 	string		    reservechar64 = 18;
 

@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <zmq.hpp>
-#include "trader.pb.h"
+#include "base_definitions.pb.h"
 
 int main() {
   zmq::context_t ctx;
@@ -15,7 +15,7 @@ int main() {
   socket.connect("tcp://localhost:10003");
   int count = 0;
   std::string str("hello");
-  LT::LogField logField;
+  FIRST::LogField logField;
   while(true) {
     ++count;
     std::stringstream sst;

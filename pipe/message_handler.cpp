@@ -18,9 +18,10 @@ message_handler::message_handler(zmq::context_t* ctx, zmq_poller_reactor* reacto
 , spi_(NULL)
 , trader_(NULL)
 , md_(NULL) {
-    add_pull_msg_mapping<FIRST::InstrumentField>(FIRST::InstrumentField::default_instance().GetTypeName(), &message_handler::on_resp_instrument);
-    add_pull_msg_mapping<FIRST::OrderField>(FIRST::OrderField::default_instance().GetTypeName(), &message_handler::on_resp_order_field);
-    add_router_msg_mapping<FIRST::CreateOrderRequest>(FIRST::CreateOrderRequest::default_instance().GetTypeName(), &message_handler::on_create_order_request);
+    add_pull_msg_mapping<FIRST::InstrumentField>(&message_handler::on_resp_instrument);
+    add_pull_msg_mapping<FIRST::OrderFeed>(&message_handler::on_order_feed);
+    add_pull_msg_mapping<FIRST::TradeFeed>(&message_handler::on_trade_feed);
+    add_router_msg_mapping<FIRST::CreateOrderRequest>(&message_handler::on_create_order_request);
 }
 
 message_handler::~message_handler() {
@@ -63,7 +64,7 @@ void message_handler::zmq_timer_event(int id_) {
 }
 
 bool message_handler::init() {
-    add_router_msg_mapping<FIRST::LogField>("1001", &message_handler::on_req_login);
+    add_router_msg_mapping<FIRST::LogField>(&message_handler::on_req_login);
     //router_.setsockopt(ZMQ_IDENTITY, "SUB", 3);
     push_.bind("inproc://xapi");
     spi_ = new xapi_impl(&push_);
@@ -74,7 +75,7 @@ bool message_handler::init() {
     this->add_socket(&pull_);
     this->add_socket(&router_);
 
-    this->add_timer(1, 2000);
+    //this->add_timer(1, 2000);
     //this->add_timer(2, 5000);
 
 
@@ -200,7 +201,7 @@ void message_handler::on_resp_instrument(google::protobuf::Message& body) {
     LOG_DEBUG("{}", output);
 }
 
-void message_handler::on_resp_order_field(google::protobuf::Message& body) {
+void message_handler::on_order_feed(google::protobuf::Message& body) {
     
     google::protobuf::util::JsonOptions op;
     op.always_print_primitive_fields = true;
@@ -211,17 +212,13 @@ void message_handler::on_resp_order_field(google::protobuf::Message& body) {
     google::protobuf::util::MessageToJsonString(body, &output, op);
     
     
-    FIRST::OrderField& orderField = (FIRST::OrderField&)body;
-
-    auto it = router_mapping_.find(orderField.local_id());
+    FIRST::OrderFeed& orderFeed = (FIRST::OrderFeed&)body;
+    auto it = router_mapping_.find(orderFeed.order().id());
     if (it == router_mapping_.end()) {
         LOG_WARN("not a order send from FIRST {}", output);
         return;
     }
     LOG_DEBUG("{}", output);
-    
-    FIRST::OrderFeed orderFeed;
-    orderFeed.mutable_order()->CopyFrom(body);
 
     zmq::message_t feed(orderFeed.ByteSizeLong());
     orderFeed.SerializePartialToArray(feed.data(), feed.size());
@@ -229,4 +226,18 @@ void message_handler::on_resp_order_field(google::protobuf::Message& body) {
     router_.send(orderFeed.GetTypeName().c_str(), orderFeed.GetTypeName().size(), ZMQ_SNDMORE);
     router_.send(feed);
     //auto it = router_mapping
+}
+
+void message_handler::on_trade_feed(google::protobuf::Message& body) {
+    FIRST::TradeFeed& tradeFeed = (FIRST::TradeFeed&)body;
+    zmq::message_t feed(tradeFeed.ByteSizeLong());
+    tradeFeed.SerializePartialToArray(feed.data(), feed.size());
+    auto it = router_mapping_.find(tradeFeed.trade().id());
+    if (it == router_mapping_.end()) {
+        LOG_WARN("not a trade send from FIRST {}", body.DebugString());
+        return;
+    }
+    router_.send(it->second.c_str(), it->second.size(), ZMQ_SNDMORE);
+    router_.send(tradeFeed.GetTypeName().c_str(), tradeFeed.GetTypeName().size(), ZMQ_SNDMORE);
+    router_.send(feed);
 }
