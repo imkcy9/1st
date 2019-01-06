@@ -108,7 +108,7 @@ void xapi_md_impl::OnRtnDepthMarketDataN(CXApi* pApi, DepthMarketDataNField* pMa
     
     zmq::message_t tickmsg(ticker->ByteSizeLong());
     ticker->SerializePartialToArray(tickmsg.data(), tickmsg.size());
-    pub_.send(ticker->symbol().c_str(), ticker->symbol().size() + 1, ZMQ_SNDMORE);
+    pub_.send(ticker->instrument_id().c_str(), ticker->instrument_id().size(), ZMQ_SNDMORE);
     pub_.send(tickmsg);
 }
 

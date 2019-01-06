@@ -34,6 +34,8 @@ bool marketdata_handler::init() {
     md_impl_.init();
     this->add_socket(&sub_);
 
+    int manual = 1;
+    xpub_.setsockopt(ZMQ_XPUB_MANUAL, &manual, sizeof (manual));
     xpub_.bind("tcp://*:1234");
     this->add_socket(&xpub_);
 
@@ -44,8 +46,8 @@ bool marketdata_handler::init() {
     strcpy(m_ServerInfo2.BrokerID, "9999");
     strcpy(m_ServerInfo2.Address, "tcp://180.168.146.187:10031");
 
-    strcpy(m_UserInfo.UserID, "005890");
-    strcpy(m_UserInfo.Password, "123456");
+    strcpy(m_UserInfo.UserID, "203328");
+    strcpy(m_UserInfo.Password, "yhdr123456");
 
     md_ = CXApi::CreateApi(DLLPath2);
     if (!md_->Init()) {
@@ -75,11 +77,21 @@ void marketdata_handler::on_recv_xpub_message(zmq::socket_t* socket) {
     if (subscribe) {
         if (0 == it->second)
             md_->Subscribe(symbol.c_str(), "");
+        xpub_.setsockopt(ZMQ_SUBSCRIBE, symbol.c_str(), symbol.size());
         it->second++;
+        auto it = ticks_cache_.find(symbol);
+        if (it != ticks_cache_.end()) {
+            xpub_.send(symbol.c_str(), symbol.size(), ZMQ_SNDMORE);
+            zmq::message_t seral_msg(it->second->ByteSizeLong());
+            it->second->SerializeToArray(seral_msg.data(), seral_msg.size());
+            xpub_.send(seral_msg);
+        }
     } else {
         it->second--;
-        if(0 == it->second)
+        if (0 == it->second)
             md_->Unsubscribe(symbol.c_str(), "");
+
+        xpub_.setsockopt(ZMQ_UNSUBSCRIBE, symbol.c_str(), symbol.size());
         ZMQ_ASSERT(it->second >= 0);
     }
     ZMQ_ASSERT(!msg.more());
@@ -94,7 +106,7 @@ void marketdata_handler::on_recv_sub_message(zmq::socket_t* socket) {
     FIRST::Ticker* ticker = NULL;
     auto it = ticks_cache_.find(topic);
     if (it != ticks_cache_.end()) {
-        ticker = it->second;
+        ticker = static_cast<FIRST::Ticker*>(it->second);
     } else {
         ticker = google::protobuf::Arena::Create<FIRST::Ticker>(&arena_);
         ticks_cache_.insert(std::make_pair(topic, ticker));
