@@ -33,8 +33,8 @@ bool order_sender::init() {
     int mandatory = 1;
     router_.setsockopt(ZMQ_ROUTER_MANDATORY,&mandatory,sizeof(mandatory));
     router_.setsockopt(ZMQ_CONNECT_RID,"PIPE",4);
-    //dealer_.connect("tcp://localhost:10003");
-    router_.connect("ipc:///home/kcy/1st/bin/ipc");
+    router_.connect("tcp://localhost:10003");
+    //router_.connect("ipc:///home/kcy/1st/bin/ipc");
     proto_message_dispatcher::add_socket(&router_);
     timers_add(1, 5000, this);
     return true;

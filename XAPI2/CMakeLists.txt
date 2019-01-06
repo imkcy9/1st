@@ -3,9 +3,9 @@ project(XAPI2)
 
 # set compile parameter
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra -fpermissive -rdynamic -std=c++11")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -g -Wall -Wextra -fpermissive -rdynamic -std=c++11")
 elseif (${CMAKE_CXX_COMPILER_ID} MATCHES Clang)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra -Wno-missing-field-initializers")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -g -Wextra -Wno-missing-field-initializers")
 	set(CMAKE_CXX_STANDARD 11)
 	set(CMAKE_CXX_STANDARD_REQUIRED ON)
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)

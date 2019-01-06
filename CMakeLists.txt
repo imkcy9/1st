@@ -10,7 +10,7 @@ aux_source_directory(./common SRC_PUBLIC)
 aux_source_directory(./common/timer SRC_TIMER)
 aux_source_directory(./common/tinyxml2 SRC_TINYXML2)
 
-add_definitions(-std=c++11 -fpermissive -DUSE_SPDLOG -DZMQ_BUILD_DRAFT_API)
+add_definitions(-std=c++11 -g -fpermissive -DUSE_SPDLOG -DZMQ_BUILD_DRAFT_API)
 SET(EXECUTABLE_OUTPUT_PATH ./bin)
 #target_include_directories()
 include_directories(./proto

@@ -71,12 +71,12 @@ bool message_handler::init() {
     spi_ = new xapi_impl(&push_);
 
     pull_.connect("inproc://xapi");
-    //router_.bind("tcp://*:10003");
-    router_.bind("ipc:///home/kcy/1st/bin/ipc");
+    router_.bind("tcp://*:10003");
+    //router_.bind("ipc:///home/kcy/1st/bin/ipc");
     this->add_socket(&pull_);
     this->add_socket(&router_);
 
-    //this->add_timer(1, 2000);
+    this->add_timer(1, 2000);
     //this->add_timer(2, 5000);
 
 

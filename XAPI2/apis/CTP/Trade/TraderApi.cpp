@@ -269,7 +269,8 @@ int CTraderApi::_Init()
 
 	char *pszPath = new char[m_szPath.length() + 1024];
 	srand((unsigned int)time(nullptr));
-	sprintf(pszPath, "%s/%s/%s/Td/%d/", m_szPath.c_str(), m_ServerInfo.BrokerID, m_UserInfo.UserID, rand());
+	//sprintf(pszPath, "%s/%s/%s/Td/%d/", m_szPath.c_str(), m_ServerInfo.BrokerID, m_UserInfo.UserID, rand());
+        sprintf(pszPath, "%s/%s/%s/Td/", m_szPath.c_str(), m_ServerInfo.BrokerID, m_UserInfo.UserID);
 	makedirs(pszPath);
 
 
@@ -1693,8 +1694,7 @@ void CTraderApi::OnTrade(CThostFtdcTradeField *pTrade, int nRequestID, bool bIsL
 			// 找到对应的报单
 			strcpy(pField->ID, it->second.c_str());
                         
-			m_msgQueue->Input_Copy(ResponseType::ResponseType_OnRtnTrade, m_msgQueue, m_pClass, bIsLast, 0, pField, sizeof(TradeField), nullptr, 0, nullptr, 0);
-
+			
 			unordered_map<string, OrderField*>::iterator it2 = m_id_platform_order.find(it->second);
 			if (it2 == m_id_platform_order.end())
 			{
@@ -1708,7 +1708,7 @@ void CTraderApi::OnTrade(CThostFtdcTradeField *pTrade, int nRequestID, bool bIsL
                             strcpy(pField->ReserveChar64, it2->second->ReserveChar64);
 				// 是否要通知接口
 			}
-
+                        m_msgQueue->Input_Copy(ResponseType::ResponseType_OnRtnTrade, m_msgQueue, m_pClass, bIsLast, 0, pField, sizeof(TradeField), nullptr, 0, nullptr, 0);
 			// 实时根据本地持仓进行计算
 			//OnTrade(pField);
 		}

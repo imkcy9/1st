@@ -190,7 +190,8 @@ int CMdUserApi::_Init()
 {
 	char *pszPath = new char[m_szPath.length() + 1024];
 	srand((unsigned int)time(NULL));
-	sprintf(pszPath, "%s/%s/%s/Md/%d/", m_szPath.c_str(), m_ServerInfo.BrokerID, m_UserInfo.UserID, rand());
+	//sprintf(pszPath, "%s/%s/%s/Md/%d/", m_szPath.c_str(), m_ServerInfo.BrokerID, m_UserInfo.UserID, rand());
+        sprintf(pszPath, "%s/%s/%s/Md/", m_szPath.c_str(), m_ServerInfo.BrokerID, m_UserInfo.UserID);
 	makedirs(pszPath);
 
 	// 本来想使用chdir的方法解决Kingstar的证书问题，测试多次发现还是读取的exe目录下
